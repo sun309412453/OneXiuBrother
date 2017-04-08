@@ -3,6 +3,15 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
+    sourceSets{
+        main{
+            res.srcDirs=[
+                    'src/main/res',
+                    'src/main/res/layouts',
+                    'src/main/res/layouts/home'
+            ]
+        }
+    }
     defaultConfig {
         applicationId "com.zykj.onexiubrother"
         minSdkVersion 15
