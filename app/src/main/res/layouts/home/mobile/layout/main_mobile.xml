@@ -8,9 +8,11 @@
     android:layout_width="match_parent"
     android:layout_height="50dp"
     MyTitleBar:LiftBackground="@mipmap/retreat"
-
+    android:layout_marginLeft="10dp"
     MyTitleBar:TitleText="手机维修"
-    MyTitleBar:TitleTextSize="20sp"
+    MyTitleBar:TitleTextSize="10sp"
+    MyTitleBar:TitleTextColor="#00cccc"
+    android:background="#ffffff"
     >
 </com.zykj.onexiubrother.widget.MyTitleBar>
 </LinearLayout>

@@ -69,6 +69,7 @@ public class MyTitleBar extends RelativeLayout {
         right.setText(RightText);
         right.setTextSize(RightTextSize);
         right.setTextColor(RightTextColor);
+        right.setGravity(Gravity.RIGHT);
         right.setBackgroundDrawable(RightBackground);
         //把标题控件设置上信息
         title.setText(TitleText);
@@ -76,15 +77,17 @@ public class MyTitleBar extends RelativeLayout {
         title.setTextColor(TitleTextColor);
         title.setGravity(Gravity.CENTER);
         //把左侧控件绑定到RL设置上
-        LayoutParams liftParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        liftParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        LayoutParams liftParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        liftParams.width=40;
+        liftParams.height=40;
+        liftParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT|RelativeLayout.CENTER_VERTICAL);
         this.addView(lift,liftParams);
         //把右侧控件绑定到RL设置上
-        LayoutParams rightParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        rightParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        LayoutParams rightParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        rightParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT|RelativeLayout.CENTER_VERTICAL);
         this.addView(right,rightParams);
         //把标题控件绑定到RL设置上
-        LayoutParams titleParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LayoutParams titleParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
         titleParams.addRule(RelativeLayout.CENTER_IN_PARENT);
         this.addView(title,titleParams);
     }
