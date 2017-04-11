@@ -78,15 +78,15 @@ public class MyTitleBar extends RelativeLayout {
         //把左侧控件绑定到RL设置上
         LayoutParams liftParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         liftParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-        this.addView(lift);
+        this.addView(lift,liftParams);
         //把右侧控件绑定到RL设置上
         LayoutParams rightParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         rightParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-        this.addView(right);
+        this.addView(right,rightParams);
         //把标题控件绑定到RL设置上
         LayoutParams titleParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         titleParams.addRule(RelativeLayout.CENTER_IN_PARENT);
-        this.addView(title);
+        this.addView(title,titleParams);
     }
 
     public MyTitleBar(Context context, AttributeSet attrs, int defStyleAttr) {

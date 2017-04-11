@@ -11,7 +11,8 @@ android {
                     'src/main/res/layouts',
                     'src/main/res/layouts/home',
                     'src/main/res/layouts/item',
-                    'src/main/res/layouts/include'
+                    'src/main/res/layouts/include',
+                    'src/main/res/layouts/home/mobile'
             ]
         }
     }
