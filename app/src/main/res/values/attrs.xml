@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyTitleBar">
+        <!--左侧控件  开始-->
+        <attr name="LiftBackground" format="color|reference" />
+        <!--左侧控件结束-->
+        <!--标题  开始-->
+        <attr name="TitleText" format="string" />
+        <attr name="TitleTextSize" format="dimension" />
+        <attr name="TitleTextColor" format="color" />
+
+        <!--标题  结束-->
+        <!--右侧控件  开始-->
+        <attr name="RightText" format="string" />
+        <attr name="RightTextSize" format="dimension" />
+        <attr name="RightTextColor" format="color" />
+        <attr name="RightBackground" format="color|reference" />
+        <!--右侧控件结束-->
+    </declare-styleable>
+</resources>
