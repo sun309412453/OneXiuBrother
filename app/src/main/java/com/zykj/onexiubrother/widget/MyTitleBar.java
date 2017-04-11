@@ -78,7 +78,7 @@ public class MyTitleBar extends RelativeLayout {
         title.setGravity(Gravity.CENTER);
         //把左侧控件绑定到RL设置上
         LayoutParams liftParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        liftParams.width=40;
+        liftParams.width=30;
         liftParams.height=40;
         liftParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT|RelativeLayout.CENTER_VERTICAL);
         this.addView(lift,liftParams);

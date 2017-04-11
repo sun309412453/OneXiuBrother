@@ -15,4 +15,7 @@
     android:background="#ffffff"
     >
 </com.zykj.onexiubrother.widget.MyTitleBar>
+    <include layout="@layout/include_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
