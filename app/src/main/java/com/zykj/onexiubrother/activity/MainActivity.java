@@ -1,6 +1,7 @@
 package com.zykj.onexiubrother.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -52,10 +53,16 @@ public class MainActivity extends Activity {
             case R.id.personal_information:
                 break;
             case R.id.home_mobile:
+                Intent mobileintent = new Intent(this,Acitvity_Mobile.class);
+                startActivity(mobileintent);
                 break;
             case R.id.home_computer:
+                Intent computerintent = new Intent(this,Activity_Computer.class);
+                startActivity(computerintent);
                 break;
             case R.id.home_appliance:
+                Intent applianceintent = new Intent(this,Activity_Appliance.class);
+                startActivity(applianceintent);
                 break;
         }
     }

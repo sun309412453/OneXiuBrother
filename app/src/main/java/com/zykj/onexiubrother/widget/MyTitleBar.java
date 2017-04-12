@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -90,8 +91,38 @@ public class MyTitleBar extends RelativeLayout {
         LayoutParams titleParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
         titleParams.addRule(RelativeLayout.CENTER_IN_PARENT);
         this.addView(title,titleParams);
+        //把left与right设置点击事件
+        lift.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                leftClick.Click(view);
+            }
+        });
+        right.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rightClick.Click(view);
+            }
+        });
+    }
+    //设置点击事件的成员变量
+    private leftClick leftClick;
+    private rightClick rightClick;
+    //添加点击事件的set函数
+    public void setLeftClick(MyTitleBar.leftClick leftClick) {
+        this.leftClick = leftClick;
     }
 
+    public void setRightClick(MyTitleBar.rightClick rightClick) {
+        this.rightClick = rightClick;
+    }
+    //添加点击事件的接口
+    public interface leftClick{
+        void Click(View view);
+    }
+    public interface rightClick{
+        void Click(View view);
+    }
     public MyTitleBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }

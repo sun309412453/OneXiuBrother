@@ -11,9 +11,9 @@
         android:layout_height="50dp"
         android:paddingLeft="20dp"
         android:background="#ffffff"
-        MyTitleBar:LiftBackground="@mipmap/retreat"
-        MyTitleBar:TitleText="手机维修"
         android:id="@+id/title"
+        MyTitleBar:LiftBackground="@mipmap/retreat"
+        MyTitleBar:TitleText="家电维修"
         MyTitleBar:TitleTextColor="#00cccc"
         MyTitleBar:TitleTextSize="10sp"></com.zykj.onexiubrother.widget.MyTitleBar>
 
@@ -28,16 +28,16 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="品牌"
-        android:textSize="20dp"
-        android:textColor="#6b6b6b"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:gravity="center_vertical|center"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="品牌"
+            android:textSize="20dp"
+            android:textColor="#6b6b6b"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical|center"
+            />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,9 +47,49 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="请选择您的手机品牌"
+            android:text="请选择您的家电品牌"
             android:gravity="center_vertical"
             android:layout_marginLeft="20dp"
+            android:textSize="19sp"
+            android:textColor="#c9c9c9"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/fanhui"
+            android:paddingRight="20dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#fff"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="类型"
+            android:textSize="20dp"
+            android:textColor="#6b6b6b"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical|center"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/line_shu"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="请选择您的家电类型"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
             android:textSize="19sp"
             android:textColor="#c9c9c9"
             />
@@ -87,10 +127,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="请选择您的手机型号"
-            android:layout_marginLeft="20dp"
+            android:text="请选择您的家电型号"
             android:gravity="center_vertical"
             android:textSize="19sp"
+            android:layout_marginLeft="20dp"
             android:textColor="#c9c9c9"
             />
         <ImageView
@@ -127,7 +167,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="请选择您的手机故障点"
+            android:text="请选择您的家电故障点"
             android:gravity="center_vertical"
             android:textSize="19sp"
             android:layout_marginLeft="20dp"
@@ -144,7 +184,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#fff"
-        android:text="请对您手机的故障进行简单的描述"
+        android:text="请对您家电的故障进行简单的描述"
         android:gravity="center_vertical"
         android:paddingLeft="20dp"
         android:textSize="19sp"
