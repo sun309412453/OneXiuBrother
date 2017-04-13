@@ -15,7 +15,8 @@ android {
                     'src/main/res/layouts/home/mobile',
                     'src/main/res/layouts/home/computer',
                     'src/main/res/layouts/home/appliance',
-                    'src/main/res/layouts/home/mobile/call_service',
+                    'src/main/res/layouts/home/call_service',
+                    'src/main/res/layouts/home/call_service/dizhi'
             ]
         }
     }
