@@ -20,5 +20,6 @@
         <activity android:name=".activity.Activity_Address"/>
         <activity android:name=".activity.Activity_EditAdd"/>
         <activity android:name=".activity.Activity_EditPhone"/>
+        <activity android:name=".activity.Activity_GeRenZhongXin"/>
     </application>
 </manifest>

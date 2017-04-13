@@ -51,6 +51,8 @@ public class MainActivity extends Activity {
             case R.id.home_title_city:
                 break;
             case R.id.personal_information:
+                Intent personalInformationIntent = new Intent(this,Activity_GeRenZhongXin.class);
+                startActivity(personalInformationIntent);
                 break;
             case R.id.home_mobile:
                 Intent mobileIntent = new Intent(this,Activity_Mobile.class);
