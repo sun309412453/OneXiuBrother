@@ -1,8 +1,10 @@
 package com.zykj.onexiubrother.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.zykj.onexiubrother.R;
 import com.zykj.onexiubrother.widget.MyTitleBar;
@@ -12,12 +14,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by Administrator on 2017/4/12.
+ * Created by zykj on 2017/4/13.
  */
 
-public class Acitvity_Mobile extends Activity {
+public class Activity_Mobile extends Activity {
     @Bind(R.id.title)
     MyTitleBar title;
+    @Bind(R.id.mobile_ok)
+    Button mobileOk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,4 +35,16 @@ public class Acitvity_Mobile extends Activity {
             }
         });
     }
-}
+
+    @OnClick(R.id.appliance_ok)
+    public void onViewClicked() {
+        Intent applianceOkintent = new Intent();
+        startActivity(applianceOkintent);
+    }
+
+    @OnClick(R.id.mobile_ok)
+    public void onViewClicked(View view) {
+        Intent mobileOkIntent = new Intent(this,Activity_Call_Service.class);
+        startActivity(mobileOkIntent);
+        }
+    }

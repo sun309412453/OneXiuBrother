@@ -219,15 +219,16 @@
                 />
         </FrameLayout>
     </LinearLayout>
+
     <Button
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:background="@mipmap/button"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="25dp"
         android:text="确认"
+        android:id="@+id/computer_ok"
         android:textColor="#fff"
-        android:textSize="20dp"
-        />
+        android:textSize="20dp" />
 </LinearLayout>

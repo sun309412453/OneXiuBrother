@@ -17,6 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
+ * 主页面
  * Created by zykj on 2017/4/8.
  */
 
@@ -53,16 +54,16 @@ public class MainActivity extends Activity {
             case R.id.personal_information:
                 break;
             case R.id.home_mobile:
-                Intent mobileintent = new Intent(this,Acitvity_Mobile.class);
-                startActivity(mobileintent);
+                Intent mobileIntent = new Intent(this,Activity_Mobile.class);
+                startActivity(mobileIntent);
                 break;
             case R.id.home_computer:
-                Intent computerintent = new Intent(this,Activity_Computer.class);
-                startActivity(computerintent);
+                Intent computerIntent = new Intent(this,Activity_Computer.class);
+                startActivity(computerIntent);
                 break;
             case R.id.home_appliance:
-                Intent applianceintent = new Intent(this,Activity_Appliance.class);
-                startActivity(applianceintent);
+                Intent applianceIntent = new Intent(this,Activity_Appliance.class);
+                startActivity(applianceIntent);
                 break;
         }
     }

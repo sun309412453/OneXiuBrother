@@ -25,9 +25,6 @@ public class MyTitleBar extends RelativeLayout {
     private TextView title;
     //创建初始化控件变量
     //      <!--左侧控件 开始-->
-    private String LiftText;
-    private float LiftTextSize;
-    private int LiftTextColor;
     private Drawable LiftBackground;
     //       <!--左侧控件 结束-->
     //       <!--标题  开始-->
