@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,15 +28,15 @@ public class MainActivity extends Activity {
     @Bind(R.id.banner)
     Banner banner;
     @Bind(R.id.home_mobile)
-    FrameLayout homeMobile;
-    @Bind(R.id.home_computer)
-    FrameLayout homeComputer;
+    LinearLayout homeMobile;
     @Bind(R.id.textView)
     TextView textView;
     @Bind(R.id.imageView)
     ImageView imageView;
+    @Bind(R.id.home_computer)
+    LinearLayout homeComputer;
     @Bind(R.id.home_appliance)
-    FrameLayout homeAppliance;
+    LinearLayout homeAppliance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +57,7 @@ public class MainActivity extends Activity {
                 startActivity(mobileIntent);
                 break;
             case R.id.home_computer:
-                Intent computerIntent = new Intent(this,Activity_Computer.class);
+                Intent computerIntent = new Intent(this,Activity_computer.class);
                 startActivity(computerIntent);
                 break;
             case R.id.home_appliance:

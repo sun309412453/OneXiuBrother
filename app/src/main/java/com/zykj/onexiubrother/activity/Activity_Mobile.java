@@ -35,16 +35,9 @@ public class Activity_Mobile extends Activity {
             }
         });
     }
-
-    @OnClick(R.id.appliance_ok)
-    public void onViewClicked() {
-        Intent applianceOkintent = new Intent();
-        startActivity(applianceOkintent);
-    }
-
     @OnClick(R.id.mobile_ok)
     public void onViewClicked(View view) {
-        Intent mobileOkIntent = new Intent(this,Activity_Call_Service.class);
+        Intent mobileOkIntent = new Intent(this, Activity_Call_Service.class);
         startActivity(mobileOkIntent);
-        }
     }
+}
