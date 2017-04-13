@@ -21,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="手机"
+        android:id="@+id/zhonglei"
         android:layout_marginLeft="5dp"
         />
     <TextView
@@ -28,6 +29,7 @@
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:gravity="right"
+        android:id="@+id/zhuangtai"
         android:layout_marginRight="10dp"
         android:textColor="#ff9900"
         android:text="已接单"
@@ -72,6 +74,7 @@
                     android:layout_height="wrap_content"
                     android:text="下单时间"
                     android:textColor="#bababa"
+                    android:id="@+id/date"
                     android:layout_marginRight="10dp"
                     />
                 <TextView
@@ -107,6 +110,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/add_item"
                     android:text="黑龙江省哈尔滨市卓亚科技有限公司"
                     android:textColor="#949494"
                     />
@@ -139,6 +143,7 @@
             android:layout_height="30dp"
             android:layout_marginRight="5dp"
             android:background="@mipmap/item_button"
+            android:id="@+id/chakan"
             android:text="查看详情"
             android:textColor="#6a6a6a"
             />
