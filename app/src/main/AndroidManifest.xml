@@ -17,5 +17,8 @@
         <activity android:name=".activity.Activity_computer"/>
         <activity android:name=".activity.Activity_Appliance"/>
         <activity android:name=".activity.Activity_Call_Service"/>
+        <activity android:name=".activity.Activity_Address"/>
+        <activity android:name=".activity.Activity_EditAdd"/>
+        <activity android:name=".activity.Activity_EditPhone"/>
     </application>
 </manifest>

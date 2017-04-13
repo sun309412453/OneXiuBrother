@@ -24,6 +24,7 @@
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:orientation="horizontal"
+        android:id="@+id/newadd"
     android:gravity="center_vertical"
     android:background="#fff"
     >
@@ -50,4 +51,9 @@
         android:text="新增地址"
         />
 </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/addrv"
+        ></android.support.v7.widget.RecyclerView>
 </LinearLayout>

@@ -1,32 +1,27 @@
 package com.zykj.onexiubrother.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.zykj.onexiubrother.R;
 import com.zykj.onexiubrother.widget.MyTitleBar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by zykj on 2017/4/13.
  */
 
-public class Activity_Call_Service extends Activity {
+public class Activity_EditPhone extends Activity {
     @Bind(R.id.title)
     MyTitleBar title;
-    @Bind(R.id.dizhi)
-    LinearLayout dizhi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.call_service);
+        setContentView(R.layout.editphone);
         ButterKnife.bind(this);
         title.setLeftClick(new MyTitleBar.leftClick() {
             @Override
@@ -34,11 +29,5 @@ public class Activity_Call_Service extends Activity {
                 finish();
             }
         });
-    }
-
-    @OnClick(R.id.dizhi)
-    public void onViewClicked() {
-        Intent diZhiIntent = new Intent(this,Activity_Address.class);
-        startActivity(diZhiIntent);
     }
 }

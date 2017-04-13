@@ -17,16 +17,16 @@ import butterknife.OnClick;
  * Created by zykj on 2017/4/13.
  */
 
-public class Activity_Call_Service extends Activity {
+public class Activity_Address extends Activity {
     @Bind(R.id.title)
     MyTitleBar title;
-    @Bind(R.id.dizhi)
-    LinearLayout dizhi;
+    @Bind(R.id.newadd)
+    LinearLayout newadd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.call_service);
+        setContentView(R.layout.dizhi);
         ButterKnife.bind(this);
         title.setLeftClick(new MyTitleBar.leftClick() {
             @Override
@@ -36,9 +36,9 @@ public class Activity_Call_Service extends Activity {
         });
     }
 
-    @OnClick(R.id.dizhi)
+    @OnClick(R.id.newadd)
     public void onViewClicked() {
-        Intent diZhiIntent = new Intent(this,Activity_Address.class);
-        startActivity(diZhiIntent);
+        Intent addIntent = new Intent(this,Activity_EditAdd.class);
+        startActivity(addIntent);
     }
 }
