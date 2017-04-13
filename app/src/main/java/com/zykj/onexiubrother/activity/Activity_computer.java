@@ -17,7 +17,7 @@ import butterknife.OnClick;
  * Created by zykj on 2017/4/13.
  */
 
-public class Activity_Computer extends Activity {
+public class Activity_computer extends Activity {
     @Bind(R.id.title)
     MyTitleBar title;
     @Bind(R.id.computer_ok)
