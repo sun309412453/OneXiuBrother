@@ -5,41 +5,47 @@ package com.zykj.onexiubrother.bean;
  */
 
 public class WeiWanChengBean {
-    private String ZhongLei;
-    private String Address;
+  private String Zhuangtai,Zhonglei,date,Add;
 
     @Override
     public String toString() {
         return "WeiWanChengBean{" +
-                "ZhongLei='" + ZhongLei + '\'' +
-                ", Address='" + Address + '\'' +
-                ", Date='" + Date + '\'' +
+                "Zhuangtai='" + Zhuangtai + '\'' +
+                ", Zhonglei='" + Zhonglei + '\'' +
+                ", date='" + date + '\'' +
+                ", Add='" + Add + '\'' +
                 '}';
     }
 
+    public String getZhuangtai() {
+        return Zhuangtai;
+    }
+
+    public void setZhuangtai(String zhuangtai) {
+        Zhuangtai = zhuangtai;
+    }
+
+    public String getZhonglei() {
+        return Zhonglei;
+    }
+
+    public void setZhonglei(String zhonglei) {
+        Zhonglei = zhonglei;
+    }
+
     public String getDate() {
-        return Date;
+        return date;
     }
 
     public void setDate(String date) {
-        Date = date;
+        this.date = date;
     }
 
-    public String getAddress() {
-        return Address;
+    public String getAdd() {
+        return Add;
     }
 
-    public void setAddress(String address) {
-        Address = address;
+    public void setAdd(String add) {
+        Add = add;
     }
-
-    public String getZhongLei() {
-        return ZhongLei;
-    }
-
-    public void setZhongLei(String zhongLei) {
-        ZhongLei = zhongLei;
-    }
-
-    private String Date;
 }

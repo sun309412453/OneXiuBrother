@@ -21,5 +21,6 @@
         <activity android:name=".activity.Activity_EditAdd"/>
         <activity android:name=".activity.Activity_EditPhone"/>
         <activity android:name=".activity.Activity_GeRenZhongXin"/>
+        <activity android:name=".activity.Activity_WeiWanCheng"/>
     </application>
 </manifest>
