@@ -47,13 +47,17 @@ public class Activity_GeRenZhongXin extends Activity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.weiwancheng:
-                Intent intent = new Intent(this,Activity_WeiWanCheng.class);
-                startActivity(intent);
+                Intent weiWanChengIntent = new Intent(this,Activity_WeiWanCheng.class);
+                startActivity(weiWanChengIntent);
                 tishi.setVisibility(View.INVISIBLE);
                 break;
             case R.id.yiwancheng:
+                Intent yiWanChengIntent = new Intent(this,Activity_YiWanCheng.class);
+                startActivity(yiWanChengIntent);
                 break;
             case R.id.yiquxiao:
+                Intent yiQuXiaoIntent = new Intent(this,Activity_YiQuXiao.class);
+                startActivity(yiQuXiaoIntent);
                 break;
         }
     }

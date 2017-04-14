@@ -27,7 +27,7 @@ import butterknife.OnClick;
  * Created by Administrator on 2017/4/14.
  */
 
-public class Activity_WeiWanCheng extends Activity {
+public class Activity_YiWanCheng extends Activity {
     @Bind(R.id.title)
     MyTitleBar title;
     @Bind(R.id.btweiwancheng)
@@ -50,20 +50,19 @@ public class Activity_WeiWanCheng extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.zhuangtai);
         ButterKnife.bind(this);
+        weiwanchengLine.setVisibility(View.INVISIBLE);
         yiquxiaoLine.setVisibility(View.INVISIBLE);
-        yiwanchengLine.setVisibility(View.INVISIBLE);
         list = new ArrayList<WeiWanChengBean>();
         WeiWanChengBean bean = new WeiWanChengBean();
         bean.setAdd("哈尔滨卓亚科技有限公司");
         bean.setDate("2017-04-14 10:00");
         bean.setZhonglei("手机");
-        bean.setZhuangtai("处理中…");
         list.add(bean);
         Adapter_WeiWanCheng weiWanCheng = new Adapter_WeiWanCheng(list,this);
         weiWanCheng.setDianJi(new Adapter_WeiWanCheng.DianJi() {
             @Override
             public void OnClick(View v) {
-                Intent xiangQingIntent = new Intent(Activity_WeiWanCheng.this,Activity_WeiWanCheng_XiangQing.class);
+                Intent xiangQingIntent = new Intent(Activity_YiWanCheng.this,Activity_YiWanCheng_XiangQing.class);
                 startActivity(xiangQingIntent);
             }
         });
