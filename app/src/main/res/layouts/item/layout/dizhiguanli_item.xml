@@ -15,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="李雪峰"
+        android:id="@+id/name_item"
         android:layout_marginLeft="10dp"
         android:textSize="17sp"
         android:textColor="#6b6b6b"
@@ -23,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right"
+        android:id="@+id/phone_item"
         android:layout_marginRight="10dp"
         android:text="15004666284"
         android:textSize="17sp"
@@ -33,16 +35,72 @@
         android:layout_height="wrap_content"
         android:text="黑龙江省哈尔滨市银行街2号卓亚科技有限公司"
         android:textSize="17sp"
+        android:id="@+id/add_item"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:textColor="#6b6b6b"
         />
-    <LinearLayout
+    <ImageView
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/itemline"
+        android:scaleType="fitXY"
+        />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp"
+        android:id="@+id/dizhixuanze_item"
+        android:gravity="center_vertical"
         >
-
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/zhifuchenggong"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="默认"
+            android:textColor="#00cccc"
+            />
     </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="right"
+    android:layout_marginLeft="100dp"
+    android:layout_marginRight="20dp"
+    >
+    <Button
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="25dp"
+        android:layout_marginRight="5dp"
+        android:text="编辑"
+        android:id="@+id/dizhibianji"
+        android:textColor="#6b6b6b"
+        android:background="@mipmap/dizhianniu"
+        />
+    <Button
+        android:layout_width="0dp"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"
+        android:background="@mipmap/dizhianniu"
+        android:text="删除"
+        android:id="@+id/dizhishanchu"
+        android:textColor="#6b6b6b"
+        android:layout_height="25dp" />
+</LinearLayout>
+</LinearLayout>
 </LinearLayout>

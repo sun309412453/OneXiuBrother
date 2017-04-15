@@ -2,7 +2,7 @@ package com.zykj.onexiubrother.app;
 
 import android.app.Application;
 
-import com.zykj.onexiubrother.utils.SsbUtils;
+import com.zykj.onexiubrother.utils.Y;
 
 import org.xutils.x;
 
@@ -15,6 +15,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         x.Ext.init(this);
-        SsbUtils.context=this;
+        Y.context=this;
     }
 }
