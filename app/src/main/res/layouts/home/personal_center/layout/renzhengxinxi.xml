@@ -15,7 +15,8 @@
         MyTitleBar:LiftBackground="@mipmap/retreat"
         MyTitleBar:TitleText="认证信息"
         MyTitleBar:TitleTextColor="#00cccc"
-        MyTitleBar:TitleTextSize="10sp"></com.zykj.onexiubrother.widget.MyTitleBar>
+        MyTitleBar:TitleTextSize="10sp">
+    </com.zykj.onexiubrother.widget.MyTitleBar>
 
     <include
         layout="@layout/include_line"
@@ -45,7 +46,7 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@mipmap/xiangji" />
+                android:src="@mipmap/zhaoxiangji" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -100,7 +101,7 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@mipmap/xiangji" />
+                android:src="@mipmap/zhaoxiangji" />
 
             <TextView
                 android:layout_width="wrap_content"
