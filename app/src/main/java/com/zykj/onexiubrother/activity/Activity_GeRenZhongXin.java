@@ -31,6 +31,8 @@ public class Activity_GeRenZhongXin extends Activity {
     TextView tishi;
     @Bind(R.id.wodeziliao)
     LinearLayout wodeziliao;
+    @Bind(R.id.dizhiguanli)
+    LinearLayout dizhiguanli;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class Activity_GeRenZhongXin extends Activity {
         });
     }
 
-    @OnClick({R.id.weiwancheng, R.id.yiwancheng, R.id.yiquxiao,R.id.wodeziliao})
+    @OnClick({R.id.weiwancheng, R.id.yiwancheng, R.id.yiquxiao, R.id.wodeziliao,R.id.dizhiguanli})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.weiwancheng:
@@ -64,6 +66,10 @@ public class Activity_GeRenZhongXin extends Activity {
             case R.id.wodeziliao:
                 Intent ziLiaoIntent = new Intent(this, Activity_WoDeZiLiao.class);
                 startActivity(ziLiaoIntent);
+                break;
+            case R.id.dizhiguanli:
+                Intent diZhiIntent = new Intent(this,Activity_DiZhiGuanLi.class);
+                startActivity(diZhiIntent);
                 break;
         }
     }

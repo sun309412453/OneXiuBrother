@@ -19,18 +19,24 @@ import java.util.List;
  */
 
 public class Adapter_DiZhiGuanLi extends RecyclerView.Adapter<Adapter_DiZhiGuanLi.DiZhiHolder> {
-    private List<DiZhiGuanLiBean> list;  private Context context;
+    private List<DiZhiGuanLiBean> list;
+    private Context context;
 
     @Override
     public DiZhiHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.dizhiguanli_item,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.dizhiguanli_item, parent, false);
         DiZhiHolder holder = new DiZhiHolder(view);
         return holder;
     }
 
+    public Adapter_DiZhiGuanLi(List<DiZhiGuanLiBean> list, Context context) {
+        this.list = list;
+        this.context = context;
+    }
+
     @Override
     public void onBindViewHolder(DiZhiHolder holder, int position) {
-    holder.add_item.setText(list.get(position).getAdd());
+        holder.add_item.setText(list.get(position).getAdd());
         holder.name_item.setText(list.get(position).getName());
         holder.add_item.setText(list.get(position).getAdd());
         holder.phone_item.setText(list.get(position).getPhone());
@@ -40,19 +46,61 @@ public class Adapter_DiZhiGuanLi extends RecyclerView.Adapter<Adapter_DiZhiGuanL
                 dianJi.Click(v);
             }
         });
+        holder.dizhibianji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bianJi.Click(v);
+            }
+        });
+        holder.dizhishanchu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shanChu.Click(v);
+            }
+        });
+    }
+
+    public void setShanChu(DiZhiShanChu shanChu) {
+        this.shanChu = shanChu;
+    }
+
+    public void setBianJi(DiZhiBianJi bianJi) {
+        this.bianJi = bianJi;
+    }
+
+    public void setDianJi(DiZhiDianJi dianJi) {
+        this.dianJi = dianJi;
     }
 
     @Override
     public int getItemCount() {
         return list.size();
+
     }
-    public interface DiZhiDianJi{
+
+    public interface DiZhiShanChu {
         void Click(View v);
     }
+
+    private DiZhiShanChu shanChu;
+
+    public interface DiZhiBianJi {
+        void Click(View v);
+    }
+
+    private DiZhiBianJi bianJi;
+
+    public interface DiZhiDianJi {
+        void Click(View v);
+    }
+
     private DiZhiDianJi dianJi;
+
     public class DiZhiHolder extends RecyclerView.ViewHolder {
-        TextView name_item,phone_item,add_item; LinearLayout dizhixuanze_item;
-        Button dizhibianji,dizhishanchu;
+        TextView name_item, phone_item, add_item;
+        LinearLayout dizhixuanze_item;
+        Button dizhibianji, dizhishanchu;
+
         public DiZhiHolder(View itemView) {
             super(itemView);
             name_item = (TextView) itemView.findViewById(R.id.name_item);
