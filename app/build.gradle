@@ -22,7 +22,8 @@ android {
                     'src/main/res/layouts/home/personal_center',
                     'src/main/res/layouts/home/personal_center/zhuangtai',
                     'src/main/res/layouts/home/personal_center/zhuangtai/xiangqing',
-                    'src/main/res/layouts/home/personal_center/zhuangtai/zhifu'
+                    'src/main/res/layouts/home/personal_center/zhuangtai/zhifu',
+                    'src/main/res/layouts/home/personal_center/wodeziliao'
             ]
         }
     }

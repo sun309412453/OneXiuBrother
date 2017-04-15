@@ -29,6 +29,8 @@ public class Activity_GeRenZhongXin extends Activity {
     LinearLayout yiquxiao;
     @Bind(R.id.tishi)
     TextView tishi;
+    @Bind(R.id.wodeziliao)
+    LinearLayout wodeziliao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,21 +45,25 @@ public class Activity_GeRenZhongXin extends Activity {
         });
     }
 
-    @OnClick({R.id.weiwancheng, R.id.yiwancheng, R.id.yiquxiao})
+    @OnClick({R.id.weiwancheng, R.id.yiwancheng, R.id.yiquxiao,R.id.wodeziliao})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.weiwancheng:
-                Intent weiWanChengIntent = new Intent(this,Activity_WeiWanCheng.class);
+                Intent weiWanChengIntent = new Intent(this, Activity_WeiWanCheng.class);
                 startActivity(weiWanChengIntent);
                 tishi.setVisibility(View.INVISIBLE);
                 break;
             case R.id.yiwancheng:
-                Intent yiWanChengIntent = new Intent(this,Activity_YiWanCheng.class);
+                Intent yiWanChengIntent = new Intent(this, Activity_YiWanCheng.class);
                 startActivity(yiWanChengIntent);
                 break;
             case R.id.yiquxiao:
-                Intent yiQuXiaoIntent = new Intent(this,Activity_YiQuXiao.class);
+                Intent yiQuXiaoIntent = new Intent(this, Activity_YiQuXiao.class);
                 startActivity(yiQuXiaoIntent);
+                break;
+            case R.id.wodeziliao:
+                Intent ziLiaoIntent = new Intent(this, Activity_WoDeZiLiao.class);
+                startActivity(ziLiaoIntent);
                 break;
         }
     }
