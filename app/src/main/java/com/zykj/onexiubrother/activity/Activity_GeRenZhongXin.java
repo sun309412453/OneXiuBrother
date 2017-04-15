@@ -33,6 +33,16 @@ public class Activity_GeRenZhongXin extends Activity {
     LinearLayout wodeziliao;
     @Bind(R.id.dizhiguanli)
     LinearLayout dizhiguanli;
+    @Bind(R.id.wodeqianbao)
+    LinearLayout wodeqianbao;
+    @Bind(R.id.renzhengxinxi)
+    LinearLayout renzhengxinxi;
+    @Bind(R.id.pingtaifuwu)
+    LinearLayout pingtaifuwu;
+    @Bind(R.id.guanyuwomen)
+    LinearLayout guanyuwomen;
+    @Bind(R.id.shezhi)
+    LinearLayout shezhi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +57,7 @@ public class Activity_GeRenZhongXin extends Activity {
         });
     }
 
-    @OnClick({R.id.weiwancheng, R.id.yiwancheng, R.id.yiquxiao, R.id.wodeziliao,R.id.dizhiguanli})
+    @OnClick({R.id.weiwancheng, R.id.yiwancheng, R.id.yiquxiao, R.id.wodeziliao, R.id.dizhiguanli,R.id.wodeqianbao, R.id.renzhengxinxi, R.id.pingtaifuwu, R.id.guanyuwomen, R.id.shezhi})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.weiwancheng:
@@ -68,8 +78,19 @@ public class Activity_GeRenZhongXin extends Activity {
                 startActivity(ziLiaoIntent);
                 break;
             case R.id.dizhiguanli:
-                Intent diZhiIntent = new Intent(this,Activity_DiZhiGuanLi.class);
+                Intent diZhiIntent = new Intent(this, Activity_DiZhiGuanLi.class);
                 startActivity(diZhiIntent);
+                break;
+            case R.id.wodeqianbao:
+                break;
+            case R.id.renzhengxinxi:
+
+                break;
+            case R.id.pingtaifuwu:
+                break;
+            case R.id.guanyuwomen:
+                break;
+            case R.id.shezhi:
                 break;
         }
     }
