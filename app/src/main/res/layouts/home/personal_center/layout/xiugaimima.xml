@@ -13,7 +13,7 @@
         android:background="#ffffff"
         android:id="@+id/title"
         MyTitleBar:LiftBackground="@mipmap/retreat"
-        MyTitleBar:TitleText="设置"
+        MyTitleBar:TitleText="修改密码"
         MyTitleBar:TitleTextColor="#00cccc"
         MyTitleBar:TitleTextSize="10sp"></com.zykj.onexiubrother.widget.MyTitleBar>
 
@@ -32,28 +32,26 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="修改密码"
+            android:text="新密码"
             android:textSize="18sp"
             android:textColor="#6b6b6b"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:gravity="center_vertical|center"
             />
-        <TextView
+        <EditText
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_vertical|right"
-            android:layout_marginRight="10dp"
+            android:hint="请输入新密码"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"
             android:textSize="16sp"
+            android:textColorHint="#c9c9c9"
+
             android:background="@null"
             />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:src="@mipmap/fanhui"
-            />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -66,7 +64,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="通知消息"
+            android:text="确认密码"
             android:textSize="18sp"
             android:textColor="#6b6b6b"
             android:layout_marginLeft="20dp"
@@ -77,25 +75,23 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_vertical|right"
-            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp"
             android:textSize="16sp"
+            android:hint="请再次输入新密码"
+            android:textColorHint="#c9c9c9"
             android:background="@null"
             />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:src="@mipmap/fanhui"
-            />
     </LinearLayout>
-<Button
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:layout_marginTop="20dp"
-    android:background="#fff"
-    android:text="退出登录"
-    android:textColor="#ef6262"
-    android:textSize="17sp"
-    />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@mipmap/renzhenganniu"
+        android:text="确认"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="#fff"
+        android:textSize="17sp"
+        />
 </LinearLayout>

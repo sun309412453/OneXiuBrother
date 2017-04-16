@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_marginLeft="10dp"
+    android:text="NOKIA的开机后反复白屏重启，或者某个功能进不去等。这一类的故障是软件的问题。国产机MTK系列，不断提示充电链接，充电移除是CPU虚焊"
+    android:textSize="17sp"
+    />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="维修方法："
+        android:textColor="#000"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="软件故障就刷机，硬件故障就修硬件，用电源夹上看手机电流"
+        />
+</LinearLayout>
+</LinearLayout>
