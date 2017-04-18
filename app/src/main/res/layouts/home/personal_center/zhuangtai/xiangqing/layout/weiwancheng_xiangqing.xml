@@ -45,12 +45,26 @@
             android:orientation="horizontal"
             android:gravity="center_vertical"
             >
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/duihao_yuan"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_marginLeft="20dp"
-                />
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@mipmap/duihao_yuan"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="发布成功"
+                    android:textColor="#ff6632"
+                    />
+            </LinearLayout>
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
@@ -87,12 +101,23 @@
                 android:src="@mipmap/xuanzhong"
                 android:layout_marginLeft="5dp"
                 />
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/duihao_yuan_hui"
-                android:layout_marginLeft="5dp"
-                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@mipmap/duihao_yuan_hui"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已接收"
+                    />
+            </LinearLayout>
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
@@ -129,12 +154,24 @@
                 android:src="@mipmap/weixuan"
                 android:layout_marginLeft="5dp"
                 />
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/duihao_yuan_hui"
-                android:layout_marginLeft="5dp"
-                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@mipmap/duihao_yuan_hui"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="已取消"
+                    />
+            </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -142,14 +179,6 @@
             android:orientation="horizontal"
             android:layout_marginTop="5dp"
             >
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:text="发布成功"
-                android:textColor="#ff6632"
-                android:layout_marginLeft="13dp"
-                />
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"

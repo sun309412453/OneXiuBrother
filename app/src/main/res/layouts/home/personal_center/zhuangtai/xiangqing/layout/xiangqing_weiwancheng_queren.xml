@@ -138,134 +138,141 @@
             android:text="订单跟踪"
             android:textColor="#6b6b6b"
             android:textSize="16dp" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:src="@mipmap/duihao_yuan" />
-
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@mipmap/duihao_yuan"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="发布成功"
+                    android:textColor="#ff6632"
+                    />
+            </LinearLayout>
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
+                android:src="@mipmap/xuanzhong"
                 android:layout_marginLeft="5dp"
-                android:src="@mipmap/xuanzhong" />
-
+                />
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
+                android:src="@mipmap/xuanzhong"
                 android:layout_marginLeft="5dp"
-                android:src="@mipmap/xuanzhong" />
-
+                />
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
+                android:src="@mipmap/xuanzhong"
                 android:layout_marginLeft="5dp"
-                android:src="@mipmap/xuanzhong" />
-
+                />
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
+                android:src="@mipmap/xuanzhong"
                 android:layout_marginLeft="5dp"
-                android:src="@mipmap/xuanzhong" />
-
+                />
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
+                android:src="@mipmap/xuanzhong"
                 android:layout_marginLeft="5dp"
-                android:src="@mipmap/xuanzhong" />
-
+                />
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
+                android:src="@mipmap/xuanzhong"
                 android:layout_marginLeft="5dp"
-                android:src="@mipmap/xuanzhong" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="5dp"
-                android:src="@mipmap/duihao_yuan" />
-
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@mipmap/duihao_yuan_hui"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已接收"
+                    />
+            </LinearLayout>
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
+                android:src="@mipmap/weixuan"
                 android:layout_marginLeft="4dp"
-                android:src="@mipmap/weixuan" />
-
+                />
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
+                android:src="@mipmap/weixuan"
                 android:layout_marginLeft="5dp"
-                android:src="@mipmap/weixuan" />
-
+                />
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
+                android:src="@mipmap/weixuan"
                 android:layout_marginLeft="5dp"
-                android:src="@mipmap/weixuan" />
-
+                />
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
+                android:src="@mipmap/weixuan"
                 android:layout_marginLeft="5dp"
-                android:src="@mipmap/weixuan" />
-
+                />
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
+                android:src="@mipmap/weixuan"
                 android:layout_marginLeft="5dp"
-                android:src="@mipmap/weixuan" />
-
+                />
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
+                android:src="@mipmap/weixuan"
                 android:layout_marginLeft="5dp"
-                android:src="@mipmap/weixuan" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="5dp"
-                android:src="@mipmap/duihao_yuan_hui" />
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@mipmap/duihao_yuan_hui"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="已取消"
+                    />
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="13dp"
-                android:layout_weight="1"
-                android:text="发布成功"
-                android:textColor="#ff6632" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="24dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="已接单"
-                android:textColor="#ff6632" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="完成订单" />
-        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
