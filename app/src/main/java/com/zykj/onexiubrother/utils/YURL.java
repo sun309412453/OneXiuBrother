@@ -18,11 +18,18 @@ public class YURL {
 
     //查找手机品牌
     public static   final  String  FIND_PHONE_BRAND=HOST+"findPhoneBrand";
+    //查找电脑品牌
+    public static   final  String  FIND_COMPUTER_BRAND=HOST+"findComputerBrand";
+
 
 
 
     //根据品牌查找型号
     public static   final  String  FIND_PHONE_MODEL=HOST+"findPhoneModel";
+    //根据品牌查找电脑型号
+    public static   final  String  FIND_BY_COMPUTER_MODEL=HOST+"findByComputerModel";
+    //根据品牌查找电脑类型
+    public static   final  String  FIND_COMPUTER_CATEGORY=HOST+"findComputerCategory";
 
     //查询手机故障
     public static   final  String  FIND_PHONE_FAULT=HOST+"findPhoneFault";
