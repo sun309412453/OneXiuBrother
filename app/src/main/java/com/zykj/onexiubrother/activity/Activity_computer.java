@@ -147,6 +147,11 @@ public class Activity_computer extends Activity {
                                             diannaoTvLeixing.setText(lists.get(options1).getName());
                                             diannaoTvLeixing.setTextColor(Color.parseColor("#00cccc"));
                                             diannaoTvLeixing.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+                                            if (computerIndex != options1) {
+                                                diannaoTvLeixing.setHint("请选择您的电脑类型");
+                                                diannaoTvLeixing.setHintTextColor(Color.parseColor("#c9c9c9"));
+                                                diannaoTvLeixing.setText("");
+                                            }
                                             computerIndexid=options1;
                                         }
                                     }).build();
