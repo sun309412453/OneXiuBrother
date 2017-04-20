@@ -57,7 +57,12 @@ public class Activity_computer extends Activity {
     @Bind(R.id.diannao_ll_guzhang)
     LinearLayout diannaoLlGuzhang;
     private List<ComputerBean> list; //品牌的数据源
-    private int computerIndexid = -1;  //用于检测是否选择了品牌
+    private List<ComputerBean> lists; //类型的数据源
+    private List<ComputerBean> listss; //型号的数据源
+    private List<ComputerBean> listsss; //故障的数据源
+    private int computerIndexid = -1;  //用于检测是否选择了类型
+    private int computerIndexidd = -1;  //用于检测是否选择了型号
+    private int computerIndexiddd = -1;  //用于检测是否选择了故障
     private int computerIndex = -1;  //用于检测是否选择了品牌
     private OptionsPickerView opv,opv1,opv2,opv3;
 
@@ -133,20 +138,21 @@ public class Activity_computer extends Activity {
                         public void onSuccess(String result) {
                             StyledDialog.dismissLoading();
                             if (Y.getRespCode(result)) {
-                                list = JSON.parseArray(Y.getData(result), ComputerBean.class);
+                                lists = JSON.parseArray(Y.getData(result), ComputerBean.class);
                                 if (opv1 == null)
                                     opv1 = new OptionsPickerView.Builder(Activity_computer.this, new OptionsPickerView.OnOptionsSelectListener() {
                                         @Override
                                         public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                             //选择后的监听器
-                                            diannaoTvLeixing.setText(list.get(options1).getName());
+                                            diannaoTvLeixing.setText(lists.get(options1).getName());
                                             diannaoTvLeixing.setTextColor(Color.parseColor("#00cccc"));
                                             diannaoTvLeixing.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+                                            computerIndexid=options1;
                                         }
                                     }).build();
                                 //把list 进行转换
                                 List<String> strs = new ArrayList<String>();
-                                for (ComputerBean cb : list) {
+                                for (ComputerBean cb : lists) {
                                     strs.add(cb.getName());
                                 }
                                 //添加数据
@@ -166,26 +172,27 @@ public class Activity_computer extends Activity {
                 }else {
                     Map<String,String> map = new HashMap<>();
                     map.put("pid", list.get(computerIndex).getId() + "");
-                    map.put("category",list.get(computerIndexid).getId()+"");
+                    map.put("category",lists.get(computerIndexid).getId()+"");
                     Y.get(YURL.FIND_BY_COMPUTER_MODEL,map, new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
                             StyledDialog.dismissLoading();
                             if (Y.getRespCode(result)) {
-                                list = JSON.parseArray(Y.getData(result), ComputerBean.class);
+                                listss = JSON.parseArray(Y.getData(result), ComputerBean.class);
                                 if (opv2 == null)
                                     opv2 = new OptionsPickerView.Builder(Activity_computer.this, new OptionsPickerView.OnOptionsSelectListener() {
                                         @Override
                                         public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                             //选择后的监听器
-                                            diannaoTvXinghao.setText(list.get(options1).getName());
+                                            diannaoTvXinghao.setText(listss.get(options1).getName());
                                             diannaoTvXinghao.setTextColor(Color.parseColor("#00cccc"));
                                             diannaoTvXinghao.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+                                            computerIndexidd=options1;
                                         }
                                     }).build();
                                 //把list 进行转换
                                 List<String> strs = new ArrayList<String>();
-                                for (ComputerBean cb : list) {
+                                for (ComputerBean cb : listss) {
                                     strs.add(cb.getName());
                                 }
                                 //添加数据
@@ -207,20 +214,21 @@ public class Activity_computer extends Activity {
                     public void onSuccess(String result) {
                         StyledDialog.dismissLoading();
                         if (Y.getRespCode(result)) {
-                            list = JSON.parseArray(Y.getData(result), ComputerBean.class);
+                            listsss = JSON.parseArray(Y.getData(result), ComputerBean.class);
                             if (opv3 == null)
                                 opv3 = new OptionsPickerView.Builder(Activity_computer.this, new OptionsPickerView.OnOptionsSelectListener() {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                         //选择后的监听器
-                                        diannaoTvGuzhang.setText(list.get(options1).getName());
+                                        diannaoTvGuzhang.setText(listsss.get(options1).getName());
                                         diannaoTvGuzhang.setTextColor(Color.parseColor("#00cccc"));
                                         diannaoTvGuzhang.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+                                        computerIndexiddd=options1;
                                     }
                                 }).build();
                             //把list 进行转换
                             List<String> strs = new ArrayList<String>();
-                            for (ComputerBean cb : list) {
+                            for (ComputerBean cb : listsss) {
                                 strs.add(cb.getName());
                             }
                             //添加数据
