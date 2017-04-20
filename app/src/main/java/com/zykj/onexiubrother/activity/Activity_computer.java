@@ -57,6 +57,7 @@ public class Activity_computer extends Activity {
     @Bind(R.id.diannao_ll_guzhang)
     LinearLayout diannaoLlGuzhang;
     private List<ComputerBean> list; //品牌的数据源
+    private int computerIndexid = -1;  //用于检测是否选择了品牌
     private int computerIndex = -1;  //用于检测是否选择了品牌
     private OptionsPickerView opv,opv1,opv2,opv3;
 
@@ -94,6 +95,7 @@ public class Activity_computer extends Activity {
                                         //选择后的监听器
                                         diannaoTvPinpai.setText(list.get(options1).getName());
                                         diannaoTvPinpai.setTextColor(Color.parseColor("#00cccc"));
+                                        diannaoTvPinpai.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
                                         if (computerIndex != options1) {
                                             diannaoTvXinghao.setHint("请选择您的电脑型号");
                                             diannaoTvXinghao.setHintTextColor(Color.parseColor("#c9c9c9"));
@@ -139,6 +141,7 @@ public class Activity_computer extends Activity {
                                             //选择后的监听器
                                             diannaoTvLeixing.setText(list.get(options1).getName());
                                             diannaoTvLeixing.setTextColor(Color.parseColor("#00cccc"));
+                                            diannaoTvLeixing.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
                                         }
                                     }).build();
                                 //把list 进行转换
@@ -156,15 +159,14 @@ public class Activity_computer extends Activity {
                         }
                     });
                 }
-
                 break;
             case R.id.diannao_ll_xinghao:
                 if (computerIndex==-1){
-                    Y.t("请您先选择品牌");
+                    Y.t("请您先选择类型");
                 }else {
                     Map<String,String> map = new HashMap<>();
                     map.put("pid", list.get(computerIndex).getId() + "");
-                    map.put("category","1");
+                    map.put("category",list.get(computerIndexid).getId()+"");
                     Y.get(YURL.FIND_BY_COMPUTER_MODEL,map, new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
@@ -178,6 +180,7 @@ public class Activity_computer extends Activity {
                                             //选择后的监听器
                                             diannaoTvXinghao.setText(list.get(options1).getName());
                                             diannaoTvXinghao.setTextColor(Color.parseColor("#00cccc"));
+                                            diannaoTvXinghao.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
                                         }
                                     }).build();
                                 //把list 进行转换
@@ -212,6 +215,7 @@ public class Activity_computer extends Activity {
                                         //选择后的监听器
                                         diannaoTvGuzhang.setText(list.get(options1).getName());
                                         diannaoTvGuzhang.setTextColor(Color.parseColor("#00cccc"));
+                                        diannaoTvGuzhang.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
                                     }
                                 }).build();
                             //把list 进行转换

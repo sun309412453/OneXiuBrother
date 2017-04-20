@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -67,7 +68,7 @@ public class Activity_Mobile extends Activity {
         });
     }
 
-    @OnClick({R.id.mobileTvBrand_ll, R.id.mobileTvModel_ll, R.id.mobileTvFault_ll})
+    @OnClick({R.id.mobileTvBrand_ll, R.id.mobileTvModel_ll, R.id.mobileTvFault_ll,R.id.mobile_ok})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.mobileTvBrand_ll: //选择品牌
@@ -87,6 +88,8 @@ public class Activity_Mobile extends Activity {
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                         //选择后的监听器
                                         mobileTvBrand.setText(lists.get(options1).getName());
+                                        mobileTvBrand.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+                                        mobileTvBrand.setTextColor(Color.parseColor("#00cccc"));
                                         if (mobileIndex != options1) {
                                             mobileTvModel.setHint("请选择您的手机型号");
                                             mobileTvModel.setHintTextColor(Color.parseColor("#c9c9c9"));
@@ -138,6 +141,8 @@ public class Activity_Mobile extends Activity {
                                         public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                             //选择后的监听器
                                             mobileTvModel.setText(lists.get(options1).getName());
+                                            mobileTvModel.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+                                            mobileTvModel.setTextColor(Color.parseColor("#00cccc"));
                                         }
                                     }).build();
                                 //把lists 进行转换
@@ -175,6 +180,8 @@ public class Activity_Mobile extends Activity {
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                         //选择后的监听器
                                         mobileTvFault.setText(lists.get(options1).getName());
+                                        mobileTvFault.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+                                        mobileTvFault.setTextColor(Color.parseColor("#00cccc"));
                                     }
                                 }).build();
                             //把lists 进行转换

@@ -60,6 +60,7 @@
             android:layout_height="match_parent"
             android:src="@mipmap/fanhui"
             android:paddingRight="20dp"
+            android:layout_marginLeft="20dp"
             />
     </LinearLayout>
     <LinearLayout
@@ -101,6 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@mipmap/fanhui"
+            android:layout_marginLeft="20dp"
             android:paddingRight="20dp"
             />
     </LinearLayout>
@@ -143,6 +145,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@mipmap/fanhui"
+            android:layout_marginLeft="20dp"
             android:paddingRight="20dp"
             />
     </LinearLayout>
