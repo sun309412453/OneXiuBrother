@@ -50,6 +50,7 @@
         android:layout_height="50dp"
         android:background="#fff"
         android:maxLines="4"
+        android:inputType="number"
         android:id="@+id/zhuce_et_yanzhengma"
         android:hint="请输入验证码"
         android:paddingLeft="20dp"

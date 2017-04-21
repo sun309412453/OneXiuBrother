@@ -3,13 +3,20 @@ package com.zykj.onexiubrother.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hss01248.dialog.StyledDialog;
 import com.zykj.onexiubrother.R;
+import com.zykj.onexiubrother.utils.Y;
+import com.zykj.onexiubrother.utils.YURL;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -45,6 +52,36 @@ public class Activity_DengLu extends Activity {
         switch (view.getId()) {
             //登录
             case R.id.denglu_bt_denglu:
+                String name = dengluEtName.getText().toString().trim();
+                String pwd = dengluEtPwd.getText().toString().trim();
+                if (TextUtils.isEmpty(name)){
+                    Y.t("用户名不能为空");
+                    return;
+                }
+                if (TextUtils.isEmpty(pwd)){
+                    Y.t("密码不能为空");
+                    return;
+                }
+                Map<String,String> map = new HashMap<String, String>();
+                map.put("phone",name);
+                map.put("password",pwd);
+                Y.get(YURL.LOGIN, map, new Y.MyCommonCall<String>() {
+                    @Override
+                    public void onSuccess(String result) {
+                        //关闭对话框
+                        StyledDialog.dismissLoading();
+                        if (Y.getRespCode(result)){
+                            Y.t("登录成功");
+                            String data = Y.getData(result);
+                            Intent dengLuIntent = new Intent(Activity_DengLu.this,MainActivity.class);
+                            dengLuIntent.putExtra("data",data);
+                            startActivity(dengLuIntent);
+                        }else {
+                            Y.t("用户名或密码不正确");
+                        }
+
+                    }
+                });
                 break;
             //注册
             case R.id.denglu_tv_zhuce:
