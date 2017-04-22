@@ -28,7 +28,6 @@
         <activity android:name=".activity.Activity_YiWanCheng_XiangQing"/>
         <activity android:name=".activity.Activity_WeiWanCheng_XiangQing"/>
         <activity android:name=".activity.Activity_WoDeZiLiao"/>
-        <activity android:name=".activity.Activity_WoDeZiLiao_DiQu"/>
         <activity android:name=".activity.Activity_DiZhiGuanLi"/>
         <activity android:name=".activity.Activity_DengLu">
             <intent-filter>

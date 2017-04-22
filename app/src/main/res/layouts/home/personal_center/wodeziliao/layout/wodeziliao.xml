@@ -103,6 +103,7 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:background="@null"
+            android:layout_marginRight="20dp"
             android:gravity="center_vertical"
             android:hint="请输入您的姓名"
             android:textColorHint="#c9c9c9"
@@ -146,15 +147,6 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-
-            <LinearLayout
-                android:id="@+id/wodeziliao_ll_nan"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
                 <RadioButton
                     android:id="@+id/radioButton_nan"
                     android:layout_width="wrap_content"
@@ -170,15 +162,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:text="男" />
-            </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/wodeziliao_ll_nv"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/radioButton_nv"
@@ -194,7 +178,6 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:text="女" />
-            </LinearLayout>
         </RadioGroup>
     </LinearLayout>
 
@@ -265,15 +248,25 @@
             android:src="@mipmap/line_shu" />
 
         <TextView
-            android:id="@+id/wodeziliao_tv_diqu"
+            android:id="@+id/wodeziliao_tv_p"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"
             android:layout_weight="1"
             android:background="@null"
             android:gravity="center_vertical|right"
-            android:hint="黑龙江  哈尔滨"
-            android:textColorHint="#c9c9c9"
+            android:text="黑龙江"
+            android:textColor="#c9c9c9"
+            android:textSize="17sp" />
+        <TextView
+            android:id="@+id/wodeziliao_tv_c"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:text="哈尔滨"
+            android:textColor="#c9c9c9"
             android:textSize="17sp" />
 
         <ImageView

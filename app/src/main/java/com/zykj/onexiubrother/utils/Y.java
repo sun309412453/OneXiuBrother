@@ -29,8 +29,8 @@ public class Y {
     public static String TOKEN;
     //手机正则表达式
     public static boolean checkCallphone(String cellphone) {
-        String regex = "((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d{8}$";
-        if (!(TextUtils.isEmpty(regex))){
+        String regex ="[1][358]\\d{9}";
+        if (TextUtils.isEmpty(cellphone)){
          return false;
         }else {
             return cellphone.matches(regex);
