@@ -67,7 +67,7 @@ public class Activity_ZhuCe extends Activity {
                     Y.t("手机号不能为空");
                     return;
                 }
-                if (Y.checkCallphone(phone)) {
+                if (!Y.checkCallphone(phone)) {
                     Y.t("手机号码输入有误");
                     return;
                 }

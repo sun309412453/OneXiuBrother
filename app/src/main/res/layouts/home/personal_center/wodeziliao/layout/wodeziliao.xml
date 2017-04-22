@@ -7,11 +7,11 @@
     android:orientation="vertical">
 
     <com.zykj.onexiubrother.widget.MyTitleBar
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:paddingLeft="20dp"
         android:background="#ffffff"
-        android:id="@+id/title"
+        android:paddingLeft="20dp"
         MyTitleBar:LiftBackground="@mipmap/retreat"
         MyTitleBar:TitleText="我的资料"
         MyTitleBar:TitleTextColor="#00cccc"
@@ -21,238 +21,278 @@
         layout="@layout/include_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="70dp"
-    android:background="#fff"
-    android:orientation="horizontal"
-    android:gravity="center_vertical"
-    >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="头像"
-        android:textColor="#6b6b6b"
-        android:textSize="17sp"
-        android:layout_marginLeft="20dp"
-        />
+
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical|right"
-        android:layout_height="match_parent"
-        >
-        <FrameLayout
+        android:id="@+id/wodeziliao_ll_icon"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            >
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/touxiangbeijing"
-                />
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="7dp"
-                android:src="@mipmap/gerenziliaotouxiang"
-                />
-        </FrameLayout>
+            android:layout_marginLeft="20dp"
+            android:text="头像"
+            android:textColor="#6b6b6b"
+            android:textSize="17sp" />
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/wodeziliao_iv_iconbg"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@mipmap/touxiangbeijing" />
+
+                <ImageView
+                    android:id="@+id/wodeziliao_iv_icon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="7dp"
+                    android:src="@mipmap/gerenziliaotouxiang" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/fanhui" />
     </LinearLayout>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/fanhui"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        />
-</LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#fff"
         android:layout_marginTop="3dp"
+        android:background="#fff"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical|center"
             android:text="姓名"
-            android:textSize="17dp"
             android:textColor="#6b6b6b"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:gravity="center_vertical|center"
-            />
+            android:textSize="17dp" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/line_shu"
-            />
+            android:src="@mipmap/line_shu" />
+
         <EditText
+            android:id="@+id/wodeziliao_et_name"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="请输入您的姓名"
-            android:gravity="center_vertical"
             android:layout_marginLeft="20dp"
-            android:textSize="17sp"
+            android:layout_weight="1"
             android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="请输入您的姓名"
             android:textColorHint="#c9c9c9"
-            />
+            android:textSize="17sp" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@mipmap/fanhui"
             android:paddingRight="20dp"
-            />
+            android:src="@mipmap/fanhui" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#fff"
         android:layout_marginTop="3dp"
+        android:background="#fff"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="性别"
-            android:textSize="17sp"
-            android:textColor="#6b6b6b"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:gravity="center_vertical|center"
-            />
+            android:text="性别"
+            android:textColor="#6b6b6b"
+            android:textSize="17sp" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/line_shu"
-            />
-        <RadioGroup
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_marginLeft="30dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_height="match_parent">
+            android:src="@mipmap/line_shu" />
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:button="@null"
-                android:drawableLeft="@drawable/shape_sex"
-                android:id="@+id/radioButton" />
-            <TextView
+        <RadioGroup
+            android:id="@+id/sex_rg"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/wodeziliao_ll_nan"
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="男"
-                android:layout_marginLeft="10dp"
-                />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/shape_sex"
-                android:button="@null"
-                />
-            <TextView
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButton_nan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:checked="true"
+                    android:drawableLeft="@drawable/shape_sex" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="男" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/wodeziliao_ll_nv"
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="女"
-                android:layout_marginLeft="10dp"
-                />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButton_nv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/shape_sex" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="女" />
+            </LinearLayout>
         </RadioGroup>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#fff"
         android:layout_marginTop="3dp"
+        android:background="#fff"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical|center"
             android:text="手机"
-            android:textSize="17dp"
             android:textColor="#6b6b6b"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:gravity="center_vertical|center"
-            />
+            android:textSize="17dp" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/line_shu"
-            />
+            android:src="@mipmap/line_shu" />
+
         <EditText
+            android:id="@+id/wodeziliao_et_phone"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
             android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical|right"
             android:hint="15004666284"
-            android:gravity="center_vertical|right"
-            android:layout_marginRight="20dp"
-            android:textSize="17sp"
-            android:background="@null"
             android:textColorHint="#c9c9c9"
-            />
+            android:textSize="17sp" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@mipmap/fanhui"
             android:paddingRight="20dp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#fff"
-        android:layout_marginTop="3dp"
-        android:id="@+id/wodeziliao_diqu"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="地区"
-            android:textSize="17dp"
-            android:textColor="#6b6b6b"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:gravity="center_vertical|center"
-            />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/line_shu"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="黑龙江  哈尔滨"
-            android:gravity="center_vertical|right"
-            android:layout_marginRight="20dp"
-            android:textSize="17sp"
-            android:background="@null"
-            android:textColorHint="#c9c9c9"
-            />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@mipmap/fanhui"
-            android:paddingRight="20dp"
-            />
+            android:src="@mipmap/fanhui" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/wodeziliao_diqu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="3dp"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical|center"
+            android:text="地区"
+            android:textColor="#6b6b6b"
+            android:textSize="17dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/line_shu" />
+
+        <TextView
+            android:id="@+id/wodeziliao_tv_diqu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical|right"
+            android:hint="黑龙江  哈尔滨"
+            android:textColorHint="#c9c9c9"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="20dp"
+            android:src="@mipmap/fanhui" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/wodeziliao_bt_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@mipmap/renzhenganniu"
+        android:text="提交"
+        android:textColor="#fff"
+        android:textSize="18sp" />
 
 </LinearLayout>

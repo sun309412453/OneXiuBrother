@@ -10,8 +10,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.hss01248.dialog.StyledDialog;
 import com.zykj.onexiubrother.R;
+import com.zykj.onexiubrother.bean.UserBean;
 import com.zykj.onexiubrother.utils.Y;
 import com.zykj.onexiubrother.utils.YURL;
 
@@ -72,14 +74,14 @@ public class Activity_DengLu extends Activity {
                         StyledDialog.dismissLoading();
                         if (Y.getRespCode(result)){
                             Y.t("登录成功");
-                            String data = Y.getData(result);
+                            UserBean userBean = JSON.parseObject(Y.getData(result), UserBean.class);
+                            Y.USER=userBean;
+                            Y.TOKEN=userBean.getToken();
                             Intent dengLuIntent = new Intent(Activity_DengLu.this,MainActivity.class);
-                            dengLuIntent.putExtra("data",data);
                             startActivity(dengLuIntent);
                         }else {
                             Y.t("用户名或密码不正确");
                         }
-
                     }
                 });
                 break;

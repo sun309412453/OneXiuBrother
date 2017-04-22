@@ -12,6 +12,7 @@ import com.youth.banner.Banner;
 import com.zykj.onexiubrother.R;
 import com.zykj.onexiubrother.utils.BannerUtil;
 import com.zykj.onexiubrother.utils.OptionsPicke;
+import com.zykj.onexiubrother.utils.Y;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,6 +86,7 @@ public class MainActivity extends Activity {
                 break;
             case R.id.home_computer:
                 Intent computerIntent = new Intent(this,Activity_computer.class);
+                computerIntent.putExtra("icon", Y.USER.getIcon());
                 startActivity(computerIntent);
                 break;
             case R.id.home_appliance:

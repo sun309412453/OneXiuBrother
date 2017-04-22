@@ -141,9 +141,9 @@ public class Activity_Appliance extends Activity {
                                             jiadianTvLeixing.setTextColor(Color.parseColor("#00cccc"));
                                             jiadianTvLeixing.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
                                             if (applianceIndex != options1) {
-                                                jiadianTvLeixing.setHint("请选择您的家电型号");
-                                                jiadianTvLeixing.setHintTextColor(Color.parseColor("#c9c9c9"));
-                                                jiadianTvLeixing.setText("");
+                                                jiadianTvXinghao.setHint("请选择您的家电型号");
+                                                jiadianTvXinghao.setHintTextColor(Color.parseColor("#c9c9c9"));
+                                                jiadianTvXinghao.setText("");
                                             }
                                             applianceIndexid=options1;
                                         }

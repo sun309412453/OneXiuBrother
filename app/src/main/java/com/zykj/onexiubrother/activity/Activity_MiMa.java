@@ -49,14 +49,14 @@ public class Activity_MiMa extends Activity {
             Y.t("密码不能为空");
             return;
         }
-        if (TextUtils.isEmpty(mima)){
+        if (TextUtils.isEmpty(queren)){
             Y.t("确认密码不能为空");
             return;
         }
-//        if (mima.toString()!=queren.toString()){
-//            Y.t("密码要与确认密码一致");
-//            return;
-//        }
+        if (!mima.equals(queren)){
+            Y.t("密码要与确认密码一致");
+            return;
+        }
         Map<String,String> map = new HashMap<String, String>();
         map.put("password",mima);
         map.put("token",getIntent().getStringExtra("token"));
