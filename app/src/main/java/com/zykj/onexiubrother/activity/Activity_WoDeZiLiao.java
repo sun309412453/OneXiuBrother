@@ -38,7 +38,7 @@ import cn.finalteam.galleryfinal.model.PhotoInfo;
  * Created by zykj on 2017/4/15.
  */
 
-public class Activity_WoDeZiLiao extends Activity {
+public class Activity_WoDeZiLiao extends Activity implements RadioGroup.OnCheckedChangeListener {
     @Bind(R.id.title)
     MyTitleBar title;
     @Bind(R.id.wodeziliao_diqu)
@@ -82,13 +82,17 @@ public class Activity_WoDeZiLiao extends Activity {
         if (!TextUtils.isEmpty(Y.USER.getIcon())) {
             ImageOptions options = new ImageOptions.Builder().setCircular(true).build();
             x.image().bind(wodeziliaoIvIconbg, Y.USER.getIcon(), options);
-            wodeziliaoIvIcon.setVisibility(View.INVISIBLE);
+            wodeziliaoIvIcon.setVisibility(View.GONE);
             return;
+        }else {
+            Y.t("空头像");
         }
         //把USER数据设置到UI上
         if (!TextUtils.isEmpty(Y.USER.getPhone())) {
             wodeziliaoEtPhone.setText(Y.USER.getPhone());
             return;
+        }else {
+            Y.t("空电话");
         }
         //把USER数据设置到UI上
         if (!TextUtils.isEmpty(Y.USER.getSex())) {
@@ -98,34 +102,34 @@ public class Activity_WoDeZiLiao extends Activity {
             } else if ("女".equals(Y.USER.getSex())) {
                 radioButtonNv.setChecked(true);
                 return;
+            }else {
+                Y.t("空性别");
             }
         }
         //把USER数据设置到UI上
         if (!TextUtils.isEmpty(Y.USER.getProvince())) {
             wodeziliaoTvP.setText(Y.USER.getProvince());
             return;
+        }else {
+            Y.t("空省份");
         }
         if (!TextUtils.isEmpty(Y.USER.getCity())) {
             wodeziliaoTvC.setText(Y.USER.getCity());
             return;
+        }else {
+            Y.t("空城市");
         }
+
         //把USER数据设置到UI上
         if (!TextUtils.isEmpty(Y.USER.getUsername())) {
             wodeziliaoEtName.setText(Y.USER.getUsername());
             wodeziliaoEtName.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
             wodeziliaoEtName.setTextColor(Color.parseColor("#c9c9c9"));
             return;
+        }else {
+            Y.t("空名字");
         }
-        sexRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.radioButton_nan) {
-                    Y.USER.setSex("男");
-                } else if (checkedId == R.id.radioButton_nv) {
-                    Y.USER.setSex("女");
-                }
-            }
-        });
+        sexRg.setOnCheckedChangeListener(this);
     }
 
     @OnClick({R.id.wodeziliao_diqu, R.id.wodeziliao_ll_icon, R.id.wodeziliao_bt_ok})
@@ -166,6 +170,7 @@ public class Activity_WoDeZiLiao extends Activity {
                                             if (Y.getRespCode(result)) {
                                                 Y.t("上传成功");
                                                 Y.USER.setIcon(Y.getData(result));
+                                                return;
                                             } else {
                                                 Y.t("上传失败");
                                             }
@@ -184,8 +189,8 @@ public class Activity_WoDeZiLiao extends Activity {
             //提交数据并上传
             case R.id.wodeziliao_bt_ok:
                 String name = wodeziliaoEtName.getText().toString().trim();
-                final String cheng = wodeziliaoTvP.getText().toString().trim();
-                final String shi = wodeziliaoTvC.getText().toString().trim();
+                 String cheng = wodeziliaoTvP.getText().toString().trim();
+                 String shi = wodeziliaoTvC.getText().toString().trim();
                 if (TextUtils.isEmpty(name)) {
                     Y.t("用户名不能为空");
                 }
@@ -197,18 +202,23 @@ public class Activity_WoDeZiLiao extends Activity {
                 map.put("city", shi);
                 map.put("user_id",Y.USER.getUser_id()+"");
                 map.put("token", Y.TOKEN);
-                Y.post(YURL.SET_USER_INFO, map, new Y.MyCommonCall<String>() {
+                Y.get(YURL.SET_USER_INFO, map, new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
                         //关闭对话框
                         StyledDialog.dismissLoading();
-                        if (Y.getRespCode(result)) {
-                            Y.t("上传成功");
-                            Y.USER.setProvince(cheng);
-                            String city1 = map.get("city");
 
-                            Y.USER.setCity(city1);
-                            finish();
+                        if (Y.getRespCode(result)) {
+                            String name = map.get("username");
+                            String sex = map.get("sex");
+                            String province = map.get("province");
+                            String city = map.get("city");
+                            Y.USER.setUsername(name);
+                            Y.USER.setSex(sex);
+                            Y.USER.setProvince(province);
+                            Y.USER.setCity(city);
+                            Y.t("上传成功");
+                            Y.i(result);
                         } else {
                             Y.t("上传失败");
                         }
@@ -216,6 +226,18 @@ public class Activity_WoDeZiLiao extends Activity {
                 });
                 break;
 
+        }
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+        switch (i){
+            case R.id.radioButton_nan:
+                Y.USER.setSex("男");
+                break;
+            case R.id.radioButton_nv:
+                Y.USER.setSex("女");
+                break;
         }
     }
 }

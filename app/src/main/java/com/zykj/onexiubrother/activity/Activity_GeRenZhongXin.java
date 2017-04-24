@@ -101,6 +101,10 @@ public class Activity_GeRenZhongXin extends Activity {
                 break;
             case R.id.wodeziliao:
                 Intent ziLiaoIntent = new Intent(this, Activity_WoDeZiLiao.class);
+                ziLiaoIntent.putExtra("name",Y.USER.getUsername());
+                ziLiaoIntent.putExtra("phone",Y.USER.getPhone());
+                ziLiaoIntent.putExtra("city",Y.USER.getCity());
+                ziLiaoIntent.putExtra("shengfen",Y.USER.getProvince());
                 startActivity(ziLiaoIntent);
                 break;
             case R.id.dizhiguanli:
