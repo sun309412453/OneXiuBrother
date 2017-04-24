@@ -67,10 +67,12 @@
                 android:layout_height="90dp"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="20dp"
+                android:id="@+id/renzheng_zheng"
                 android:background="#f2f2f2">
 
                 <ImageView
                     android:layout_width="57dp"
+                    android:id="@+id/zheng_iv"
                     android:layout_height="57dp"
                     android:layout_gravity="center"
                     android:src="@mipmap/yuan_bai" />
@@ -78,6 +80,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:id="@+id/zheng_jiahao"
                     android:layout_gravity="center"
                     android:src="@mipmap/jia" />
             </FrameLayout>
@@ -122,17 +125,20 @@
                 android:layout_height="90dp"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="20dp"
+                android:id="@+id/renzheng_fan"
                 android:background="#f2f2f2">
 
                 <ImageView
                     android:layout_width="57dp"
                     android:layout_height="57dp"
+                    android:id="@+id/fan_iv"
                     android:layout_gravity="center"
                     android:src="@mipmap/yuan_bai" />
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:id="@+id/fan_jiahao"
                     android:layout_gravity="center"
                     android:src="@mipmap/jia" />
             </FrameLayout>
@@ -144,6 +150,7 @@
     android:background="@mipmap/renzhenganniu"
     android:text="提交"
     android:textColor="#fff"
+    android:id="@+id/renzheng_bt_tijiao"
     android:textSize="16sp"
     android:layout_marginTop="20dp"
     android:layout_marginLeft="20dp"

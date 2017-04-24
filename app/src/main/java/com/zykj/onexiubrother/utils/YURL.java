@@ -45,5 +45,8 @@ public class YURL {
     public static final String LOGIN = HOST + "login";
     //上传头像
     public static final String UP_LOAD_ICON = HOST + "uploadIcon";
+    //上传用户信息
     public static final String SET_USER_INFO = HOST + "setUserInfo";
+    //身份证认证
+    public static final String UP_LOAD_ID_CARD = HOST + "uploadIdCard";
 }

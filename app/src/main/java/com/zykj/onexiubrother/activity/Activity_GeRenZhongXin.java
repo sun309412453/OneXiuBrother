@@ -114,6 +114,8 @@ public class Activity_GeRenZhongXin extends Activity {
             case R.id.wodeqianbao:
                 break;
             case R.id.renzhengxinxi:
+                Intent intentRenZheng = new Intent(Activity_GeRenZhongXin.this,Activity_RenZhengXinXi.class);
+                startActivity(intentRenZheng);
 
                 break;
             case R.id.pingtaifuwu:
