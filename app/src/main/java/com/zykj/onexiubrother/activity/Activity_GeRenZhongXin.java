@@ -9,19 +9,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.hss01248.dialog.StyledDialog;
 import com.zykj.onexiubrother.R;
 import com.zykj.onexiubrother.utils.Y;
 import com.zykj.onexiubrother.utils.YURL;
 import com.zykj.onexiubrother.widget.MyTitleBar;
 
+import org.xutils.http.RequestParams;
 import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
-import java.util.HashMap;
+import java.io.File;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -64,7 +63,19 @@ public class Activity_GeRenZhongXin extends Activity {
     TextView renzheng;
     @Bind(R.id.name)
     TextView name;
+    @Bind(R.id.wodeziliao_tv_xinxi)
+    TextView wodeziliaoTvXinxi;
     private int REQUEST_CODE_GALLERY = 1;
+
+    protected void onResume() {
+        super.onResume();
+        //把USER数据设置到UI上
+        if (!TextUtils.isEmpty(Y.USER.getIcon())) {
+            ImageOptions options = new ImageOptions.Builder().setCircular(true).build();
+            x.image().bind(gerenIvShe, YURL.HOST + Y.USER.getIcon(), options);
+            wodeziliaoTvXinxi.setText("");
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,10 +88,6 @@ public class Activity_GeRenZhongXin extends Activity {
                 finish();
             }
         });
-        if (!TextUtils.isEmpty(Y.USER.getIcon())){
-            ImageOptions options = new ImageOptions.Builder().setCircular(true).build();
-            x.image().bind(gerenIvShe,Y.USER.getIcon(), options);
-        }
     }
 
     @OnClick({R.id.geren_iv_she, R.id.weiwancheng, R.id.yiwancheng, R.id.yiquxiao, R.id.wodeziliao, R.id.dizhiguanli, R.id.wodeqianbao, R.id.renzhengxinxi, R.id.pingtaifuwu, R.id.guanyuwomen, R.id.shezhi})
@@ -101,10 +108,10 @@ public class Activity_GeRenZhongXin extends Activity {
                 break;
             case R.id.wodeziliao:
                 Intent ziLiaoIntent = new Intent(this, Activity_WoDeZiLiao.class);
-                ziLiaoIntent.putExtra("name",Y.USER.getUsername());
-                ziLiaoIntent.putExtra("phone",Y.USER.getPhone());
-                ziLiaoIntent.putExtra("city",Y.USER.getCity());
-                ziLiaoIntent.putExtra("shengfen",Y.USER.getProvince());
+                ziLiaoIntent.putExtra("name", Y.USER.getUsername());
+                ziLiaoIntent.putExtra("phone", Y.USER.getPhone());
+                ziLiaoIntent.putExtra("city", Y.USER.getCity());
+                ziLiaoIntent.putExtra("shengfen", Y.USER.getProvince());
                 startActivity(ziLiaoIntent);
                 break;
             case R.id.dizhiguanli:
@@ -114,7 +121,7 @@ public class Activity_GeRenZhongXin extends Activity {
             case R.id.wodeqianbao:
                 break;
             case R.id.renzhengxinxi:
-                Intent intentRenZheng = new Intent(Activity_GeRenZhongXin.this,Activity_RenZhengXinXi.class);
+                Intent intentRenZheng = new Intent(Activity_GeRenZhongXin.this, Activity_RenZhengXinXi.class);
                 startActivity(intentRenZheng);
 
                 break;
@@ -130,18 +137,21 @@ public class Activity_GeRenZhongXin extends Activity {
                     public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
                         if (REQUEST_CODE_GALLERY == reqeustCode) {
                             if (resultList != null) {
-                                for (PhotoInfo info : resultList) {
-                                    ImageOptions options = new ImageOptions.Builder().setCircular(true).build();
-                                    x.image().bind(gerenIvShe, info.getPhotoPath(), options);
-                                    Map<String, String> map = new HashMap<String, String>();
-                                    map.put("icon", info.getPhotoPath());
-                                    map.put("token", Y.TOKEN);
-                                    Y.post(YURL.UP_LOAD_ICON, map, new Y.MyCommonCall<String>() {
+                                for (final PhotoInfo info : resultList) {
+                                    RequestParams requestParams = new RequestParams(YURL.UP_LOAD_ICON);
+                                    Y.i(info.getPhotoPath());
+                                    requestParams.addBodyParameter("icon", new File(info.getPhotoPath()));
+                                    requestParams.addBodyParameter("token", Y.TOKEN);
+                                    requestParams.setMultipart(true);
+                                    Y.post(requestParams, new Y.MyCommonCall<String>() {
                                         @Override
                                         public void onSuccess(String result) {
+                                            Y.i(result);
                                             //关闭对话框
                                             StyledDialog.dismissLoading();
                                             if (Y.getRespCode(result)) {
+                                                ImageOptions options = new ImageOptions.Builder().setCircular(true).build();
+                                                x.image().bind(gerenIvShe, info.getPhotoPath(), options);
                                                 Y.t("上传成功");
                                                 Y.USER.setIcon(Y.getData(result));
                                             } else {
@@ -153,6 +163,7 @@ public class Activity_GeRenZhongXin extends Activity {
                             }
                         }
                     }
+
                     @Override   //失败
                     public void onHanlderFailure(int requestCode, String errorMsg) {
 
@@ -160,9 +171,5 @@ public class Activity_GeRenZhongXin extends Activity {
                 });
                 break;
         }
-    }
-
-    @OnClick(R.id.geren_iv_she)
-    public void onViewClicked() {
     }
 }

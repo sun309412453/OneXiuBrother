@@ -71,6 +71,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="15004666284"
+            android:id="@+id/edit_tv_phone"
             android:gravity="right|center_vertical"
             android:layout_marginRight="20dp"
             android:textSize="16sp"
@@ -83,10 +84,12 @@
             android:paddingRight="20dp"
             />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#fff"
+        android:id="@+id/ll_xiangxidizhi"
         android:layout_marginTop="2dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -101,11 +104,12 @@
             android:layout_marginRight="20dp"
             android:gravity="center_vertical|center"
             />
-        <EditText
+        <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="请输入详细地址"
+            android:hint="选择地址"
+            android:id="@+id/et_xiangxidizhi"
             android:gravity="center_vertical"
             android:layout_marginLeft="16dp"
             android:textSize="16sp"
@@ -113,6 +117,7 @@
             android:textColorHint="#c9c9c9"
             />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -138,4 +143,15 @@
         android:layout_marginRight="20dp"
         />
     </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:background="@mipmap/renzhenganniu"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="提交数据"
+        android:textColor="#fff"
+        android:textSize="17sp"
+        android:id="@+id/add_ok"
+        android:layout_height="wrap_content" />
 </LinearLayout>

@@ -76,9 +76,8 @@ public class Activity_DengLu extends Activity {
                             Y.t("登录成功");
                             UserBean userBean = JSON.parseObject(Y.getData(result), UserBean.class);
                             Y.USER=userBean;
-                            userBean.setToken(getIntent().getStringExtra("token"));
                             Y.TOKEN=userBean.getToken();
-                            Y.i(Y.TOKEN);
+
                             Intent dengLuIntent = new Intent(Activity_DengLu.this,MainActivity.class);
                             startActivity(dengLuIntent);
                         }else {

@@ -193,6 +193,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.78"
             android:text="完善个人信息"
+            android:id="@+id/wodeziliao_tv_xinxi"
             android:gravity="center_vertical|right"
             android:layout_marginRight="30dp"
             android:textColor="#c9c9c9"

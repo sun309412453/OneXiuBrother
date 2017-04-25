@@ -91,13 +91,12 @@ public class Y {
         //检测外部是否传入了参数
         if (params != null) {
             //把参数取出来这是到rp
-            i(rp.toString());
             for (Map.Entry<String, String> entry : params.entrySet()) {
                 rp.addBodyParameter(entry.getKey(), entry.getValue());
             }
         }
         // 只要发起Get请求就开启对话框
-
+        i(rp.toString());
         return x.http().get(rp, call);
     }
 
@@ -122,9 +121,11 @@ public class Y {
                 rp.addBodyParameter(entry.getKey(), entry.getValue());
             }
         }
-        // 只要发起Get请求就开启对话框
-
         return x.http().post(rp, call);
+    }
+    public static Callback.Cancelable post(RequestParams params, MyCommonCall<String> call) {
+        i(params.toString());
+        return x.http().post(params, call);
     }
 
     /**

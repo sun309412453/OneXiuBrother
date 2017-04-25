@@ -5,6 +5,15 @@
     <!--读取写入内存卡 权限-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <!--百度地图权限-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,6 +39,7 @@
         <activity android:name=".activity.Activity_WoDeZiLiao"/>
         <activity android:name=".activity.Activity_DiZhiGuanLi"/>
         <activity android:name=".activity.Activity_RenZhengXinXi"/>
+        <activity android:name=".activity.Activity_DiZhiMap"/>
         <activity android:name=".activity.Activity_DengLu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -38,5 +48,8 @@
         </activity>
         <activity android:name=".activity.Activity_ZhuCe"/>
         <activity android:name=".activity.Activity_MiMa"/>
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="WprQSsIdo28xvCQGOy4ifoHBayVhIzho" />
     </application>
 </manifest>

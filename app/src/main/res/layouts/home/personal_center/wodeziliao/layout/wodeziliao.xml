@@ -149,35 +149,25 @@
             android:orientation="horizontal">
                 <RadioButton
                     android:id="@+id/radioButton_nan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
                     android:button="@null"
+                    android:text="男"
+                    android:textColor="#878484"
+                    android:drawablePadding="5dp"
                     android:checked="true"
                     android:drawableLeft="@drawable/shape_sex" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:text="男" />
-
-
                 <RadioButton
                     android:id="@+id/radioButton_nv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:button="@null"
-                    android:drawableLeft="@drawable/shape_sex" />
-
-                <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:text="女" />
+                    android:button="@null"
+                    android:textColor="#878484"
+                    android:text="女"
+                    android:drawablePadding="5dp"
+                    android:drawableLeft="@drawable/shape_sex" />
         </RadioGroup>
     </LinearLayout>
 

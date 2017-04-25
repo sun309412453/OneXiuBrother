@@ -39,6 +39,6 @@ public class Activity_Address extends Activity {
     @OnClick(R.id.newadd)
     public void onViewClicked() {
         Intent addIntent = new Intent(this,Activity_EditAdd.class);
-        startActivity(addIntent);
+        startActivityForResult(addIntent,521);
     }
 }

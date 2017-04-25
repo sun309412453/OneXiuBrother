@@ -49,4 +49,6 @@ public class YURL {
     public static final String SET_USER_INFO = HOST + "setUserInfo";
     //身份证认证
     public static final String UP_LOAD_ID_CARD = HOST + "uploadIdCard";
+    //添加地址
+    public static final String ADD_ADDRESS = HOST + "addaddress";
 }

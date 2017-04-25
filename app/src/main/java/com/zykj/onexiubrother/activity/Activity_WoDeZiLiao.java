@@ -21,9 +21,11 @@ import com.zykj.onexiubrother.utils.Y;
 import com.zykj.onexiubrother.utils.YURL;
 import com.zykj.onexiubrother.widget.MyTitleBar;
 
+import org.xutils.http.RequestParams;
 import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,7 +40,7 @@ import cn.finalteam.galleryfinal.model.PhotoInfo;
  * Created by zykj on 2017/4/15.
  */
 
-public class Activity_WoDeZiLiao extends Activity implements RadioGroup.OnCheckedChangeListener {
+public class Activity_WoDeZiLiao extends Activity {
     @Bind(R.id.title)
     MyTitleBar title;
     @Bind(R.id.wodeziliao_diqu)
@@ -66,7 +68,6 @@ public class Activity_WoDeZiLiao extends Activity implements RadioGroup.OnChecke
     @Bind(R.id.wodeziliao_tv_c)
     TextView wodeziliaoTvC;
     private int REQUEST_CODE_GALLERY = 1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,46 +79,30 @@ public class Activity_WoDeZiLiao extends Activity implements RadioGroup.OnChecke
                 finish();
             }
         });
-        //把USER数据设置到UI上
         if (!TextUtils.isEmpty(Y.USER.getIcon())) {
             ImageOptions options = new ImageOptions.Builder().setCircular(true).build();
-            x.image().bind(wodeziliaoIvIconbg, Y.USER.getIcon(), options);
-            wodeziliaoIvIcon.setVisibility(View.GONE);
-            return;
-        }else {
-            Y.t("空头像");
-        }
+            x.image().bind(wodeziliaoIvIconbg,YURL.HOST+Y.USER.getIcon(), options);
+            wodeziliaoIvIcon.setVisibility(View.GONE);  }
         //把USER数据设置到UI上
         if (!TextUtils.isEmpty(Y.USER.getPhone())) {
             wodeziliaoEtPhone.setText(Y.USER.getPhone());
-            return;
-        }else {
-            Y.t("空电话");
         }
         //把USER数据设置到UI上
         if (!TextUtils.isEmpty(Y.USER.getSex())) {
             if ("男".equals(Y.USER.getSex())) {
                 radioButtonNan.setChecked(true);
-                return;
+                radioButtonNv.setChecked(false);
             } else if ("女".equals(Y.USER.getSex())) {
                 radioButtonNv.setChecked(true);
-                return;
-            }else {
-                Y.t("空性别");
+                radioButtonNan.setChecked(false);
             }
         }
         //把USER数据设置到UI上
         if (!TextUtils.isEmpty(Y.USER.getProvince())) {
             wodeziliaoTvP.setText(Y.USER.getProvince());
-            return;
-        }else {
-            Y.t("空省份");
         }
         if (!TextUtils.isEmpty(Y.USER.getCity())) {
             wodeziliaoTvC.setText(Y.USER.getCity());
-            return;
-        }else {
-            Y.t("空城市");
         }
 
         //把USER数据设置到UI上
@@ -125,11 +110,7 @@ public class Activity_WoDeZiLiao extends Activity implements RadioGroup.OnChecke
             wodeziliaoEtName.setText(Y.USER.getUsername());
             wodeziliaoEtName.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
             wodeziliaoEtName.setTextColor(Color.parseColor("#c9c9c9"));
-            return;
-        }else {
-            Y.t("空名字");
         }
-        sexRg.setOnCheckedChangeListener(this);
     }
 
     @OnClick({R.id.wodeziliao_diqu, R.id.wodeziliao_ll_icon, R.id.wodeziliao_bt_ok})
@@ -159,18 +140,20 @@ public class Activity_WoDeZiLiao extends Activity implements RadioGroup.OnChecke
                                     ImageOptions options = new ImageOptions.Builder().setCircular(true).build();
                                     x.image().bind(wodeziliaoIvIconbg, info.getPhotoPath(), options);
                                     wodeziliaoIvIcon.setVisibility(View.INVISIBLE);
-                                    Map<String, String> map = new HashMap<String, String>();
-                                    map.put("icon", info.getPhotoPath());
-                                    map.put("token", Y.TOKEN);
-                                    Y.post(YURL.UP_LOAD_ICON, map, new Y.MyCommonCall<String>() {
+                                    RequestParams requestParams = new RequestParams(YURL.UP_LOAD_ICON);
+                                    requestParams.setMultipart(true);
+                                    requestParams.addBodyParameter("icon",new File(info.getPhotoPath()));
+                                    requestParams.addBodyParameter("token", Y.TOKEN);
+                                    Y.post(requestParams, new Y.MyCommonCall<String>() {
                                         @Override
                                         public void onSuccess(String result) {
+                                            Y.i(result);
                                             //关闭对话框
                                             StyledDialog.dismissLoading();
                                             if (Y.getRespCode(result)) {
                                                 Y.t("上传成功");
                                                 Y.USER.setIcon(Y.getData(result));
-                                                return;
+                                                Y.i(Y.getData(result));
                                             } else {
                                                 Y.t("上传失败");
                                             }
@@ -193,6 +176,12 @@ public class Activity_WoDeZiLiao extends Activity implements RadioGroup.OnChecke
                  String shi = wodeziliaoTvC.getText().toString().trim();
                 if (TextUtils.isEmpty(name)) {
                     Y.t("用户名不能为空");
+                    return;
+                }
+                if (radioButtonNan.isChecked()){
+                    Y.USER.setSex(radioButtonNan.getText().toString());
+                }else if (radioButtonNv.isChecked()){
+                    Y.USER.setSex(radioButtonNv.getText().toString());
                 }
                 //上传用户资料
                 final Map<String, String> map = new HashMap<String, String>();
@@ -202,7 +191,7 @@ public class Activity_WoDeZiLiao extends Activity implements RadioGroup.OnChecke
                 map.put("city", shi);
                 map.put("user_id",Y.USER.getUser_id()+"");
                 map.put("token", Y.TOKEN);
-                Y.get(YURL.SET_USER_INFO, map, new Y.MyCommonCall<String>() {
+                Y.post(YURL.SET_USER_INFO, map, new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
                         //关闭对话框
@@ -219,6 +208,7 @@ public class Activity_WoDeZiLiao extends Activity implements RadioGroup.OnChecke
                             Y.USER.setCity(city);
                             Y.t("上传成功");
                             Y.i(result);
+                            finish();
                         } else {
                             Y.t("上传失败");
                         }
@@ -226,18 +216,6 @@ public class Activity_WoDeZiLiao extends Activity implements RadioGroup.OnChecke
                 });
                 break;
 
-        }
-    }
-
-    @Override
-    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-        switch (i){
-            case R.id.radioButton_nan:
-                Y.USER.setSex("男");
-                break;
-            case R.id.radioButton_nv:
-                Y.USER.setSex("女");
-                break;
         }
     }
 }
