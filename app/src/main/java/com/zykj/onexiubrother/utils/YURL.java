@@ -51,4 +51,10 @@ public class YURL {
     public static final String UP_LOAD_ID_CARD = HOST + "uploadIdCard";
     //添加地址
     public static final String ADD_ADDRESS = HOST + "addaddress";
+    //查询地址
+    public static final String SELECT_ADDRESS = HOST + "selectAddress";
+    //删除地址
+    public static final String DEL_ADDRESS = HOST + "delAddress";
+    //删除地址
+    public static final String DEF_ADDRESS = HOST + "defAddress";
 }

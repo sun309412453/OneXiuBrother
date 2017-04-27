@@ -115,7 +115,7 @@ public class Activity_GeRenZhongXin extends Activity {
                 startActivity(ziLiaoIntent);
                 break;
             case R.id.dizhiguanli:
-                Intent diZhiIntent = new Intent(this, Activity_DiZhiGuanLi.class);
+                Intent diZhiIntent = new Intent(this, Activity_Address.class);
                 startActivity(diZhiIntent);
                 break;
             case R.id.wodeqianbao:

@@ -28,6 +28,7 @@ android {
                     'src/main/res/layouts/home/denglu'
             ]
         }
+
     }
     defaultConfig {
         applicationId "com.zykj.onexiubrother"

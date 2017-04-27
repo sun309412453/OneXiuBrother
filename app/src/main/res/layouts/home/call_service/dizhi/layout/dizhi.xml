@@ -19,13 +19,6 @@
         layout="@layout/include_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/addrv"
-        ></android.support.v7.widget.RecyclerView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -57,5 +50,17 @@
             android:text="新增地址"
             />
     </LinearLayout>
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:src="@mipmap/itemline"
+    android:scaleType="fitXY"
+    />
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addrv"
+        ></android.support.v7.widget.RecyclerView>
+
 
 </LinearLayout>
