@@ -10,10 +10,16 @@ import com.orhanobut.logger.Logger;
 import com.zykj.onexiubrother.bean.UserBean;
 
 import org.xutils.common.Callback;
+import org.xutils.common.util.KeyValue;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
+import java.io.File;
+import java.util.List;
 import java.util.Map;
+
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 /**
  * 工具类
@@ -98,6 +104,30 @@ public class Y {
         // 只要发起Get请求就开启对话框
         i(rp.toString());
         return x.http().get(rp, call);
+    }
+    //Post上传文件的函数//内部实现鲁班压缩
+    public static void postFile(final RequestParams params, final MyCommonCall<String> call) {
+        //获取params内的所有文件
+        List<KeyValue> fileParams = params.getFileParams();
+        //迭代，把文件的值迭代出来
+        for (final KeyValue kv:fileParams) {
+           File file= (File) kv.value;
+            //启动鲁班
+            Luban.get(context).load(file).putGear(Luban.THIRD_GEAR).setCompressListener(new OnCompressListener() {
+                @Override
+                public void onStart() {i("开始压缩文件");}//压缩开始
+
+                @Override
+                public void onSuccess(File file) {//压缩成功
+                params.addBodyParameter(kv.key,file);
+                    i(params.toString());
+                    x.http().post(params, call);
+                }
+
+                @Override
+                public void onError(Throwable e) {t("压缩失败");}//压缩失败
+            }).launch();
+        }
     }
 
     /**

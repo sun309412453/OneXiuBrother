@@ -140,11 +140,12 @@ public class Activity_WoDeZiLiao extends Activity {
                                     ImageOptions options = new ImageOptions.Builder().setCircular(true).build();
                                     x.image().bind(wodeziliaoIvIconbg, info.getPhotoPath(), options);
                                     wodeziliaoIvIcon.setVisibility(View.INVISIBLE);
+                                    File file = new File(info.getPhotoPath());
                                     RequestParams requestParams = new RequestParams(YURL.UP_LOAD_ICON);
                                     requestParams.setMultipart(true);
-                                    requestParams.addBodyParameter("icon",new File(info.getPhotoPath()));
+                                    requestParams.addBodyParameter("icon",file);
                                     requestParams.addBodyParameter("token", Y.TOKEN);
-                                    Y.post(requestParams, new Y.MyCommonCall<String>() {
+                                    Y.postFile(requestParams, new Y.MyCommonCall<String>() {
                                         @Override
                                         public void onSuccess(String result) {
                                             Y.i(result);

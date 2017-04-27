@@ -140,10 +140,11 @@ public class Activity_GeRenZhongXin extends Activity {
                                 for (final PhotoInfo info : resultList) {
                                     RequestParams requestParams = new RequestParams(YURL.UP_LOAD_ICON);
                                     Y.i(info.getPhotoPath());
-                                    requestParams.addBodyParameter("icon", new File(info.getPhotoPath()));
+                                    File file = new File(info.getPhotoPath());
+                                    requestParams.addBodyParameter("icon",file);
                                     requestParams.addBodyParameter("token", Y.TOKEN);
                                     requestParams.setMultipart(true);
-                                    Y.post(requestParams, new Y.MyCommonCall<String>() {
+                                    Y.postFile(requestParams, new Y.MyCommonCall<String>() {
                                         @Override
                                         public void onSuccess(String result) {
                                             Y.i(result);
