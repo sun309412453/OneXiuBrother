@@ -58,13 +58,14 @@ public class Adapter_DiZhiGuanLi extends RecyclerView.Adapter<Adapter_DiZhiGuanL
                 bianJi.Click(v);
             }
         });
-        holder.dizhixuanze_item.setTag(Y.ADDRESS.getAddress_id());
+        AddressBean addressBean = list.get(position);
+        holder.dizhishanchu.setTag(addressBean.getAddress_id());
         //删除数据
         holder.dizhishanchu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Map map = new HashMap();
-                map.put("user_id",Y.USER.getUser_id());
+                map.put("user_id",Y.USER.getUser_id()+"");
                 map.put("address_id",v.getTag()+"");
                 Y.get(YURL.DEL_ADDRESS, map, new Y.MyCommonCall<String>() {
                     @Override
@@ -80,7 +81,7 @@ public class Adapter_DiZhiGuanLi extends RecyclerView.Adapter<Adapter_DiZhiGuanL
             }
         });
         //默认数据
-        if (Y.ADDRESS.getIsdefault()==1){
+        if (addressBean.getIsdefault()==1){
             //默认
             holder.tv_moren.setText("默认");
             holder.tv_moren.setTextColor(0xff00cccc);
@@ -92,7 +93,7 @@ public class Adapter_DiZhiGuanLi extends RecyclerView.Adapter<Adapter_DiZhiGuanL
             holder.iv_moren.setImageResource(R.mipmap.u1112);
         }
         //选择默认事件
-        holder.iv_moren.setTag(Y.ADDRESS.getAddress_id());//把ID 捆绑到itemAddressBtShanchu 控件上
+        holder.iv_moren.setTag(addressBean.getAddress_id());//把ID 捆绑到itemAddressBtShanchu 控件上
         holder.dizhixuanze_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
