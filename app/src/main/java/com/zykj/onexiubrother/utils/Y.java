@@ -92,6 +92,7 @@ public class Y {
      * @return
      */
     public static Callback.Cancelable get(String url, Map<String, String> params, MyCommonCall<String> call) {
+        StyledDialog.buildLoading().show();//开启加载对话框
         if (params == null)
             i(url);
         //请求的对象
@@ -111,6 +112,7 @@ public class Y {
 
     //Post上传文件的函数//内部实现鲁班压缩
     public static void postFile(final RequestParams params, final MyCommonCall<String> call) {
+        StyledDialog.buildLoading().show();//开启加载对话框
         //获取params内的所有文件
         List<KeyValue> fileParams = params.getFileParams();
         //迭代，把文件的值迭代出来
@@ -147,6 +149,7 @@ public class Y {
      * @return
      */
     public static Callback.Cancelable post(String url, Map<String, String> params, MyCommonCall<String> call) {
+        StyledDialog.buildLoading().show();//开启加载对话框
         if (params == null)
             i(url);
         //请求的对象
@@ -164,6 +167,7 @@ public class Y {
     }
 
     public static Callback.Cancelable post(RequestParams params, MyCommonCall<String> call) {
+        StyledDialog.buildLoading().show();//开启加载对话框
         i(params.toString());
         return x.http().post(params, call);
     }

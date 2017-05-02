@@ -28,25 +28,6 @@ public class MyApplication extends Application {
         x.Ext.init(this);//初始化XUtils3
         StyledDialog.init(this);//初始化DialogUtil
         Y.context=this;
-    //图片选择器初始化
-        ThemeConfig theme = new ThemeConfig.Builder()
-        .build();
-//配置功能
-        FunctionConfig functionConfig = new FunctionConfig.Builder()
-                .setEnableCamera(true)
-                .setEnableEdit(true)
-                .setEnableCrop(true)
-                .setEnableRotate(true)
-                .setCropSquare(true)
-                .setEnablePreview(true)
-        .build();
-
-//配置imageloader
-        ImageLoader imageloader = new MyImageLoader();
-        CoreConfig coreConfig = new CoreConfig.Builder(this, imageloader, theme)
-                .setFunctionConfig(functionConfig)
-        .build();
-        GalleryFinal.init(coreConfig);
         //在activity生命周期callback中拿到顶层activity引用:
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
@@ -67,5 +48,24 @@ public class MyApplication extends Application {
             @Override
             public void onActivityDestroyed(Activity activity) {}
         });
+    //图片选择器初始化
+        ThemeConfig theme = new ThemeConfig.Builder()
+        .build();
+//配置功能
+        FunctionConfig functionConfig = new FunctionConfig.Builder()
+                .setEnableCamera(true)
+                .setEnableEdit(true)
+                .setEnableCrop(true)
+                .setEnableRotate(true)
+                .setCropSquare(true)
+                .setEnablePreview(true)
+        .build();
+
+//配置imageloader
+        ImageLoader imageloader = new MyImageLoader();
+        CoreConfig coreConfig = new CoreConfig.Builder(this, imageloader, theme)
+                .setFunctionConfig(functionConfig)
+        .build();
+        GalleryFinal.init(coreConfig);
     }
 }

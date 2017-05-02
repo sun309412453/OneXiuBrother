@@ -83,7 +83,7 @@ public class Activity_Mobile extends Activity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.mobileTvBrand_ll: //选择品牌
-                StyledDialog.buildLoading().show();
+                StyledDialog.dismissLoading();
                 //发起请求
                 Y.get(YURL.FIND_PHONE_BRAND, null, new Y.MyCommonCall<String>() {
                     @Override

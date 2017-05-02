@@ -65,7 +65,7 @@ public class Activity_Call_Service extends Activity {
                     TimePickerView pvTime = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
                         @Override
                         public void onTimeSelect(Date date, View v) {//选中事件回调
-                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd,HH:mm:ss");
+                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd,HH:mm:ss");//利用占位符来格式化时间
                             hujiaofuwuTvShijian.setText(format.format(date).toString());
                         }
                     })    .setType(TimePickerView.Type.ALL)//默认全部显示
