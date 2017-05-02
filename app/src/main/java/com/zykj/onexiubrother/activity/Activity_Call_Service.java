@@ -14,6 +14,7 @@ import com.zykj.onexiubrother.bean.AddressBean;
 import com.zykj.onexiubrother.widget.MyTitleBar;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -64,7 +65,8 @@ public class Activity_Call_Service extends Activity {
                     TimePickerView pvTime = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
                         @Override
                         public void onTimeSelect(Date date, View v) {//选中事件回调
-                            hujiaofuwuTvShijian.setText(date+"");
+                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd,HH:mm:ss");
+                            hujiaofuwuTvShijian.setText(format.format(date).toString());
                         }
                     })    .setType(TimePickerView.Type.ALL)//默认全部显示
                             .setCancelText("取消")//取消按钮文字
