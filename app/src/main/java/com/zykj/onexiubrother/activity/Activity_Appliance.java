@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,10 +17,12 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.hss01248.dialog.StyledDialog;
 import com.zykj.onexiubrother.R;
 import com.zykj.onexiubrother.bean.ApplianceBean;
-import com.zykj.onexiubrother.bean.ComputerBean;
 import com.zykj.onexiubrother.utils.Y;
 import com.zykj.onexiubrother.utils.YURL;
 import com.zykj.onexiubrother.widget.MyTitleBar;
+
+import org.xutils.image.ImageOptions;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +32,8 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.finalteam.galleryfinal.GalleryFinal;
+import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 /**
  * Created by Administrator on 2017/4/12.
@@ -54,6 +60,12 @@ public class Activity_Appliance extends Activity {
     TextView jiadianTvGuzhang;
     @Bind(R.id.jiadian_ll_guzhang)
     LinearLayout jiadianLlGuzhang;
+    @Bind(R.id.appliance_et_xiangqing)
+    EditText applianceEtXiangqing;
+    @Bind(R.id.appliance_img)
+    ImageView applianceImg;
+    @Bind(R.id.appliance_jiahao)
+    ImageView applianceJiahao;
     private List<ApplianceBean> list; //品牌的数据源
     private List<ApplianceBean> lists; //类型的数据源
     private List<ApplianceBean> listss; //型号的数据源
@@ -62,8 +74,9 @@ public class Activity_Appliance extends Activity {
     private int applianceIndexidd = -1;  //用于检测是否选择了型号
     private int applianceIndexiddd = -1;  //用于检测是否选择了故障
     private int applianceIndex = -1;  //用于检测是否选择了品牌
-    private OptionsPickerView opv,opv1,opv2,opv3;
-
+    private OptionsPickerView opv, opv1, opv2, opv3;
+    private int REQUEST_CODE_GALLERY = 1;
+    private String photoPath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,11 +89,12 @@ public class Activity_Appliance extends Activity {
             }
         });
     }
-    @OnClick({R.id.appliance_ok,R.id.jiadian_ll_pinpai, R.id.jiadian_ll_leixing, R.id.jiadian_ll_xinghao, R.id.jiadian_ll_guzhang})
+
+    @OnClick({R.id.appliance_img,R.id.appliance_ok, R.id.jiadian_ll_pinpai, R.id.jiadian_ll_leixing, R.id.jiadian_ll_xinghao, R.id.jiadian_ll_guzhang})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.jiadian_ll_pinpai:
-                Y.get(YURL.FIND_BY_APPLIANCE_BRAND,null, new Y.MyCommonCall<String>() {
+                Y.get(YURL.FIND_BY_APPLIANCE_BRAND, null, new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
                         StyledDialog.dismissLoading();
@@ -93,7 +107,7 @@ public class Activity_Appliance extends Activity {
                                         //选择后的监听器
                                         jiadianTvPinpai.setText(list.get(options1).getName());
                                         jiadianTvPinpai.setTextColor(Color.parseColor("#00cccc"));
-                                        jiadianTvPinpai.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+                                        jiadianTvPinpai.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
                                         if (applianceIndex != options1) {
                                             jiadianTvXinghao.setHint("请选择您的家电型号");
                                             jiadianTvXinghao.setHintTextColor(Color.parseColor("#c9c9c9"));
@@ -121,12 +135,12 @@ public class Activity_Appliance extends Activity {
                 });
                 break;
             case R.id.jiadian_ll_leixing:
-                if (applianceIndex==-1){
+                if (applianceIndex == -1) {
                     Y.t("请您先选择品牌");
-                }else {
-                    Map<String,String> map = new HashMap<>();
+                } else {
+                    Map<String, String> map = new HashMap<>();
                     map.put("pid", list.get(applianceIndex).getId() + "");
-                    Y.get(YURL.FIND_APPLIANCE_CATEGORY,map, new Y.MyCommonCall<String>() {
+                    Y.get(YURL.FIND_APPLIANCE_CATEGORY, map, new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
                             StyledDialog.dismissLoading();
@@ -139,13 +153,13 @@ public class Activity_Appliance extends Activity {
                                             //选择后的监听器
                                             jiadianTvLeixing.setText(lists.get(options1).getName());
                                             jiadianTvLeixing.setTextColor(Color.parseColor("#00cccc"));
-                                            jiadianTvLeixing.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+                                            jiadianTvLeixing.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
                                             if (applianceIndex != options1) {
                                                 jiadianTvXinghao.setHint("请选择您的家电型号");
                                                 jiadianTvXinghao.setHintTextColor(Color.parseColor("#c9c9c9"));
                                                 jiadianTvXinghao.setText("");
                                             }
-                                            applianceIndexid=options1;
+                                            applianceIndexid = options1;
                                         }
                                     }).build();
                                 //把list 进行转换
@@ -165,13 +179,13 @@ public class Activity_Appliance extends Activity {
                 }
                 break;
             case R.id.jiadian_ll_xinghao:
-                if (applianceIndex==-1){
+                if (applianceIndex == -1) {
                     Y.t("请您先选择类型");
-                }else {
-                    Map<String,String> map = new HashMap<>();
+                } else {
+                    Map<String, String> map = new HashMap<>();
                     map.put("pid", list.get(applianceIndex).getId() + "");
-                    map.put("category",lists.get(applianceIndexid).getId()+"");
-                    Y.get(YURL.FIND_BY_APPLIANCE_MODEL,map, new Y.MyCommonCall<String>() {
+                    map.put("category", lists.get(applianceIndexid).getId() + "");
+                    Y.get(YURL.FIND_BY_APPLIANCE_MODEL, map, new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
                             StyledDialog.dismissLoading();
@@ -184,8 +198,8 @@ public class Activity_Appliance extends Activity {
                                             //选择后的监听器
                                             jiadianTvXinghao.setText(listss.get(options1).getName());
                                             jiadianTvXinghao.setTextColor(Color.parseColor("#00cccc"));
-                                            jiadianTvXinghao.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
-                                            applianceIndexidd=options1;
+                                            jiadianTvXinghao.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+                                            applianceIndexidd = options1;
                                         }
                                     }).build();
                                 //把list 进行转换
@@ -206,7 +220,7 @@ public class Activity_Appliance extends Activity {
 
                 break;
             case R.id.jiadian_ll_guzhang:
-                Y.get(YURL.FIND_PHONE_FAULT,null, new Y.MyCommonCall<String>() {
+                Y.get(YURL.FIND_PHONE_FAULT, null, new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
                         StyledDialog.dismissLoading();
@@ -219,8 +233,8 @@ public class Activity_Appliance extends Activity {
                                         //选择后的监听器
                                         jiadianTvGuzhang.setText(listsss.get(options1).getName());
                                         jiadianTvGuzhang.setTextColor(Color.parseColor("#00cccc"));
-                                        jiadianTvGuzhang.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
-                                        applianceIndexiddd=options1;
+                                        jiadianTvGuzhang.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+                                        applianceIndexiddd = options1;
                                     }
                                 }).build();
                             //把list 进行转换
@@ -240,8 +254,40 @@ public class Activity_Appliance extends Activity {
                 break;
             case R.id.appliance_ok:
                 Intent applianceOkIntent = new Intent(this, Activity_Call_Service.class);
+                String pinpai = jiadianTvPinpai.getText().toString().trim();
+                String leixing = jiadianTvLeixing.getText().toString().trim();
+                String xinghao = jiadianTvXinghao.getText().toString().trim();
+                String guzhang = jiadianTvGuzhang.getText().toString().trim();
+                applianceOkIntent.putExtra("imgpath", photoPath);
+                applianceOkIntent.putExtra("order_type", 3 + "");
+                applianceOkIntent.putExtra("pinpai", pinpai);
+                applianceOkIntent.putExtra("xinghao", xinghao);
+                applianceOkIntent.putExtra("leixing", leixing);
+                applianceOkIntent.putExtra("guzhang", guzhang);
+                applianceOkIntent.putExtra("miaoshu",applianceEtXiangqing.getText().toString().trim());
                 startActivity(applianceOkIntent);
                 break;
+            case R.id.appliance_img:
+                GalleryFinal.openGallerySingle(REQUEST_CODE_GALLERY, new GalleryFinal.OnHanlderResultCallback() {
+                    @Override   //成功
+                    public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
+                        if (REQUEST_CODE_GALLERY == reqeustCode) {
+                            if (resultList != null) {
+                                for (final PhotoInfo info : resultList) {
+                                    photoPath = info.getPhotoPath();
+                                    ImageOptions options = new ImageOptions.Builder().build();
+                                    x.image().bind(applianceImg, photoPath, options);
+                                    applianceJiahao.setVisibility(View.INVISIBLE);
+                                }
+                            }
+                        }
+                    }
+                    @Override   //失败
+                    public void onHanlderFailure(int requestCode, String errorMsg) {
+                    }
+                });
+                break;
+
         }
     }
 }

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,12 +17,12 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.hss01248.dialog.StyledDialog;
 import com.zykj.onexiubrother.R;
 import com.zykj.onexiubrother.bean.ComputerBean;
-import com.zykj.onexiubrother.bean.MobileBean;
 import com.zykj.onexiubrother.utils.Y;
 import com.zykj.onexiubrother.utils.YURL;
 import com.zykj.onexiubrother.widget.MyTitleBar;
 
-import org.xutils.http.RequestParams;
+import org.xutils.image.ImageOptions;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +32,8 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.finalteam.galleryfinal.GalleryFinal;
+import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 /**
  * Created by zykj on 2017/4/13.
@@ -56,6 +60,12 @@ public class Activity_computer extends Activity {
     TextView diannaoTvGuzhang;
     @Bind(R.id.diannao_ll_guzhang)
     LinearLayout diannaoLlGuzhang;
+    @Bind(R.id.computer_img)
+    ImageView computerImg;
+    @Bind(R.id.computer_jiahao)
+    ImageView computerJiahao;
+    @Bind(R.id.computer_et_xiangqing)
+    EditText computerEtXiangqing;
     private List<ComputerBean> list; //品牌的数据源
     private List<ComputerBean> lists; //类型的数据源
     private List<ComputerBean> listss; //型号的数据源
@@ -64,7 +74,9 @@ public class Activity_computer extends Activity {
     private int computerIndexidd = -1;  //用于检测是否选择了型号
     private int computerIndexiddd = -1;  //用于检测是否选择了故障
     private int computerIndex = -1;  //用于检测是否选择了品牌
-    private OptionsPickerView opv,opv1,opv2,opv3;
+    private OptionsPickerView opv, opv1, opv2, opv3;
+    private int REQUEST_CODE_GALLERY = 1;
+    private String photoPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,15 +91,26 @@ public class Activity_computer extends Activity {
         });
     }
 
-    @OnClick({R.id.computer_ok, R.id.diannao_ll_pinpai, R.id.diannao_ll_leixing, R.id.diannao_ll_xinghao, R.id.diannao_ll_guzhang})
+    @OnClick({R.id.computer_img, R.id.computer_ok, R.id.diannao_ll_pinpai, R.id.diannao_ll_leixing, R.id.diannao_ll_xinghao, R.id.diannao_ll_guzhang})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.computer_ok:
+                String pinpai = diannaoTvPinpai.getText().toString().trim();
+                String leixing = diannaoTvLeixing.getText().toString().trim();
+                String xinghao = diannaoTvXinghao.getText().toString().trim();
+                String guzhang = diannaoTvGuzhang.getText().toString().trim();
                 Intent computerOkIntent = new Intent(this, Activity_Call_Service.class);
+                computerOkIntent.putExtra("imgpath", photoPath);
+                computerOkIntent.putExtra("order_type", 2 + "");
+                computerOkIntent.putExtra("pinpai", pinpai);
+                computerOkIntent.putExtra("xinghao", xinghao);
+                computerOkIntent.putExtra("leixing", leixing);
+                computerOkIntent.putExtra("guzhang", guzhang);
+                computerOkIntent.putExtra("miaoshu",computerEtXiangqing.getText().toString().trim());
                 startActivity(computerOkIntent);
                 break;
             case R.id.diannao_ll_pinpai:
-                Y.get(YURL.FIND_COMPUTER_BRAND,null, new Y.MyCommonCall<String>() {
+                Y.get(YURL.FIND_COMPUTER_BRAND, null, new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
                         StyledDialog.dismissLoading();
@@ -100,7 +123,7 @@ public class Activity_computer extends Activity {
                                         //选择后的监听器
                                         diannaoTvPinpai.setText(list.get(options1).getName());
                                         diannaoTvPinpai.setTextColor(Color.parseColor("#00cccc"));
-                                        diannaoTvPinpai.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+                                        diannaoTvPinpai.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
                                         if (computerIndex != options1) {
                                             diannaoTvXinghao.setHint("请选择您的电脑型号");
                                             diannaoTvXinghao.setHintTextColor(Color.parseColor("#c9c9c9"));
@@ -128,12 +151,12 @@ public class Activity_computer extends Activity {
                 });
                 break;
             case R.id.diannao_ll_leixing:
-                if (computerIndex==-1){
+                if (computerIndex == -1) {
                     Y.t("请您先选择品牌");
-                }else {
-                    Map<String,String> map = new HashMap<>();
+                } else {
+                    Map<String, String> map = new HashMap<>();
                     map.put("pid", list.get(computerIndex).getId() + "");
-                    Y.get(YURL.FIND_COMPUTER_CATEGORY,map, new Y.MyCommonCall<String>() {
+                    Y.get(YURL.FIND_COMPUTER_CATEGORY, map, new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
                             StyledDialog.dismissLoading();
@@ -146,13 +169,13 @@ public class Activity_computer extends Activity {
                                             //选择后的监听器
                                             diannaoTvLeixing.setText(lists.get(options1).getName());
                                             diannaoTvLeixing.setTextColor(Color.parseColor("#00cccc"));
-                                            diannaoTvLeixing.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+                                            diannaoTvLeixing.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
                                             if (computerIndex != options1) {
                                                 diannaoTvLeixing.setHint("请选择您的电脑类型");
                                                 diannaoTvLeixing.setHintTextColor(Color.parseColor("#c9c9c9"));
                                                 diannaoTvLeixing.setText("");
                                             }
-                                            computerIndexid=options1;
+                                            computerIndexid = options1;
                                         }
                                     }).build();
                                 //把list 进行转换
@@ -172,13 +195,13 @@ public class Activity_computer extends Activity {
                 }
                 break;
             case R.id.diannao_ll_xinghao:
-                if (computerIndex==-1){
+                if (computerIndex == -1) {
                     Y.t("请您先选择类型");
-                }else {
-                    Map<String,String> map = new HashMap<>();
+                } else {
+                    Map<String, String> map = new HashMap<>();
                     map.put("pid", list.get(computerIndex).getId() + "");
-                    map.put("category",lists.get(computerIndexid).getId()+"");
-                    Y.get(YURL.FIND_BY_COMPUTER_MODEL,map, new Y.MyCommonCall<String>() {
+                    map.put("category", lists.get(computerIndexid).getId() + "");
+                    Y.get(YURL.FIND_BY_COMPUTER_MODEL, map, new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
                             StyledDialog.dismissLoading();
@@ -191,8 +214,8 @@ public class Activity_computer extends Activity {
                                             //选择后的监听器
                                             diannaoTvXinghao.setText(listss.get(options1).getName());
                                             diannaoTvXinghao.setTextColor(Color.parseColor("#00cccc"));
-                                            diannaoTvXinghao.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
-                                            computerIndexidd=options1;
+                                            diannaoTvXinghao.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+                                            computerIndexidd = options1;
                                         }
                                     }).build();
                                 //把list 进行转换
@@ -214,7 +237,7 @@ public class Activity_computer extends Activity {
 
                 break;
             case R.id.diannao_ll_guzhang:
-                Y.get(YURL.FIND_PHONE_FAULT,null, new Y.MyCommonCall<String>() {
+                Y.get(YURL.FIND_PHONE_FAULT, null, new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
                         StyledDialog.dismissLoading();
@@ -227,8 +250,8 @@ public class Activity_computer extends Activity {
                                         //选择后的监听器
                                         diannaoTvGuzhang.setText(listsss.get(options1).getName());
                                         diannaoTvGuzhang.setTextColor(Color.parseColor("#00cccc"));
-                                        diannaoTvGuzhang.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
-                                        computerIndexiddd=options1;
+                                        diannaoTvGuzhang.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+                                        computerIndexiddd = options1;
                                     }
                                 }).build();
                             //把list 进行转换
@@ -243,6 +266,27 @@ public class Activity_computer extends Activity {
                                 opv3.show();
                             }
                         }
+                    }
+                });
+                break;
+            case R.id.computer_img:
+                GalleryFinal.openGallerySingle(REQUEST_CODE_GALLERY, new GalleryFinal.OnHanlderResultCallback() {
+                    @Override   //成功
+                    public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
+                        if (REQUEST_CODE_GALLERY == reqeustCode) {
+                            if (resultList != null) {
+                                for (final PhotoInfo info : resultList) {
+                                    photoPath = info.getPhotoPath();
+                                    ImageOptions options = new ImageOptions.Builder().build();
+                                    x.image().bind(computerImg, photoPath, options);
+                                    computerJiahao.setVisibility(View.INVISIBLE);
+                                }
+                            }
+                        }
+                    }
+
+                    @Override   //失败
+                    public void onHanlderFailure(int requestCode, String errorMsg) {
                     }
                 });
                 break;

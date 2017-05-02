@@ -22,6 +22,9 @@ import com.zykj.onexiubrother.utils.Y;
 import com.zykj.onexiubrother.utils.YURL;
 import com.zykj.onexiubrother.widget.MyTitleBar;
 
+import org.xutils.image.ImageOptions;
+import org.xutils.x;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -231,6 +234,7 @@ public class Activity_Mobile extends Activity {
                 }
                 Intent mobileOkIntent = new Intent(this, Activity_Call_Service.class);
                 mobileOkIntent.putExtra("imgpath", photoPath);
+                mobileOkIntent.putExtra("order_type",1+"");
                 mobileOkIntent.putExtra("pinpai", pinpai);
                 mobileOkIntent.putExtra("xinghao", xinghao);
                 mobileOkIntent.putExtra("guzhang", guzhang);
@@ -245,14 +249,15 @@ public class Activity_Mobile extends Activity {
                             if (resultList != null) {
                                 for (final PhotoInfo info : resultList) {
                                     photoPath = info.getPhotoPath();
+                                    ImageOptions options = new ImageOptions.Builder().build();
+                                    x.image().bind(mobileImg,photoPath, options);
+                                    mobileJiahao.setVisibility(View.INVISIBLE);
                                 }
                             }
                         }
                     }
-
                     @Override   //失败
                     public void onHanlderFailure(int requestCode, String errorMsg) {
-
                     }
                 });
                 break;

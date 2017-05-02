@@ -197,14 +197,16 @@
             android:paddingRight="20dp"
             />
     </LinearLayout>
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#fff"
-        android:text="请对您家电的故障进行简单的描述"
+        android:hint="请对您家电的故障进行简单的描述"
         android:gravity="center_vertical"
         android:paddingLeft="20dp"
         android:textSize="19sp"
+        android:id="@+id/appliance_et_xiangqing"
+        android:textColorHint="#c9c9c9"
         android:textColor="#c9c9c9"
         android:layout_marginTop="2dp"
         />
