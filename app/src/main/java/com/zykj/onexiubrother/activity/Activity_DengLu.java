@@ -77,7 +77,6 @@ public class Activity_DengLu extends Activity {
                             UserBean userBean = JSON.parseObject(Y.getData(result), UserBean.class);
                             Y.USER=userBean;
                             Y.TOKEN=userBean.getToken();
-
                             Intent dengLuIntent = new Intent(Activity_DengLu.this,MainActivity.class);
                             startActivity(dengLuIntent);
                         }else {
