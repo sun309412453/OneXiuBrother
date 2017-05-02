@@ -1,10 +1,12 @@
 package com.zykj.onexiubrother.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by zykj on 2017/4/27.
  */
 
-public class AddressBean {
+public class AddressBean implements Serializable {
 
     /**
      * region : 南岗区

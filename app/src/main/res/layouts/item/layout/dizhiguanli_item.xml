@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/dizhi_item_ll"
     android:background="#fff"
     >
 <LinearLayout
@@ -90,6 +91,8 @@
         android:layout_height="25dp"
         android:layout_marginRight="5dp"
         android:text="编辑"
+        android:focusable="false"
+        android:gravity="center"
         android:id="@+id/dizhibianji"
         android:textColor="#6b6b6b"
         android:background="@mipmap/dizhianniu"
@@ -99,7 +102,9 @@
         android:layout_marginLeft="5dp"
         android:layout_weight="1"
         android:background="@mipmap/dizhianniu"
+        android:focusable="false"
         android:text="删除"
+        android:gravity="center"
         android:id="@+id/dizhishanchu"
         android:textColor="#6b6b6b"
         android:layout_height="25dp" />

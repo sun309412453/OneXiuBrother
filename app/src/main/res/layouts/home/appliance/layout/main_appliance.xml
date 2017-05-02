@@ -225,12 +225,14 @@
             <ImageView
                 android:layout_width="57dp"
                 android:layout_height="57dp"
+                android:id="@+id/appliance_img"
                 android:layout_gravity="center"
                 android:src="@mipmap/yuan_bai"
                 />
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:id="@+id/appliance_jiahao"
                 android:layout_gravity="center"
                 android:src="@mipmap/jia"
                 />

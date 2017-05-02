@@ -120,7 +120,13 @@ public class Adapter_DiZhiGuanLi extends RecyclerView.Adapter<Adapter_DiZhiGuanL
                 });
             }
         });
-
+        //Item点击事件
+        holder.dizhi_item_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                diZhiItem.ItemClick(v,position);
+            }
+        });
     }
     public void setBianJi(DiZhiBianJi bianJi) {
         this.bianJi = bianJi;
@@ -144,14 +150,30 @@ public class Adapter_DiZhiGuanLi extends RecyclerView.Adapter<Adapter_DiZhiGuanL
     public interface DiZhiDianJi {
         void Click(View v);
     }
-
     private DiZhiDianJi dianJi;
+    public interface DiZhi_item{
+        void ItemClick(View view,int pos);
+    }
+    private DiZhi_item diZhiItem;
+
+    public List<AddressBean> getList() {
+        return list;
+    }
+
+    public void setList(List<AddressBean> list) {
+        this.list = list;
+    }
+
+    public void setDiZhiItem(DiZhi_item diZhiItem) {
+
+        this.diZhiItem = diZhiItem;
+    }
 
     public class DiZhiHolder extends RecyclerView.ViewHolder {
         TextView name_item, phone_item, add_item ,tv_moren;
-        LinearLayout dizhixuanze_item;
-        Button dizhibianji, dizhishanchu;
+        LinearLayout dizhixuanze_item ,dizhi_item_ll;
         ImageView iv_moren;
+        Button dizhibianji, dizhishanchu;
         public DiZhiHolder(View itemView) {
             super(itemView);
             name_item = (TextView) itemView.findViewById(R.id.name_item);
@@ -162,6 +184,7 @@ public class Adapter_DiZhiGuanLi extends RecyclerView.Adapter<Adapter_DiZhiGuanL
             dizhishanchu = (Button) itemView.findViewById(R.id.dizhishanchu);
             tv_moren = (TextView) itemView.findViewById(R.id.item_tv_moren);
             iv_moren = (ImageView) itemView.findViewById(R.id.iv_moren);
+            dizhi_item_ll = (LinearLayout) itemView.findViewById(R.id.dizhi_item_ll);
         }
     }
 }

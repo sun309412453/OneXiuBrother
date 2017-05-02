@@ -79,8 +79,17 @@ public class Activity_Address extends Activity {
                 StyledDialog.dismissLoading();
                 if (Y.getRespCode(result)){
                     list = JSON.parseArray(Y.getData(result), AddressBean.class);
-                    Adapter_DiZhiGuanLi guanLi = new Adapter_DiZhiGuanLi(list, Activity_Address.this);
-
+                    final Adapter_DiZhiGuanLi guanLi = new Adapter_DiZhiGuanLi(list, Activity_Address.this);
+                    guanLi.setDiZhiItem(new Adapter_DiZhiGuanLi.DiZhi_item() {
+                        @Override
+                        public void ItemClick(View view, int pos) {
+                            AddressBean addressBean = guanLi.getList().get(pos);//把当前位置的对象信息获取出来
+                            Intent intent = new Intent();
+                            intent.putExtra("addbean",addressBean);//把信息传到发布页面
+                            setResult(2,intent);
+                            finish();
+                        }
+                    });
                     addrv.setItemAnimator(new DefaultItemAnimator());
                     addrv.setLayoutManager(new LinearLayoutManager(Activity_Address.this, LinearLayoutManager.VERTICAL, false));
                     addrv.addItemDecoration(new DividerItemDecoration(Activity_Address.this, DividerItemDecoration.VERTICAL));

@@ -149,17 +149,30 @@
             android:paddingRight="20dp"
             />
     </LinearLayout>
-    <TextView
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/itemline"
+        android:scaleType="fitXY"
+        />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    >
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#fff"
-        android:text="请对您手机的故障进行简单的描述"
+        android:background="@null"
+        android:hint="请对您手机的故障进行简单的描述"
         android:gravity="center_vertical"
         android:paddingLeft="20dp"
+        android:id="@+id/mobile_et_miaoshu"
         android:textSize="19sp"
-        android:textColor="#c9c9c9"
+        android:textColorHint="#c9c9c9"
         android:layout_marginTop="2dp"
         />
+</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
@@ -177,12 +190,14 @@
             <ImageView
                 android:layout_width="57dp"
                 android:layout_height="57dp"
+                android:id="@+id/mobile_img"
                 android:layout_gravity="center"
                 android:src="@mipmap/yuan_bai"
                 />
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:id="@+id/mobile_jiahao"
                 android:layout_gravity="center"
                 android:src="@mipmap/jia"
                 />

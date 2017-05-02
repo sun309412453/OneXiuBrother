@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:background="#fff"
+        android:id="@+id/hujiaofuwu_shijian"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         >
@@ -41,6 +42,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="请选择您的服务时间"
+            android:id="@+id/hujiaofuwu_tv_shijian"
             android:layout_marginLeft="20dp"
             android:gravity="center_vertical"
             android:textSize="19sp"
@@ -80,6 +82,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="请选择您的服务地址"
+            android:id="@+id/hujiaofuwu_tv_dizhi"
             android:layout_marginLeft="20dp"
             android:gravity="center_vertical"
             android:textSize="19sp"
