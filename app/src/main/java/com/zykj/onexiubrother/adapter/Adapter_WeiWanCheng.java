@@ -9,15 +9,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hss01248.dialog.StyledDialog;
 import com.zykj.onexiubrother.R;
 import com.zykj.onexiubrother.bean.WeiWanChengBean;
+import com.zykj.onexiubrother.utils.Y;
 import com.zykj.onexiubrother.utils.YURL;
 
 import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zykj on 2017/4/13.
@@ -40,9 +44,8 @@ public class Adapter_WeiWanCheng extends RecyclerView.Adapter<Adapter_WeiWanChen
     }
 
     @Override
-    public void onBindViewHolder(WeiWanChengHolder holder, int position) {
-        WeiWanChengBean weiWanChengBean = list.get(position);
-        holder.zhuangtai.setText("处理中...");
+    public void onBindViewHolder(WeiWanChengHolder holder, final int position) {
+        final WeiWanChengBean weiWanChengBean = list.get(position);
         holder.date.setText(weiWanChengBean.getAddtime());
         holder.add_item.setText(weiWanChengBean.getService_address());
         holder.chakan.setOnClickListener(new View.OnClickListener() {
@@ -51,8 +54,29 @@ public class Adapter_WeiWanCheng extends RecyclerView.Adapter<Adapter_WeiWanChen
                 dianJi.OnClick(view);
             }
         });
+        //删除订单
+        holder.shanchu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Map map = new HashMap();
+                map.put("custom_id", Y.USER.getUser_id()+"");
+                map.put("id",weiWanChengBean.getId()+"");
+                Y.get(YURL.DEL_ORDER, map, new Y.MyCommonCall<String>() {
+                    @Override
+                    public void onSuccess(String result) {
+                        StyledDialog.dismissLoading();
+                        if (Y.getRespCode(result)){
+                            Y.t("删除成功");
+                            list.remove(position);
+                            notifyDataSetChanged();//刷新列表
+                        }
+                    }
+                });
+            }
+        });
         x.image().bind(holder.item_iv_img, YURL.HOST+weiWanChengBean.getImage1());
         int order_type = weiWanChengBean.getOrder_type();
+        //判断类型状态
         switch (order_type){
             case 1:
                 holder.zhonglei.setText("手机");
@@ -65,6 +89,28 @@ public class Adapter_WeiWanCheng extends RecyclerView.Adapter<Adapter_WeiWanChen
                 break;
 
         }
+        //订单状态
+        int order_state = weiWanChengBean.getOrder_state();
+        switch (order_state){
+            case 1:
+                holder.zhuangtai.setText("刚发布的订单");
+                break;
+            case 2:
+                holder.zhuangtai.setText("已完成");
+                break;
+            case 3:
+                holder.zhuangtai.setText("已取消");
+                break;
+            case 4:
+                holder.zhuangtai.setText("确认订单");
+                break;
+            case 5:
+                holder.zhuangtai.setText("已支付");
+                break;
+            case 6:
+                holder.zhuangtai.setText("已接单");
+                break;
+        }
     }
 
     @Override
@@ -74,7 +120,7 @@ public class Adapter_WeiWanCheng extends RecyclerView.Adapter<Adapter_WeiWanChen
 
     public class WeiWanChengHolder extends RecyclerView.ViewHolder {
         TextView zhonglei, date, zhuangtai, add_item;
-        Button chakan;
+        Button chakan,shanchu;
         ImageView item_iv_img;
         public WeiWanChengHolder(View itemView) {
             super(itemView);
@@ -84,6 +130,7 @@ public class Adapter_WeiWanCheng extends RecyclerView.Adapter<Adapter_WeiWanChen
             add_item = (TextView) itemView.findViewById(R.id.add_item);
             chakan = (Button) itemView.findViewById(R.id.chakan);
             item_iv_img= (ImageView) itemView.findViewById(R.id.item_iv_img);
+            shanchu = (Button) itemView.findViewById(R.id.item_bt_shanchu);
         }
     }
     private DianJi dianJi;

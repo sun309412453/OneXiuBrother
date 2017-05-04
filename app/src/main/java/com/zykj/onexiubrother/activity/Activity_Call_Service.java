@@ -1,6 +1,8 @@
 package com.zykj.onexiubrother.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -120,8 +122,19 @@ public class Activity_Call_Service extends Activity {
                             StyledDialog.dismissLoading();
                             if (Y.getRespCode(result)){
                                 Y.t("手机下单成功");
-                                Intent intent1 = new Intent(Activity_Call_Service.this,MainActivity.class);
-                                startActivity(intent1);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(Activity_Call_Service.this);
+                                View view1 = View.inflate(Activity_Call_Service.this,R.layout.dialog_fabu,null);
+                                builder.create();
+                                builder.setTitle("下单状态");
+                                builder.setView(view1);
+                                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent1 = new Intent(Activity_Call_Service.this,MainActivity.class);
+                                        startActivity(intent1);
+                                    }
+                                });
+                                builder.show();
                             }else {
                                 Y.t("手机下单失败");
                             }

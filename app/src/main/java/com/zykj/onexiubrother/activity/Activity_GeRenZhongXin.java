@@ -75,6 +75,9 @@ public class Activity_GeRenZhongXin extends Activity {
             x.image().bind(gerenIvShe, YURL.HOST + Y.USER.getIcon(), options);
             wodeziliaoTvXinxi.setText("");
         }
+        if (!TextUtils.isEmpty(Y.USER.getUsername())) {
+            name.setText(Y.USER.getUsername());
+        }
     }
 
     @Override

@@ -61,5 +61,7 @@ public class YURL {
     public static final String ADD_ORDER = HOST + "addOrder";
     //查找订单
     public static final String FIND_ORDER_BY_STATE = HOST + "findOrderByState";
+    //删除订单
+    public static final String DEL_ORDER = HOST + "delOrder";
 
 }
