@@ -11,13 +11,20 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.hss01248.dialog.StyledDialog;
 import com.zykj.onexiubrother.R;
 import com.zykj.onexiubrother.adapter.Adapter_WeiWanCheng;
 import com.zykj.onexiubrother.bean.WeiWanChengBean;
+import com.zykj.onexiubrother.utils.Y;
+import com.zykj.onexiubrother.utils.YURL;
 import com.zykj.onexiubrother.widget.MyTitleBar;
+
+import org.xutils.http.RequestParams;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -53,23 +60,32 @@ public class Activity_WeiWanCheng extends Activity {
         yiquxiaoLine.setVisibility(View.INVISIBLE);
         yiwanchengLine.setVisibility(View.INVISIBLE);
         list = new ArrayList<WeiWanChengBean>();
-        WeiWanChengBean bean = new WeiWanChengBean();
-        bean.setAdd("哈尔滨卓亚科技有限公司");
-        bean.setDate("2017-04-14 10:00");
-        bean.setZhonglei("手机");
-        bean.setZhuangtai("处理中…");
-        list.add(bean);
-        Adapter_WeiWanCheng weiWanCheng = new Adapter_WeiWanCheng(list,this);
-        weiWanCheng.setDianJi(new Adapter_WeiWanCheng.DianJi() {
+        RequestParams params = new RequestParams(YURL.FIND_ORDER_BY_STATE);
+        params.addBodyParameter("custom_id",Y.USER.getUser_id()+"");
+        params.addBodyParameter("order_state",1+"");
+        Y.post(params, new Y.MyCommonCall<String>() {
             @Override
-            public void OnClick(View v) {
-                Intent xiangQingIntent = new Intent(Activity_WeiWanCheng.this,Activity_WeiWanCheng_XiangQing.class);
-                startActivity(xiangQingIntent);
+            public void onSuccess(String result) {
+                StyledDialog.dismissLoading();
+                if (Y.getRespCode(result)){
+                    Y.t("成功");
+                    Y.i(Y.getData(result));
+                    list = JSON.parseArray(Y.getData(result), WeiWanChengBean.class);
+
+                    Adapter_WeiWanCheng weiWanCheng = new Adapter_WeiWanCheng(list,Activity_WeiWanCheng.this);
+                    weiWanCheng.setDianJi(new Adapter_WeiWanCheng.DianJi() {
+                        @Override
+                        public void OnClick(View v) {
+                            Intent xiangQingIntent = new Intent(Activity_WeiWanCheng.this,Activity_WeiWanCheng_XiangQing.class);
+                            startActivity(xiangQingIntent);
+                        }
+                    });
+                    dingdanrv.setItemAnimator(new DefaultItemAnimator());
+                    dingdanrv.setLayoutManager(new LinearLayoutManager(Activity_WeiWanCheng.this,LinearLayoutManager.VERTICAL,false));
+                    dingdanrv.addItemDecoration(new DividerItemDecoration(Activity_WeiWanCheng.this,DividerItemDecoration.VERTICAL));
+                    dingdanrv.setAdapter(weiWanCheng);
+                }
             }
         });
-        dingdanrv.setItemAnimator(new DefaultItemAnimator());
-        dingdanrv.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        dingdanrv.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
-        dingdanrv.setAdapter(weiWanCheng);
     }
 }

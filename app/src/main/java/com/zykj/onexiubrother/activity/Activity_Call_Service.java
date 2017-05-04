@@ -73,7 +73,7 @@ public class Activity_Call_Service extends Activity {
                 TimePickerView pvTime = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
                     @Override
                     public void onTimeSelect(Date date, View v) {//选中事件回调
-                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd,HH:mm:ss");//利用占位符来格式化时间
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd,HH:mm");//利用占位符来格式化时间
                         hujiaofuwuTvShijian.setText(format.format(date).toString());
                     }
                 }).setType(TimePickerView.Type.ALL)//默认全部显示
@@ -113,7 +113,7 @@ public class Activity_Call_Service extends Activity {
                     params.addBodyParameter("custom_name",addbean.getName());
                     params.addBodyParameter("custom_id",Y.USER.getUser_id()+"");
                     params.addBodyParameter("address_id",addbean.getAddress_id()+"");
-                    Y.post(params, new Y.MyCommonCall<String>() {
+                    Y.postFile(params, new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
                             //关闭对话框
@@ -143,7 +143,7 @@ public class Activity_Call_Service extends Activity {
                     params.addBodyParameter("custom_name",addbean.getName());
                     params.addBodyParameter("custom_id",Y.USER.getUser_id()+"");
                     params.addBodyParameter("address_id",addbean.getAddress_id()+"");
-                    Y.post(params, new Y.MyCommonCall<String>() {
+                    Y.postFile(params, new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
                             //关闭对话框
@@ -174,7 +174,7 @@ public class Activity_Call_Service extends Activity {
                     params.addBodyParameter("custom_name",addbean.getName());
                     params.addBodyParameter("custom_id",Y.USER.getUser_id()+"");
                     params.addBodyParameter("address_id",addbean.getAddress_id()+"");
-                    Y.post(params, new Y.MyCommonCall<String>() {
+                    Y.postFile(params, new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
                             //关闭对话框

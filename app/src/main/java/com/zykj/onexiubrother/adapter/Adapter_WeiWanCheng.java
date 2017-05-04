@@ -6,11 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zykj.onexiubrother.R;
 import com.zykj.onexiubrother.bean.WeiWanChengBean;
+import com.zykj.onexiubrother.utils.YURL;
 
+import org.xutils.image.ImageOptions;
+import org.xutils.x;
+
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -35,16 +41,31 @@ public class Adapter_WeiWanCheng extends RecyclerView.Adapter<Adapter_WeiWanChen
 
     @Override
     public void onBindViewHolder(WeiWanChengHolder holder, int position) {
-        holder.zhonglei.setText(list.get(position).getZhonglei());
-        holder.zhuangtai.setText(list.get(position).getZhuangtai());
-        holder.date.setText(list.get(position).getDate());
-        holder.add_item.setText(list.get(position).getAdd());
+        holder.zhuangtai.setText("处理中...");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd,HH:mm");//利用占位符来格式化时间
+        holder.date.setText(format.format(list.get(position).getService_time()).toString());
+        holder.add_item.setText(list.get(position).getCity_name());
         holder.chakan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dianJi.OnClick(view);
             }
         });
+        WeiWanChengBean weiWanChengBean = list.get(position);
+        x.image().bind(holder.item_iv_img, YURL.HOST+weiWanChengBean.getImage1());
+        int order_type = weiWanChengBean.getOrder_type();
+        switch (order_type){
+            case 1:
+                holder.zhonglei.setText("手机");
+                break;
+            case 2:
+                holder.zhonglei.setText("电脑");
+                break;
+            case 3:
+                holder.zhonglei.setText("家电");
+                break;
+
+        }
     }
 
     @Override
@@ -55,7 +76,7 @@ public class Adapter_WeiWanCheng extends RecyclerView.Adapter<Adapter_WeiWanChen
     public class WeiWanChengHolder extends RecyclerView.ViewHolder {
         TextView zhonglei, date, zhuangtai, add_item;
         Button chakan;
-
+        ImageView item_iv_img;
         public WeiWanChengHolder(View itemView) {
             super(itemView);
             zhonglei = (TextView) itemView.findViewById(R.id.zhonglei);
@@ -63,6 +84,7 @@ public class Adapter_WeiWanCheng extends RecyclerView.Adapter<Adapter_WeiWanChen
             zhuangtai = (TextView) itemView.findViewById(R.id.zhuangtai);
             add_item = (TextView) itemView.findViewById(R.id.add_item);
             chakan = (Button) itemView.findViewById(R.id.chakan);
+            item_iv_img= (ImageView) itemView.findViewById(R.id.item_iv_img);
         }
     }
     private DianJi dianJi;

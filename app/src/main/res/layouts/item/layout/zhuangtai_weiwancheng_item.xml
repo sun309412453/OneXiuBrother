@@ -120,6 +120,7 @@
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:src="@mipmap/phone"
+            android:id="@+id/item_iv_img"
             android:layout_marginRight="10dp"
             />
     </LinearLayout>

@@ -52,9 +52,9 @@ public class Activity_YiQuXiao extends Activity {
         yiwanchengLine.setVisibility(View.INVISIBLE);
         list = new ArrayList<WeiWanChengBean>();
         WeiWanChengBean bean = new WeiWanChengBean();
-        bean.setAdd("哈尔滨卓亚科技有限公司");
-        bean.setDate("2017-04-14 10:00");
-        bean.setZhonglei("电脑");
+//        bean.setAdd("哈尔滨卓亚科技有限公司");
+//        bean.setDate("2017-04-14 10:00");
+//        bean.setZhonglei("电脑");
         list.add(bean);
         Adapter_WeiWanCheng weiWanCheng = new Adapter_WeiWanCheng(list,this);
         weiWanCheng.setDianJi(new Adapter_WeiWanCheng.DianJi() {
