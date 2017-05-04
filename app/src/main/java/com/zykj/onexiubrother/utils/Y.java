@@ -154,7 +154,6 @@ public class Y {
             i(url);
         //请求的对象
         RequestParams rp = new RequestParams(url);
-
         //检测外部是否传入了参数
         if (params != null) {
             //把参数取出来这是到rp

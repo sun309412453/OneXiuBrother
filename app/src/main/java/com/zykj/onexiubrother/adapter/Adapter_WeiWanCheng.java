@@ -41,17 +41,16 @@ public class Adapter_WeiWanCheng extends RecyclerView.Adapter<Adapter_WeiWanChen
 
     @Override
     public void onBindViewHolder(WeiWanChengHolder holder, int position) {
+        WeiWanChengBean weiWanChengBean = list.get(position);
         holder.zhuangtai.setText("处理中...");
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd,HH:mm");//利用占位符来格式化时间
-        holder.date.setText(format.format(list.get(position).getService_time()).toString());
-        holder.add_item.setText(list.get(position).getCity_name());
+        holder.date.setText(weiWanChengBean.getAddtime());
+        holder.add_item.setText(weiWanChengBean.getService_address());
         holder.chakan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dianJi.OnClick(view);
             }
         });
-        WeiWanChengBean weiWanChengBean = list.get(position);
         x.image().bind(holder.item_iv_img, YURL.HOST+weiWanChengBean.getImage1());
         int order_type = weiWanChengBean.getOrder_type();
         switch (order_type){

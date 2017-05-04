@@ -58,7 +58,8 @@
             >
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 >
@@ -66,18 +67,18 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@mipmap/naoling"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="下单时间"
                     android:textColor="#bababa"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="5dp"
                     />
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="2016-07-01  10:00"
                     android:textColor="#949494"
@@ -97,18 +98,18 @@
                     android:layout_width="17dp"
                     android:layout_height="17dp"
                     android:src="@mipmap/dingwei"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="10dp"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="下单地址"
                     android:textColor="#bababa"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="5dp"
                     />
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/add_item"
                     android:text="黑龙江省哈尔滨市卓亚科技有限公司"
