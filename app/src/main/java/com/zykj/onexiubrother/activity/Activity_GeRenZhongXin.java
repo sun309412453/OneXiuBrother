@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hss01248.dialog.StyledDialog;
 import com.zykj.onexiubrother.R;
@@ -141,6 +142,7 @@ public class Activity_GeRenZhongXin extends Activity {
                 startActivity(diZhiIntent);
                 break;
             case R.id.wodeqianbao:
+             Y.t("尚未开放");
                 break;
             case R.id.renzhengxinxi:
                 Intent intentRenZheng = new Intent(Activity_GeRenZhongXin.this, Activity_RenZhengXinXi.class);
@@ -148,10 +150,16 @@ public class Activity_GeRenZhongXin extends Activity {
 
                 break;
             case R.id.pingtaifuwu:
+                Intent intent = new Intent(this,Activity_PingTaiFuWu.class);
+                startActivity(intent);
                 break;
             case R.id.guanyuwomen:
+                Intent intentGuanYuWoMen = new Intent(this,Activity_GuanYuWoMen.class);
+                startActivity(intentGuanYuWoMen);
                 break;
             case R.id.shezhi:
+                Intent intentSetting = new Intent(this,Activity_SheZhi.class);
+                startActivity(intentSetting);
                 break;
             case R.id.geren_iv_she:
                 GalleryFinal.openGallerySingle(REQUEST_CODE_GALLERY, new GalleryFinal.OnHanlderResultCallback() {
@@ -186,10 +194,8 @@ public class Activity_GeRenZhongXin extends Activity {
                             }
                         }
                     }
-
                     @Override   //失败
                     public void onHanlderFailure(int requestCode, String errorMsg) {
-
                     }
                 });
                 break;
