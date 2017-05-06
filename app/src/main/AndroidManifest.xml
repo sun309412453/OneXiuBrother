@@ -57,6 +57,9 @@
         <activity android:name=".activity.Activity_XiuGaiMiMa"/>
         <activity android:name=".activity.Activity_GuanYuWoMen"/>
         <activity android:name=".activity.Activity_PingTaiFuWu"/>
+        <activity android:name=".activity.Activity_YiXiuGeZiXun"/>
+        <activity android:name=".activity.Activity_XiaoXiTongZhi"/>
+        <activity android:name=".activity.Activity_ChangJianWenTi"/>
         <activity android:name=".activity.Activity_DengLu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

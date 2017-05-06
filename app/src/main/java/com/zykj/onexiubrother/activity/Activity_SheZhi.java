@@ -42,10 +42,12 @@ public class Activity_SheZhi extends Activity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.shezhi_xiugai:
-                Intent intent = new Intent(this,Activity_XiuGaiMiMa.class);
-                startActivity(intent);
+                Intent intentXiuGai = new Intent(this,Activity_XiuGaiMiMa.class);
+                startActivity(intentXiuGai);
                 break;
             case R.id.shezhi_tongzhi:
+                Intent intentTongZhi = new Intent(this,Activity_XiaoXiTongZhi.class);
+                startActivity(intentTongZhi);
                 break;
         }
     }

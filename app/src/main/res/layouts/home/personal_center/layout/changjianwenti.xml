@@ -32,7 +32,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/changjianwenti"
         android:gravity="center_vertical"
         android:background="#fff"
         android:layout_marginTop="5dp"
