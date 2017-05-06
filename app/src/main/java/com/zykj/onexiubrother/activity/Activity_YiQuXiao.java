@@ -27,6 +27,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2017/4/14.
@@ -85,5 +86,22 @@ public class Activity_YiQuXiao extends Activity {
                 }
             }
         });
+    }
+    @OnClick({R.id.btweiwancheng, R.id.btyiwancheng, R.id.btyiquxiao})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btweiwancheng:
+                Intent intentwei = new Intent(this,Activity_WeiWanCheng.class);
+                startActivity(intentwei);
+                break;
+            case R.id.btyiwancheng:
+                Intent intentyi = new Intent(this,Activity_YiWanCheng.class);
+                startActivity(intentyi);
+                break;
+            case R.id.btyiquxiao:
+                Intent intent = new Intent(this,Activity_YiQuXiao.class);
+                startActivity(intent);
+                break;
+        }
     }
 }
