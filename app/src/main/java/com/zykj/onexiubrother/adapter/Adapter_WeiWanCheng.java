@@ -30,10 +30,12 @@ import java.util.Map;
 public class Adapter_WeiWanCheng extends RecyclerView.Adapter<Adapter_WeiWanCheng.WeiWanChengHolder> {
     private List<WeiWanChengBean> list;
     private Context context;
+    private int Index = -1;
 
-    public Adapter_WeiWanCheng(List<WeiWanChengBean> list, Context context) {
+    public Adapter_WeiWanCheng(List<WeiWanChengBean> list, Context context, int i) {
         this.list = list;
         this.context = context;
+        this.Index = i;
     }
 
     @Override
@@ -44,40 +46,62 @@ public class Adapter_WeiWanCheng extends RecyclerView.Adapter<Adapter_WeiWanChen
     }
 
     @Override
-    public void onBindViewHolder(WeiWanChengHolder holder, final int position) {
+    public void onBindViewHolder(final WeiWanChengHolder holder, final int position) {
         final WeiWanChengBean weiWanChengBean = list.get(position);
         holder.date.setText(weiWanChengBean.getAddtime());
         holder.add_item.setText(weiWanChengBean.getService_address());
+        if (Index == 0) {
+            holder.shanchu.setText("取消订单");
+        } else if (Index == 1) {
+            holder.shanchu.setText("删除订单");
+        }
         holder.chakan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dianJi.OnClick(v,position);
+                dianJi.OnClick(v, position);
             }
         });
         //删除订单
+
         holder.shanchu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Map map = new HashMap();
-                map.put("custom_id", Y.USER.getUser_id()+"");
-                map.put("id",weiWanChengBean.getId()+"");
-                Y.get(YURL.DEL_ORDER, map, new Y.MyCommonCall<String>() {
-                    @Override
-                    public void onSuccess(String result) {
-                        StyledDialog.dismissLoading();
-                        if (Y.getRespCode(result)){
-                            Y.t("删除成功");
-                            list.remove(position);
-                            notifyDataSetChanged();//刷新列表
+                map.put("custom_id", Y.USER.getUser_id() + "");
+                map.put("id", weiWanChengBean.getId() + "");
+                if (Index == 0) {
+                    Y.get(YURL.CANCEL_ORDER, map, new Y.MyCommonCall<String>() {
+                        @Override
+                        public void onSuccess(String result) {
+                            StyledDialog.dismissLoading();
+                            if (Y.getRespCode(result)) {
+                                Y.t("取消订单成功");
+                                list.remove(position);
+                                notifyDataSetChanged();//刷新列表
+
+                            }
                         }
-                    }
-                });
+                    });
+                } else if (Index == 1) {
+                    Y.get(YURL.DEL_ORDER, map, new Y.MyCommonCall<String>() {
+                        @Override
+                        public void onSuccess(String result) {
+                            StyledDialog.dismissLoading();
+                            if (Y.getRespCode(result)) {
+                                Y.t("删除订单成功");
+                                list.remove(position);
+                                notifyDataSetChanged();//刷新列表
+                            }
+                        }
+                    });
+                }
+
             }
         });
-        x.image().bind(holder.item_iv_img, YURL.HOST+weiWanChengBean.getImage1());
+        x.image().bind(holder.item_iv_img, YURL.HOST + weiWanChengBean.getImage1());
         int order_type = weiWanChengBean.getOrder_type();
         //判断类型状态
-        switch (order_type){
+        switch (order_type) {
             case 1:
                 holder.zhonglei.setText("手机");
                 break;
@@ -91,7 +115,7 @@ public class Adapter_WeiWanCheng extends RecyclerView.Adapter<Adapter_WeiWanChen
         }
         //订单状态
         int order_state = weiWanChengBean.getOrder_state();
-        switch (order_state){
+        switch (order_state) {
             case 1:
                 holder.zhuangtai.setText("刚发布的订单");
                 break;
@@ -120,8 +144,9 @@ public class Adapter_WeiWanCheng extends RecyclerView.Adapter<Adapter_WeiWanChen
 
     public class WeiWanChengHolder extends RecyclerView.ViewHolder {
         TextView zhonglei, date, zhuangtai, add_item;
-        Button chakan,shanchu;
+        Button chakan, shanchu;
         ImageView item_iv_img;
+
         public WeiWanChengHolder(View itemView) {
             super(itemView);
             zhonglei = (TextView) itemView.findViewById(R.id.zhonglei);
@@ -129,17 +154,18 @@ public class Adapter_WeiWanCheng extends RecyclerView.Adapter<Adapter_WeiWanChen
             zhuangtai = (TextView) itemView.findViewById(R.id.zhuangtai);
             add_item = (TextView) itemView.findViewById(R.id.add_item);
             chakan = (Button) itemView.findViewById(R.id.chakan);
-            item_iv_img= (ImageView) itemView.findViewById(R.id.item_iv_img);
+            item_iv_img = (ImageView) itemView.findViewById(R.id.item_iv_img);
             shanchu = (Button) itemView.findViewById(R.id.item_bt_shanchu);
         }
     }
+
     private DianJi dianJi;
 
     public void setDianJi(DianJi dianJi) {
         this.dianJi = dianJi;
     }
 
-    public interface DianJi{
-        void OnClick(View v,int pos);
+    public interface DianJi {
+        void OnClick(View v, int pos);
     }
 }

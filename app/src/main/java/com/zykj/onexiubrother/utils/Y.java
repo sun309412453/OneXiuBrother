@@ -32,7 +32,7 @@ public class Y {
 
     public static boolean isLog = true; //控制日志打印的开关
 
-    public static UserBean USER;//保存所有User
+    public static UserBean USER= new UserBean();//保存所有User
     public static String TOKEN;
     public static AddressBean ADDRESS= new AddressBean();
     //手机正则表达式

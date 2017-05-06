@@ -41,6 +41,8 @@ public class Activity_Address extends Activity {
     @Bind(R.id.addrv)
     RecyclerView addrv;
     private List<AddressBean> list;
+    private AddressBean addressBean;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,9 +85,10 @@ public class Activity_Address extends Activity {
                     guanLi.setDiZhiItem(new Adapter_DiZhiGuanLi.DiZhi_item() {
                         @Override
                         public void ItemClick(View view, int pos) {
-                            AddressBean addressBean = guanLi.getList().get(pos);//把当前位置的对象信息获取出来
+                            //把当前位置的对象信息获取出来
+                            addressBean = guanLi.getList().get(pos);
                             Intent intent = new Intent();
-                            intent.putExtra("addbean",addressBean);//把信息传到发布页面
+                            intent.putExtra("addbean", addressBean);//把信息传到发布页面
                             setResult(2,intent);
                             finish();
                         }

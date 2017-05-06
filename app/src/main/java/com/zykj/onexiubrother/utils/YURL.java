@@ -10,8 +10,8 @@ public class YURL {
 
     // 服务器地址
     public static final String BASE_HOST = "http://221.207.184.124:7071/";
-
-    //http://221.207.184.124:7071/yxg/finishOrder?order_id
+//    http://221.207.184.124:7071/yxg/robOrder?order_id=345&engineer_id=20
+    //http://221.207.184.124:7071/yxg/finishOrder?order_id=345&engineer_id=20
     //项目名称
     public static final String HOST = BASE_HOST + "yxg/";
 
@@ -67,5 +67,7 @@ public class YURL {
     public static final String FIND_UN_FINISH_COUNT = HOST + "findUnFinishCount";
     //完成订单
     public static final String FINISH_ORDER = HOST + "finishOrder";
+    //取消订单
+    public static final String CANCEL_ORDER = HOST + "cancelOrder";
 
 }

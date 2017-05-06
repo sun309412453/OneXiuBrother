@@ -70,7 +70,7 @@ public class Activity_WeiWanCheng extends Activity {
                 if (Y.getRespCode(result)){
                     Y.i(Y.getData(result));
                     list = JSON.parseArray(Y.getData(result), WeiWanChengBean.class);
-                    Adapter_WeiWanCheng weiWanCheng = new Adapter_WeiWanCheng(list,Activity_WeiWanCheng.this);
+                    Adapter_WeiWanCheng weiWanCheng = new Adapter_WeiWanCheng(list,Activity_WeiWanCheng.this,0);
 
                     weiWanCheng.setDianJi(new Adapter_WeiWanCheng.DianJi() {
                         @Override
