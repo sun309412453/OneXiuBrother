@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -121,20 +122,13 @@ public class Activity_Call_Service extends Activity {
                             //关闭对话框
                             StyledDialog.dismissLoading();
                             if (Y.getRespCode(result)){
-                                Y.t("手机下单成功");
-                                AlertDialog.Builder builder = new AlertDialog.Builder(Activity_Call_Service.this);
-                                View view1 = View.inflate(Activity_Call_Service.this,R.layout.dialog_fabu,null);
-                                builder.create();
-                                builder.setTitle("下单状态");
-                                builder.setView(view1);
-                                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                Snackbar.make(Activity_Call_Service.this.findViewById(android.R.id.content),"手机下单成功",Snackbar.LENGTH_SHORT).setAction("确定返回首页", new View.OnClickListener() {
                                     @Override
-                                    public void onClick(DialogInterface dialog, int which) {
+                                    public void onClick(View v) {
                                         Intent intent1 = new Intent(Activity_Call_Service.this,MainActivity.class);
                                         startActivity(intent1);
                                     }
-                                });
-                                builder.show();
+                                }).show();
                             }else {
                                 Y.t("手机下单失败");
                             }
@@ -162,9 +156,13 @@ public class Activity_Call_Service extends Activity {
                             //关闭对话框
                             StyledDialog.dismissLoading();
                             if (Y.getRespCode(result)){
-                                Y.t("电脑下单成功");
-
-
+                                Snackbar.make(Activity_Call_Service.this.findViewById(android.R.id.content),"电脑下单成功",Snackbar.LENGTH_SHORT).setAction("确定返回首页", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent intent2 = new Intent(Activity_Call_Service.this,MainActivity.class);
+                                        startActivity(intent2);
+                                    }
+                                }).show();
                             }else {
                                 Y.t("电脑下单失败");
                             }
@@ -193,21 +191,13 @@ public class Activity_Call_Service extends Activity {
                             //关闭对话框
                             StyledDialog.dismissLoading();
                             if (Y.getRespCode(result)){
-                                Y.t("家电下单成功");
-                                AlertDialog.Builder builder = new AlertDialog.Builder(Activity_Call_Service.this);
-                                View view1 = View.inflate(Activity_Call_Service.this,R.layout.dialog_fabu,null);
-                                builder.create();
-                                builder.setTitle("下单状态");
-                                builder.setView(view1);
-                                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                Snackbar.make(Activity_Call_Service.this.findViewById(android.R.id.content),"家电下单成功",Snackbar.LENGTH_SHORT).setAction("确定返回首页", new View.OnClickListener() {
                                     @Override
-                                    public void onClick(DialogInterface dialog, int which) {
+                                    public void onClick(View v) {
                                         Intent intent = new Intent(Activity_Call_Service.this,MainActivity.class);
                                         startActivity(intent);
                                     }
-                                });
-                                builder.show();
-
+                                }).show();
                             }else {
                                 Y.t("家电下单失败");
                             }
