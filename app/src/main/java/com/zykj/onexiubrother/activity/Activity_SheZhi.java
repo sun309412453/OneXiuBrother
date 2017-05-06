@@ -38,7 +38,7 @@ public class Activity_SheZhi extends Activity {
         });
     }
 
-    @OnClick({R.id.shezhi_xiugai, R.id.shezhi_tongzhi})
+    @OnClick({R.id.shezhi_xiugai, R.id.shezhi_tongzhi,R.id.tuichu})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.shezhi_xiugai:
@@ -48,6 +48,10 @@ public class Activity_SheZhi extends Activity {
             case R.id.shezhi_tongzhi:
                 Intent intentTongZhi = new Intent(this,Activity_XiaoXiTongZhi.class);
                 startActivity(intentTongZhi);
+                break;
+            case R.id.tuichu:
+                Intent intentTuiChu = new Intent(this,Activity_DengLu.class);
+                startActivity(intentTuiChu);
                 break;
         }
     }
