@@ -72,7 +72,7 @@ public class Activity_YiWanCheng extends Activity {
                     Adapter_WeiWanCheng yiwancheng = new Adapter_WeiWanCheng(list,Activity_YiWanCheng.this);
                     yiwancheng.setDianJi(new Adapter_WeiWanCheng.DianJi() {
                         @Override
-                        public void OnClick(View v) {
+                        public void OnClick(View v ,int pos) {
                             Intent xiangQingIntent = new Intent(Activity_YiWanCheng.this,Activity_YiWanCheng_XiangQing.class);
                             startActivity(xiangQingIntent);
                         }

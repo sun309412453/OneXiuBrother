@@ -63,5 +63,7 @@ public class YURL {
     public static final String FIND_ORDER_BY_STATE = HOST + "findOrderByState";
     //删除订单
     public static final String DEL_ORDER = HOST + "delOrder";
+    //未完成订单数量
+    public static final String FIND_UN_FINISH_COUNT = HOST + "findUnFinishCount";
 
 }

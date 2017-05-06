@@ -50,8 +50,8 @@ public class Adapter_WeiWanCheng extends RecyclerView.Adapter<Adapter_WeiWanChen
         holder.add_item.setText(weiWanChengBean.getService_address());
         holder.chakan.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                dianJi.OnClick(view);
+            public void onClick(View v) {
+                dianJi.OnClick(v,position);
             }
         });
         //删除订单
@@ -140,6 +140,6 @@ public class Adapter_WeiWanCheng extends RecyclerView.Adapter<Adapter_WeiWanChen
     }
 
     public interface DianJi{
-        void OnClick(View v);
+        void OnClick(View v,int pos);
     }
 }

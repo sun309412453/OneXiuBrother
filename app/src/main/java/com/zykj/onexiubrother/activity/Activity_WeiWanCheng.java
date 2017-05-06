@@ -71,10 +71,13 @@ public class Activity_WeiWanCheng extends Activity {
                     Y.i(Y.getData(result));
                     list = JSON.parseArray(Y.getData(result), WeiWanChengBean.class);
                     Adapter_WeiWanCheng weiWanCheng = new Adapter_WeiWanCheng(list,Activity_WeiWanCheng.this);
+
                     weiWanCheng.setDianJi(new Adapter_WeiWanCheng.DianJi() {
                         @Override
-                        public void OnClick(View v) {
+                        public void OnClick(View v, int pos) {
+                            WeiWanChengBean weiWanChengBean = list.get(pos);
                             Intent xiangQingIntent = new Intent(Activity_WeiWanCheng.this,Activity_WeiWanCheng_XiangQing.class);
+                            xiangQingIntent.putExtra("weiwancheng",weiWanChengBean);
                             startActivity(xiangQingIntent);
                         }
                     });

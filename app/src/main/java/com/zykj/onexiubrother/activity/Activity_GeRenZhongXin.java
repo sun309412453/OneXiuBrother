@@ -20,7 +20,9 @@ import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -66,6 +68,7 @@ public class Activity_GeRenZhongXin extends Activity {
     @Bind(R.id.wodeziliao_tv_xinxi)
     TextView wodeziliaoTvXinxi;
     private int REQUEST_CODE_GALLERY = 1;
+    private String data;
 
     protected void onResume() {
         super.onResume();
@@ -78,6 +81,22 @@ public class Activity_GeRenZhongXin extends Activity {
         if (!TextUtils.isEmpty(Y.USER.getUsername())) {
             name.setText(Y.USER.getUsername());
         }
+        Map<String,String> map = new HashMap<String, String>();
+        map.put("custom_id",Y.USER.getUser_id()+"");
+        Y.post(YURL.FIND_UN_FINISH_COUNT, map, new Y.MyCommonCall<String>() {
+            @Override
+            public void onSuccess(String result) {
+                StyledDialog.dismissLoading();
+                if (Y.getRespCode(result)){
+                    data = Y.getData(result);
+                    if (TextUtils.isEmpty(data)||"0".equals(data)){
+                        tishi.setVisibility(View.INVISIBLE);
+                    }else {
+                        tishi.setText(data);
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -99,7 +118,6 @@ public class Activity_GeRenZhongXin extends Activity {
             case R.id.weiwancheng:
                 Intent weiWanChengIntent = new Intent(this, Activity_WeiWanCheng.class);
                 startActivity(weiWanChengIntent);
-                tishi.setVisibility(View.INVISIBLE);
                 break;
             case R.id.yiwancheng:
                 Intent yiWanChengIntent = new Intent(this, Activity_YiWanCheng.class);

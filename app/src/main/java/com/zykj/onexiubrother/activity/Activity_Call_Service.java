@@ -106,7 +106,7 @@ public class Activity_Call_Service extends Activity {
                     params.addBodyParameter("order_type",getIntent().getStringExtra("order_type"));
                     params.addBodyParameter("brand",getIntent().getStringExtra("pinpai"));
                     params.addBodyParameter("model",getIntent().getStringExtra("xinghao"));
-                    params.addBodyParameter("fault",getIntent().getStringExtra("huzhang"));
+                    params.addBodyParameter("fault",getIntent().getStringExtra("guzhang"));
                     params.addBodyParameter("fault_desc",getIntent().getStringExtra("miaoshu"));
                     params.addBodyParameter("category","");
                     params.addBodyParameter("image1",new File(getIntent().getStringExtra("imgpath")));

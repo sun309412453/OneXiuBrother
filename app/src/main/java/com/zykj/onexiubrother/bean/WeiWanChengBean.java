@@ -2,11 +2,13 @@ package com.zykj.onexiubrother.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by zykj on 2017/4/13.
  */
 
-public class WeiWanChengBean {
+public class WeiWanChengBean implements Serializable {
 
     @Override
     public String toString() {

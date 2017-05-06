@@ -69,13 +69,6 @@ public class Activity_YiQuXiao extends Activity {
                     Y.i(Y.getData(result));
                     list = JSON.parseArray(Y.getData(result), WeiWanChengBean.class);
                     Adapter_WeiWanCheng yiquxiao = new Adapter_WeiWanCheng(list,Activity_YiQuXiao.this);
-                    yiquxiao.setDianJi(new Adapter_WeiWanCheng.DianJi() {
-                        @Override
-                        public void OnClick(View v) {
-//                            Intent xiangQingIntent = new Intent(Activity_YiQuXiao.this,Activity_YiWanCheng_XiangQing.class);
-//                            startActivity(xiangQingIntent);
-                        }
-                    });
                     dingdanrv.setItemAnimator(new DefaultItemAnimator());
                     dingdanrv.setLayoutManager(new LinearLayoutManager(Activity_YiQuXiao.this,LinearLayoutManager.VERTICAL,false));
                     dingdanrv.addItemDecoration(new DividerItemDecoration(Activity_YiQuXiao.this,DividerItemDecoration.VERTICAL));
