@@ -93,6 +93,7 @@ public class Activity_GeRenZhongXin extends Activity {
                         tishi.setVisibility(View.INVISIBLE);
                     }else {
                         tishi.setText(data);
+                        data="";
                     }
                 }
             }

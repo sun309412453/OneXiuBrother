@@ -79,6 +79,7 @@ public class Activity_WeiWanCheng extends Activity {
                             Intent xiangQingIntent = new Intent(Activity_WeiWanCheng.this,Activity_WeiWanCheng_XiangQing.class);
                             xiangQingIntent.putExtra("weiwancheng",weiWanChengBean);
                             startActivity(xiangQingIntent);
+                            Y.t(weiWanChengBean.getId()+"");
                         }
                     });
                     dingdanrv.setItemAnimator(new DefaultItemAnimator());

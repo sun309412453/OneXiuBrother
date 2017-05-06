@@ -67,20 +67,21 @@ public class Activity_YiWanCheng extends Activity {
             public void onSuccess(String result) {
                 StyledDialog.dismissLoading();
                 if (Y.getRespCode(result)){
+                    Y.t("成功");
                     Y.i(Y.getData(result));
                     list = JSON.parseArray(Y.getData(result), WeiWanChengBean.class);
-                    Adapter_WeiWanCheng yiwancheng = new Adapter_WeiWanCheng(list,Activity_YiWanCheng.this);
-                    yiwancheng.setDianJi(new Adapter_WeiWanCheng.DianJi() {
+                    Adapter_WeiWanCheng weiWanCheng = new Adapter_WeiWanCheng(list,Activity_YiWanCheng.this);
+                    weiWanCheng.setDianJi(new Adapter_WeiWanCheng.DianJi() {
                         @Override
-                        public void OnClick(View v ,int pos) {
-                            Intent xiangQingIntent = new Intent(Activity_YiWanCheng.this,Activity_YiWanCheng_XiangQing.class);
+                        public void OnClick(View v,int pos) {
+                            Intent xiangQingIntent = new Intent(Activity_YiWanCheng.this,Activity_WeiWanCheng_XiangQing.class);
                             startActivity(xiangQingIntent);
                         }
                     });
                     dingdanrv.setItemAnimator(new DefaultItemAnimator());
                     dingdanrv.setLayoutManager(new LinearLayoutManager(Activity_YiWanCheng.this,LinearLayoutManager.VERTICAL,false));
                     dingdanrv.addItemDecoration(new DividerItemDecoration(Activity_YiWanCheng.this,DividerItemDecoration.VERTICAL));
-                    dingdanrv.setAdapter(yiwancheng);
+                    dingdanrv.setAdapter(weiWanCheng);
                 }
             }
         });
