@@ -163,8 +163,8 @@ public class Activity_Call_Service extends Activity {
                             StyledDialog.dismissLoading();
                             if (Y.getRespCode(result)){
                                 Y.t("电脑下单成功");
-                                Intent intent2 = new Intent(Activity_Call_Service.this,MainActivity.class);
-                                startActivity(intent2);
+
+
                             }else {
                                 Y.t("电脑下单失败");
                             }
@@ -194,8 +194,20 @@ public class Activity_Call_Service extends Activity {
                             StyledDialog.dismissLoading();
                             if (Y.getRespCode(result)){
                                 Y.t("家电下单成功");
-                                Intent intent = new Intent(Activity_Call_Service.this,MainActivity.class);
-                                startActivity(intent);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(Activity_Call_Service.this);
+                                View view1 = View.inflate(Activity_Call_Service.this,R.layout.dialog_fabu,null);
+                                builder.create();
+                                builder.setTitle("下单状态");
+                                builder.setView(view1);
+                                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(Activity_Call_Service.this,MainActivity.class);
+                                        startActivity(intent);
+                                    }
+                                });
+                                builder.show();
+
                             }else {
                                 Y.t("家电下单失败");
                             }
