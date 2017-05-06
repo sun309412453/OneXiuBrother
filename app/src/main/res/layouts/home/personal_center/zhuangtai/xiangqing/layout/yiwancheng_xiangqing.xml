@@ -49,6 +49,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@mipmap/duihao_yuan"
+                android:id="@+id/zhuangtai_iv_xiangqing"
                 android:layout_marginLeft="20dp"
                 />
             <TextView
@@ -56,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:text="订单已完成"
+                android:id="@+id/zhuangtai_tv_xiangqing"
                 android:textColor="#ff6632"
                 />
         </LinearLayout>
@@ -85,6 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:textSize="16sp"
+                android:id="@+id/yiwancheng_zhonglei"
                 android:text="手机"
                 />
         </LinearLayout>
@@ -133,7 +136,7 @@
                         android:layout_height="wrap_content"
                         android:text="2016-07-01  10:00"
                         android:textColor="#949494"
-                        android:id="@+id/date"
+                        android:id="@+id/yiwancheng_date"
                         />
                 </LinearLayout>
 
@@ -162,7 +165,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/add_item"
+                        android:id="@+id/yiwancheng_add"
                         android:text="黑龙江省哈尔滨市卓亚科技有限公司"
                         android:textColor="#949494"
                         />
@@ -172,6 +175,7 @@
                 android:layout_width="100dp"
                 android:layout_height="80dp"
                 android:src="@mipmap/phone"
+                android:id="@+id/yiwancheng_img"
                 android:layout_marginRight="10dp"
                 />
         </LinearLayout>
@@ -203,6 +207,7 @@
                 android:layout_marginLeft="5dp"
                 android:textSize="16sp"
                 android:text="苹果手机"
+                android:id="@+id/yiwancheng_pinpai"
                 />
         </LinearLayout>
         <LinearLayout
@@ -223,6 +228,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:textSize="16sp"
+                android:id="@+id/yiwancheng_xinghao"
                 android:text="6 plus"
                 />
         </LinearLayout>
@@ -245,6 +251,7 @@
                 android:layout_marginLeft="5dp"
                 android:textSize="16sp"
                 android:text="屏幕"
+                android:id="@+id/yiwancheng_guzhang"
                 />
         </LinearLayout>
         <ImageView
@@ -260,6 +267,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
+            android:id="@+id/yiwancheng_guzhangxiangqing"
             android:text="内外屏都进水了，按键不好使手机有花屏"
             android:layout_marginLeft="15dp"
             />

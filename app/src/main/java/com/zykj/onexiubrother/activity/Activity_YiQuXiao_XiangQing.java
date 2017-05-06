@@ -2,6 +2,7 @@ package com.zykj.onexiubrother.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,7 +22,7 @@ import butterknife.ButterKnife;
  * Created by Administrator on 2017/4/14.
  */
 
-public class Activity_YiWanCheng_XiangQing extends Activity {
+public class Activity_YiQuXiao_XiangQing extends Activity {
     @Bind(R.id.title)
     MyTitleBar title;
     @Bind(R.id.yiwancheng_zhonglei)
@@ -40,12 +41,19 @@ public class Activity_YiWanCheng_XiangQing extends Activity {
     TextView yiwanchengGuzhang;
     @Bind(R.id.yiwancheng_guzhangxiangqing)
     TextView yiwanchengGuzhangxiangqing;
+    @Bind(R.id.zhuangtai_iv_xiangqing)
+    ImageView zhuangtaiIvXiangqing;
+    @Bind(R.id.zhuangtai_tv_xiangqing)
+    TextView zhuangtaiTvXiangqing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.yiwancheng_xiangqing);
         ButterKnife.bind(this);
+        zhuangtaiIvXiangqing.setImageResource(R.mipmap.quxiaodingdan);
+        zhuangtaiTvXiangqing.setText("订单与取消");
+        zhuangtaiTvXiangqing.setTextColor(Color.parseColor("#FF8C8C8C"));
         title.setLeftClick(new MyTitleBar.leftClick() {
             @Override
             public void Click(View view) {
@@ -54,14 +62,14 @@ public class Activity_YiWanCheng_XiangQing extends Activity {
         });
         Intent intentYiWanCheng = getIntent();
         if (intentYiWanCheng != null) {
-            WeiWanChengBean yiwancheng = (WeiWanChengBean) intentYiWanCheng.getSerializableExtra("yiwancheng");
+            WeiWanChengBean yiwancheng = (WeiWanChengBean) intentYiWanCheng.getSerializableExtra("yiquxiao");
             //设置数据到控件上
             //判断接口种类
-            if (yiwancheng.getOrder_type()==1){
+            if (yiwancheng.getOrder_type() == 1) {
                 yiwanchengZhonglei.setText("手机");
-            }else if (yiwancheng.getOrder_type()==2){
+            } else if (yiwancheng.getOrder_type() == 2) {
                 yiwanchengZhonglei.setText("电脑");
-            }else if (yiwancheng.getOrder_type()==3){
+            } else if (yiwancheng.getOrder_type() == 3) {
                 yiwanchengZhonglei.setText("家电");
             }
             //设置时间
@@ -78,7 +86,7 @@ public class Activity_YiWanCheng_XiangQing extends Activity {
             yiwanchengGuzhangxiangqing.setText(yiwancheng.getFault_desc());
             //设置照片
             String image1 = yiwancheng.getImage1();
-            x.image().bind(yiwanchengImg, YURL.HOST+image1);
+            x.image().bind(yiwanchengImg, YURL.HOST + image1);
         }
     }
 }
