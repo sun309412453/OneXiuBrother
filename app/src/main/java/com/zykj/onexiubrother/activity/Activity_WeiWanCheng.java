@@ -68,10 +68,8 @@ public class Activity_WeiWanCheng extends Activity {
             public void onSuccess(String result) {
                 StyledDialog.dismissLoading();
                 if (Y.getRespCode(result)){
-                    Y.t("成功");
                     Y.i(Y.getData(result));
                     list = JSON.parseArray(Y.getData(result), WeiWanChengBean.class);
-
                     Adapter_WeiWanCheng weiWanCheng = new Adapter_WeiWanCheng(list,Activity_WeiWanCheng.this);
                     weiWanCheng.setDianJi(new Adapter_WeiWanCheng.DianJi() {
                         @Override

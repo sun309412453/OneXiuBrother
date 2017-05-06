@@ -128,7 +128,7 @@ public class Activity_Call_Service extends Activity {
                                         Intent intent1 = new Intent(Activity_Call_Service.this,MainActivity.class);
                                         startActivity(intent1);
                                     }
-                                }).show();
+                                }).setActionTextColor(Color.parseColor("#00cccc")).show();
                             }else {
                                 Y.t("手机下单失败");
                             }
@@ -162,7 +162,7 @@ public class Activity_Call_Service extends Activity {
                                         Intent intent2 = new Intent(Activity_Call_Service.this,MainActivity.class);
                                         startActivity(intent2);
                                     }
-                                }).show();
+                                }).setActionTextColor(Color.parseColor("#00cccc")).show();
                             }else {
                                 Y.t("电脑下单失败");
                             }
@@ -197,7 +197,7 @@ public class Activity_Call_Service extends Activity {
                                         Intent intent = new Intent(Activity_Call_Service.this,MainActivity.class);
                                         startActivity(intent);
                                     }
-                                }).show();
+                                }).setActionTextColor(Color.parseColor("#00cccc")).show();
                             }else {
                                 Y.t("家电下单失败");
                             }
