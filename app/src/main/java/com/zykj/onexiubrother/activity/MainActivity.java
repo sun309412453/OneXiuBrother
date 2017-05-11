@@ -83,18 +83,15 @@ public class MainActivity extends Activity {
             case R.id.home_mobile:
                 Intent mobileIntent = new Intent(this,Activity_Mobile.class);
                 startActivity(mobileIntent);
-                finish();
                 break;
             case R.id.home_computer:
                 Intent computerIntent = new Intent(this,Activity_computer.class);
                 computerIntent.putExtra("icon", Y.USER.getIcon());
                 startActivity(computerIntent);
-                finish();
                 break;
             case R.id.home_appliance:
                 Intent applianceIntent = new Intent(this,Activity_Appliance.class);
                 startActivity(applianceIntent);
-                finish();
                 break;
         }
     }

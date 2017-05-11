@@ -131,11 +131,9 @@ public class Activity_Call_Service extends Activity {
                             //关闭对话框
                             StyledDialog.dismissLoading();
                             if (Y.getRespCode(result)) {
-                                Snackbar.make(Activity_Call_Service.this.findViewById(android.R.id.content), "手机下单成功", Snackbar.LENGTH_SHORT).setAction("确定返回首页", new View.OnClickListener() {
+                                Snackbar.make(Activity_Call_Service.this.findViewById(android.R.id.content), "点击查看详情", Snackbar.LENGTH_SHORT).setAction("确定返回首页", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        Intent intent1 = new Intent(Activity_Call_Service.this, MainActivity.class);
-                                        startActivity(intent1);
                                         finish();
                                     }
                                 }).setActionTextColor(Color.parseColor("#00cccc")).show();
@@ -166,11 +164,9 @@ public class Activity_Call_Service extends Activity {
                             //关闭对话框
                             StyledDialog.dismissLoading();
                             if (Y.getRespCode(result)) {
-                                Snackbar.make(Activity_Call_Service.this.findViewById(android.R.id.content), "电脑下单成功", Snackbar.LENGTH_SHORT).setAction("确定返回首页", new View.OnClickListener() {
+                                Snackbar.make(Activity_Call_Service.this.findViewById(android.R.id.content), "点击查看详情", Snackbar.LENGTH_SHORT).setAction("确定返回首页", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        Intent intent2 = new Intent(Activity_Call_Service.this, MainActivity.class);
-                                        startActivity(intent2);
                                         finish();
                                     }
                                 }).setActionTextColor(Color.parseColor("#00cccc")).show();
@@ -202,11 +198,9 @@ public class Activity_Call_Service extends Activity {
                             //关闭对话框
                             StyledDialog.dismissLoading();
                             if (Y.getRespCode(result)) {
-                                Snackbar.make(Activity_Call_Service.this.findViewById(android.R.id.content), "家电下单成功", Snackbar.LENGTH_SHORT).setAction("确定返回首页", new View.OnClickListener() {
+                                Snackbar.make(Activity_Call_Service.this.findViewById(android.R.id.content), "点击查看详情", Snackbar.LENGTH_SHORT).setAction("确定返回首页", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        Intent intent = new Intent(Activity_Call_Service.this, MainActivity.class);
-                                        startActivity(intent);
                                         finish();
                                     }
                                 }).setActionTextColor(Color.parseColor("#00cccc")).show();

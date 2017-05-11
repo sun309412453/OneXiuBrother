@@ -56,6 +56,12 @@ public class Activity_WeiWanCheng extends Activity {
     private String zhuangtai;
     private int index;
     private Intent xiangQingIntent;
+    private WeiWanChengBean weiWanChengBean;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,17 +88,17 @@ public class Activity_WeiWanCheng extends Activity {
                     weiWanCheng.setDianJi(new Adapter_WeiWanCheng.DianJi() {
                         @Override
                         public void OnClick(View v,int pos) {
-                            WeiWanChengBean weiWanChengBean = list.get(pos);
+                            weiWanChengBean = list.get(pos);
 
                             if ("1".equals(zhuangtai)){
                                 xiangQingIntent = new Intent(Activity_WeiWanCheng.this,Activity_WeiWanCheng_XiangQing.class);
-                                xiangQingIntent.putExtra("zhuangtai",weiWanChengBean);
+                                xiangQingIntent.putExtra("zhuangtai", weiWanChengBean);
                             }else if ("2".equals(zhuangtai)){
                                 xiangQingIntent = new Intent(Activity_WeiWanCheng.this,Activity_YiWanCheng_XiangQing.class);
-                                xiangQingIntent.putExtra("zhuangtai",weiWanChengBean);
+                                xiangQingIntent.putExtra("zhuangtai", weiWanChengBean);
                             }else if ("3".equals(zhuangtai)){
                                 xiangQingIntent = new Intent(Activity_WeiWanCheng.this,Activity_YiQuXiao_XiangQing.class);
-                                xiangQingIntent.putExtra("zhuangtai",weiWanChengBean);
+                                xiangQingIntent.putExtra("zhuangtai", weiWanChengBean);
                             }
                             startActivity(xiangQingIntent);
                         }
