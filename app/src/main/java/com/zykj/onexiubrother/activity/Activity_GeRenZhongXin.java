@@ -166,6 +166,7 @@ public class Activity_GeRenZhongXin extends Activity {
             case R.id.shezhi:
                 Intent intentSetting = new Intent(this,Activity_SheZhi.class);
                 startActivity(intentSetting);
+
                 break;
             case R.id.geren_iv_she:
                 GalleryFinal.openGallerySingle(REQUEST_CODE_GALLERY, new GalleryFinal.OnHanlderResultCallback() {
