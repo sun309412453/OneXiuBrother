@@ -93,6 +93,13 @@ public class Activity_Address extends Activity {
                             finish();
                         }
                     });
+                    guanLi.setBianJi(new Adapter_DiZhiGuanLi.DiZhiBianJi() {
+                        @Override
+                        public void Click(View v) {
+                            Intent addIntent1 = new Intent(Activity_Address.this, Activity_EditAdd.class);
+                            startActivity(addIntent1);
+                        }
+                    });
                     addrv.setItemAnimator(new DefaultItemAnimator());
                     addrv.setLayoutManager(new LinearLayoutManager(Activity_Address.this, LinearLayoutManager.VERTICAL, false));
                     addrv.addItemDecoration(new DividerItemDecoration(Activity_Address.this, DividerItemDecoration.VERTICAL));
