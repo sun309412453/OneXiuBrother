@@ -53,6 +53,8 @@ public class Activity_WeiWanCheng extends Activity {
     private List<WeiWanChengBean> list;
     private RequestParams params;
     private Adapter_WeiWanCheng weiWanCheng;
+    private String zhuangtai;
+    private int index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,69 +62,14 @@ public class Activity_WeiWanCheng extends Activity {
         setContentView(R.layout.zhuangtai);
         ButterKnife.bind(this);
         list = new ArrayList<WeiWanChengBean>();
-        if ("1".equals(getIntent().getStringExtra("zhuangtai"))){
-            yiquxiaoLine.setVisibility(View.INVISIBLE);
-            yiwanchengLine.setVisibility(View.INVISIBLE);
-            weiwanchengLine.setVisibility(View.VISIBLE);
-
-        }else if ("2".equals(getIntent().getStringExtra("zhuangtai"))){
-            weiwanchengLine.setVisibility(View.INVISIBLE);
-            yiquxiaoLine.setVisibility(View.INVISIBLE);
-            yiwanchengLine.setVisibility(View.VISIBLE);
-//            RequestParams params = new RequestParams(YURL.FIND_ORDER_BY_STATE);
-//            params.addBodyParameter("custom_id",Y.USER.getUser_id()+"");
-//            params.addBodyParameter("order_state","2");
-//            Y.post(params, new Y.MyCommonCall<String>() {
-//                @Override
-//                public void onSuccess(String result) {
-//                    StyledDialog.dismissLoading();
-//                    if (Y.getRespCode(result)){
-//                        Y.i(Y.getData(result));
-//                        list = JSON.parseArray(Y.getData(result), WeiWanChengBean.class);
-//                        weiWanCheng = new Adapter_WeiWanCheng(list,Activity_WeiWanCheng.this,1);
-//                        weiWanCheng.setDianJi(new Adapter_WeiWanCheng.DianJi() {
-//                            @Override
-//                            public void OnClick(View v,int pos) {
-//                                WeiWanChengBean weiWanChengBean = list.get(pos);
-//                                Intent xiangQingIntent = new Intent(Activity_WeiWanCheng.this,Activity_YiWanCheng_XiangQing.class);
-//                                xiangQingIntent.putExtra("yiwancheng",weiWanChengBean);
-//                                startActivity(xiangQingIntent);
-//                            }
-//                        });
-//                    }
-//                }
-//            });
-        }else if ("3".equals(getIntent().getStringExtra("zhuangtai"))){
-            weiwanchengLine.setVisibility(View.INVISIBLE);
-            yiwanchengLine.setVisibility(View.INVISIBLE);
-            yiquxiaoLine.setVisibility(View.VISIBLE);
-//            RequestParams params = new RequestParams(YURL.FIND_ORDER_BY_STATE);
-//            params.addBodyParameter("custom_id",Y.USER.getUser_id()+"");
-//            params.addBodyParameter("order_state","3");
-//            Y.post(params, new Y.MyCommonCall<String>() {
-//                @Override
-//                public void onSuccess(String result) {
-//                    StyledDialog.dismissLoading();
-//                    if (Y.getRespCode(result)){
-//                        Y.i(Y.getData(result));
-//                        list = JSON.parseArray(Y.getData(result), WeiWanChengBean.class);
-//                        Adapter_WeiWanCheng weiWanCheng = new Adapter_WeiWanCheng(list,Activity_WeiWanCheng.this,1);
-//                        weiWanCheng.setDianJi(new Adapter_WeiWanCheng.DianJi() {
-//                            @Override
-//                            public void OnClick(View v,int pos) {
-//                                WeiWanChengBean weiWanChengBean = list.get(pos);
-//                                Intent xiangQingIntent = new Intent(Activity_WeiWanCheng.this,Activity_YiWanCheng_XiangQing.class);
-//                                xiangQingIntent.putExtra("yiquxiao",weiWanChengBean);
-//                                startActivity(xiangQingIntent);
-//                            }
-//                        });
-//                    }
-//                }
-//            });
+        Intent intent = getIntent();
+        if (intent!=null){
+            zhuangtai = intent.getStringExtra("zhuangtai");
+            index = intent.getIntExtra("index", 0);
         }
-        RequestParams params = new RequestParams(YURL.FIND_ORDER_BY_STATE);
+        params = new RequestParams(YURL.FIND_ORDER_BY_STATE);
         params.addBodyParameter("custom_id",Y.USER.getUser_id()+"");
-        params.addBodyParameter("order_state",getIntent().getStringExtra("zhuangtai"));
+        params.addBodyParameter("order_state",zhuangtai);
         Y.post(params, new Y.MyCommonCall<String>() {
             @Override
             public void onSuccess(String result) {
@@ -130,7 +77,7 @@ public class Activity_WeiWanCheng extends Activity {
                 if (Y.getRespCode(result)){
                     Y.i(Y.getData(result));
                     list = JSON.parseArray(Y.getData(result), WeiWanChengBean.class);
-                    Adapter_WeiWanCheng weiWanCheng = new Adapter_WeiWanCheng(list,Activity_WeiWanCheng.this,1);
+                    weiWanCheng = new Adapter_WeiWanCheng(list,Activity_WeiWanCheng.this,index);
                     weiWanCheng.setDianJi(new Adapter_WeiWanCheng.DianJi() {
                         @Override
                         public void OnClick(View v,int pos) {
@@ -140,13 +87,30 @@ public class Activity_WeiWanCheng extends Activity {
                             startActivity(xiangQingIntent);
                         }
                     });
+                    dingdanrv.setItemAnimator(new DefaultItemAnimator());
+                    dingdanrv.setLayoutManager(new LinearLayoutManager(Activity_WeiWanCheng.this,LinearLayoutManager.VERTICAL,false));
+                    dingdanrv.addItemDecoration(new DividerItemDecoration(Activity_WeiWanCheng.this,DividerItemDecoration.VERTICAL));
+                    dingdanrv.setAdapter(weiWanCheng);
+                }else {
+                    Y.t("失败");
                 }
             }
         });
-        dingdanrv.setItemAnimator(new DefaultItemAnimator());
-        dingdanrv.setLayoutManager(new LinearLayoutManager(Activity_WeiWanCheng.this,LinearLayoutManager.VERTICAL,false));
-        dingdanrv.addItemDecoration(new DividerItemDecoration(Activity_WeiWanCheng.this,DividerItemDecoration.VERTICAL));
-        dingdanrv.setAdapter(weiWanCheng);
+        if ("1".equals(zhuangtai)){
+            yiquxiaoLine.setVisibility(View.INVISIBLE);
+            yiwanchengLine.setVisibility(View.INVISIBLE);
+            weiwanchengLine.setVisibility(View.VISIBLE);
+
+        }else if ("2".equals(zhuangtai)){
+            weiwanchengLine.setVisibility(View.INVISIBLE);
+            yiquxiaoLine.setVisibility(View.INVISIBLE);
+            yiwanchengLine.setVisibility(View.VISIBLE);
+        }else if ("3".equals(zhuangtai)){
+            weiwanchengLine.setVisibility(View.INVISIBLE);
+            yiwanchengLine.setVisibility(View.INVISIBLE);
+            yiquxiaoLine.setVisibility(View.VISIBLE);
+        }
+
     }
 
     @OnClick({R.id.btweiwancheng, R.id.btyiwancheng, R.id.btyiquxiao})
