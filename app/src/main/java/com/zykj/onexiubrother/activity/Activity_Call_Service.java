@@ -136,6 +136,7 @@ public class Activity_Call_Service extends Activity {
                                     public void onClick(View v) {
                                         Intent intent1 = new Intent(Activity_Call_Service.this, MainActivity.class);
                                         startActivity(intent1);
+                                        finish();
                                     }
                                 }).setActionTextColor(Color.parseColor("#00cccc")).show();
                             } else {
@@ -170,6 +171,7 @@ public class Activity_Call_Service extends Activity {
                                     public void onClick(View v) {
                                         Intent intent2 = new Intent(Activity_Call_Service.this, MainActivity.class);
                                         startActivity(intent2);
+                                        finish();
                                     }
                                 }).setActionTextColor(Color.parseColor("#00cccc")).show();
                             } else {
@@ -205,6 +207,7 @@ public class Activity_Call_Service extends Activity {
                                     public void onClick(View v) {
                                         Intent intent = new Intent(Activity_Call_Service.this, MainActivity.class);
                                         startActivity(intent);
+                                        finish();
                                     }
                                 }).setActionTextColor(Color.parseColor("#00cccc")).show();
                             } else {

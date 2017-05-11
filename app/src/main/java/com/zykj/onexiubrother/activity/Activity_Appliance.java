@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -258,6 +259,26 @@ public class Activity_Appliance extends Activity {
                 String leixing = jiadianTvLeixing.getText().toString().trim();
                 String xinghao = jiadianTvXinghao.getText().toString().trim();
                 String guzhang = jiadianTvGuzhang.getText().toString().trim();
+                if (TextUtils.isEmpty(pinpai)){
+                    Y.t("请选择品牌");
+                    return;
+                }
+                if (TextUtils.isEmpty(leixing)){
+                    Y.t("请选择类型");
+                    return;
+                }
+                if (TextUtils.isEmpty(xinghao)){
+                    Y.t("请选择型号");
+                    return;
+                }
+                if (TextUtils.isEmpty(guzhang)){
+                    Y.t("请选择型号");
+                    return;
+                }
+                if (photoPath==""||photoPath==null){
+                    Y.t("请选择照片");
+                    return;
+                }
                 applianceOkIntent.putExtra("imgpath", photoPath);
                 applianceOkIntent.putExtra("order_type", 3 + "");
                 applianceOkIntent.putExtra("pinpai", pinpai);
@@ -266,6 +287,7 @@ public class Activity_Appliance extends Activity {
                 applianceOkIntent.putExtra("guzhang", guzhang);
                 applianceOkIntent.putExtra("miaoshu",applianceEtXiangqing.getText().toString().trim());
                 startActivity(applianceOkIntent);
+                finish();
                 break;
             case R.id.appliance_img:
                 GalleryFinal.openGallerySingle(REQUEST_CODE_GALLERY, new GalleryFinal.OnHanlderResultCallback() {

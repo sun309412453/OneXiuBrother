@@ -92,6 +92,7 @@ public class Activity_ZhuCe extends Activity {
                             Intent zhuCeIntent = new Intent(Activity_ZhuCe.this, Activity_MiMa.class);
                             zhuCeIntent.putExtra("token", data);
                             startActivity(zhuCeIntent);
+                            finish();
                         } else {
                             Y.t(JSON.parseObject(result).getString("message"));
                         }

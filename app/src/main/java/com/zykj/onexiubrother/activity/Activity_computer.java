@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -99,6 +100,26 @@ public class Activity_computer extends Activity {
                 String leixing = diannaoTvLeixing.getText().toString().trim();
                 String xinghao = diannaoTvXinghao.getText().toString().trim();
                 String guzhang = diannaoTvGuzhang.getText().toString().trim();
+                if (TextUtils.isEmpty(pinpai)){
+                    Y.t("请选择品牌");
+                    return;
+                }
+                if (TextUtils.isEmpty(leixing)){
+                    Y.t("请选择类型");
+                    return;
+                }
+                if (TextUtils.isEmpty(xinghao)){
+                    Y.t("请选择型号");
+                    return;
+                }
+                if (TextUtils.isEmpty(guzhang)){
+                    Y.t("请选择型号");
+                    return;
+                }
+                if (photoPath==""||photoPath==null){
+                    Y.t("请选择照片");
+                    return;
+                }
                 Intent computerOkIntent = new Intent(this, Activity_Call_Service.class);
                 computerOkIntent.putExtra("imgpath", photoPath);
                 computerOkIntent.putExtra("order_type", 2 + "");
@@ -108,6 +129,7 @@ public class Activity_computer extends Activity {
                 computerOkIntent.putExtra("guzhang", guzhang);
                 computerOkIntent.putExtra("miaoshu",computerEtXiangqing.getText().toString().trim());
                 startActivity(computerOkIntent);
+                finish();
                 break;
             case R.id.diannao_ll_pinpai:
                 Y.get(YURL.FIND_COMPUTER_BRAND, null, new Y.MyCommonCall<String>() {

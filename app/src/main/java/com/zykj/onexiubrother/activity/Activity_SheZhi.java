@@ -44,6 +44,7 @@ public class Activity_SheZhi extends Activity {
             case R.id.shezhi_xiugai:
                 Intent intentXiuGai = new Intent(this,Activity_XiuGaiMiMa.class);
                 startActivity(intentXiuGai);
+                finish();
                 break;
             case R.id.shezhi_tongzhi:
                 Intent intentTongZhi = new Intent(this,Activity_XiaoXiTongZhi.class);
@@ -52,6 +53,7 @@ public class Activity_SheZhi extends Activity {
             case R.id.tuichu:
                 Intent intentTuiChu = new Intent(this,Activity_DengLu.class);
                 startActivity(intentTuiChu);
+                finish();
                 break;
         }
     }

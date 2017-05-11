@@ -70,6 +70,7 @@ public class Activity_MiMa extends Activity {
                     Intent miMaIntent = new Intent(Activity_MiMa.this,Activity_DengLu.class);
                     miMaIntent.putExtra("token",getIntent().getStringExtra("token"));
                     startActivity(miMaIntent);
+                    finish();
                 }
             }
         });

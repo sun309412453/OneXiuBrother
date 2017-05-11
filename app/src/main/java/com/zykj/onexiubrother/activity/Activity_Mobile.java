@@ -244,6 +244,7 @@ public class Activity_Mobile extends Activity {
                 mobileOkIntent.putExtra("guzhang", guzhang);
                 mobileOkIntent.putExtra("miaoshu",mobileEtMiaoshu.getText().toString().trim());
                 startActivity(mobileOkIntent);
+                finish();
                 break;
             case R.id.mobile_img:
                 GalleryFinal.openGallerySingle(REQUEST_CODE_GALLERY, new GalleryFinal.OnHanlderResultCallback() {
