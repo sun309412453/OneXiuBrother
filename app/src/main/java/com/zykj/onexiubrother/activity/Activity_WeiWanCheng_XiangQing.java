@@ -63,7 +63,7 @@ public class Activity_WeiWanCheng_XiangQing extends Activity {
         });
         Intent intent = getIntent();
         if (intent!=null){
-            WeiWanChengBean weiwancheng = (WeiWanChengBean) intent.getSerializableExtra("weiwancheng");
+            WeiWanChengBean weiwancheng = (WeiWanChengBean) intent.getSerializableExtra("zhuangtai");
             //判断接口种类
             if (weiwancheng.getOrder_type()==1){
                 weiwanchengZhonglei.setText("手机");

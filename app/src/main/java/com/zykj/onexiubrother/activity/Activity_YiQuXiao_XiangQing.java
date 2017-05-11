@@ -62,7 +62,7 @@ public class Activity_YiQuXiao_XiangQing extends Activity {
         });
         Intent intentYiWanCheng = getIntent();
         if (intentYiWanCheng != null) {
-            WeiWanChengBean yiwancheng = (WeiWanChengBean) intentYiWanCheng.getSerializableExtra("yiquxiao");
+            WeiWanChengBean yiwancheng = (WeiWanChengBean) intentYiWanCheng.getSerializableExtra("zhuangtai");
             //设置数据到控件上
             //判断接口种类
             if (yiwancheng.getOrder_type() == 1) {

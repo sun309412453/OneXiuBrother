@@ -46,8 +46,6 @@
         <activity android:name=".activity.Activity_EditPhone"/>
         <activity android:name=".activity.Activity_GeRenZhongXin"/>
         <activity android:name=".activity.Activity_WeiWanCheng"/>
-        <activity android:name=".activity.Activity_YiWanCheng"/>
-        <activity android:name=".activity.Activity_YiQuXiao"/>
         <activity android:name=".activity.Activity_YiWanCheng_XiangQing"/>
         <activity android:name=".activity.Activity_WeiWanCheng_XiangQing"/>
         <activity android:name=".activity.Activity_WoDeZiLiao"/>

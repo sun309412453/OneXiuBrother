@@ -119,14 +119,17 @@ public class Activity_GeRenZhongXin extends Activity {
         switch (view.getId()) {
             case R.id.weiwancheng:
                 Intent weiWanChengIntent = new Intent(this, Activity_WeiWanCheng.class);
+                weiWanChengIntent.putExtra("zhuangtai",1+"");
                 startActivity(weiWanChengIntent);
                 break;
             case R.id.yiwancheng:
-                Intent yiWanChengIntent = new Intent(this, Activity_YiWanCheng.class);
+                Intent yiWanChengIntent = new Intent(this, Activity_WeiWanCheng.class);
+                yiWanChengIntent.putExtra("zhuangtai",2+"");
                 startActivity(yiWanChengIntent);
                 break;
             case R.id.yiquxiao:
-                Intent yiQuXiaoIntent = new Intent(this, Activity_YiQuXiao.class);
+                Intent yiQuXiaoIntent = new Intent(this, Activity_WeiWanCheng.class);
+                yiQuXiaoIntent.putExtra("zhuangtai",3+"");
                 startActivity(yiQuXiaoIntent);
                 break;
             case R.id.wodeziliao:
