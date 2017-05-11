@@ -48,12 +48,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="请选择您的手机品牌"
+            android:hint="请选择您的手机品牌"
             android:id="@+id/mobile_tv_brand"
             android:gravity="center_vertical"
             android:layout_marginLeft="20dp"
             android:textSize="19sp"
-            android:textColor="#c9c9c9"
+            android:textColorHint="#c9c9c9"
             />
         <ImageView
             android:layout_width="wrap_content"
@@ -91,12 +91,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="请选择您的手机型号"
+            android:hint="请选择您的手机型号"
             android:id="@+id/mobile_tv_model"
             android:layout_marginLeft="20dp"
             android:gravity="center_vertical"
             android:textSize="19sp"
-            android:textColor="#c9c9c9"
+            android:textColorHint="#c9c9c9"
             />
         <ImageView
             android:layout_width="wrap_content"
@@ -134,12 +134,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="请选择您的手机故障点"
+            android:hint="请选择您的手机故障点"
             android:gravity="center_vertical"
             android:textSize="19sp"
             android:id="@+id/mobile_tv_fault"
             android:layout_marginLeft="20dp"
-            android:textColor="#c9c9c9"
+            android:textColorHint="#c9c9c9"
             />
         <ImageView
             android:layout_width="wrap_content"
