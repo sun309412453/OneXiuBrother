@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -46,7 +47,7 @@ public class Activity_Call_Service extends Activity {
     LinearLayout hujiaofuwuShijian;
     @Bind(R.id.hujiaofuwu_tv_dizhi)
     TextView hujiaofuwuTvDizhi;
-    private AddressBean addbean;
+    private AddressBean addbean= new AddressBean();
     private String shijian;
     private String dizhi1;
 
@@ -100,105 +101,113 @@ public class Activity_Call_Service extends Activity {
             case R.id.hujiaofuwu_ok:
                 shijian = hujiaofuwuTvShijian.getText().toString().trim();
                 dizhi1 = hujiaofuwuTvDizhi.getText().toString().trim();
+                if (TextUtils.isEmpty(shijian)) {
+                    Y.t("时间不能为空");
+                    return;
+                }
+                if (TextUtils.isEmpty(dizhi1)) {
+                    Y.t("地址不能为空");
+                    return;
+                }
                 //手机上传位置
-                if ("1".equals(getIntent().getStringExtra("order_type"))){
+                if ("1".equals(getIntent().getStringExtra("order_type"))) {
                     RequestParams params = new RequestParams(YURL.ADD_ORDER);
-                    params.addBodyParameter("order_type",getIntent().getStringExtra("order_type"));
-                    params.addBodyParameter("brand",getIntent().getStringExtra("pinpai"));
-                    params.addBodyParameter("model",getIntent().getStringExtra("xinghao"));
-                    params.addBodyParameter("fault",getIntent().getStringExtra("guzhang"));
-                    params.addBodyParameter("fault_desc",getIntent().getStringExtra("miaoshu"));
-                    params.addBodyParameter("category","");
-                    params.addBodyParameter("image1",new File(getIntent().getStringExtra("imgpath")));
-                    params.addBodyParameter("service_time",shijian);
-                    params.addBodyParameter("service_address",dizhi1);
-                    params.addBodyParameter("custom_phone",addbean.getPhone());
-                    params.addBodyParameter("custom_name",addbean.getName());
-                    params.addBodyParameter("custom_id",Y.USER.getUser_id()+"");
-                    params.addBodyParameter("address_id",addbean.getAddress_id()+"");
+                    params.addBodyParameter("order_type", getIntent().getStringExtra("order_type"));
+                    params.addBodyParameter("brand", getIntent().getStringExtra("pinpai"));
+                    params.addBodyParameter("model", getIntent().getStringExtra("xinghao"));
+                    params.addBodyParameter("fault", getIntent().getStringExtra("guzhang"));
+                    params.addBodyParameter("fault_desc", getIntent().getStringExtra("miaoshu"));
+                    params.addBodyParameter("category", "");
+                    params.addBodyParameter("image1", new File(getIntent().getStringExtra("imgpath")));
+                    params.addBodyParameter("service_time", shijian);
+                    params.addBodyParameter("service_address", dizhi1);
+                    params.addBodyParameter("custom_phone", addbean.getPhone());
+                    params.addBodyParameter("custom_name", addbean.getName());
+                    params.addBodyParameter("custom_id", Y.USER.getUser_id() + "");
+                    params.addBodyParameter("address_id", addbean.getAddress_id() + "");
                     Y.postFile(params, new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
                             //关闭对话框
                             StyledDialog.dismissLoading();
-                            if (Y.getRespCode(result)){
-                                Snackbar.make(Activity_Call_Service.this.findViewById(android.R.id.content),"手机下单成功",Snackbar.LENGTH_SHORT).setAction("确定返回首页", new View.OnClickListener() {
+                            if (Y.getRespCode(result)) {
+                                Snackbar.make(Activity_Call_Service.this.findViewById(android.R.id.content), "手机下单成功", Snackbar.LENGTH_SHORT).setAction("确定返回首页", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        Intent intent1 = new Intent(Activity_Call_Service.this,MainActivity.class);
+                                        Intent intent1 = new Intent(Activity_Call_Service.this, MainActivity.class);
                                         startActivity(intent1);
                                     }
                                 }).setActionTextColor(Color.parseColor("#00cccc")).show();
-                            }else {
+                            } else {
                                 Y.t("手机下单失败");
                             }
                         }
                     });
-                }else if ("2".equals(getIntent().getStringExtra("order_type"))){
+                } else if ("2".equals(getIntent().getStringExtra("order_type"))) {
                     //电脑上传位置
                     RequestParams params = new RequestParams(YURL.ADD_ORDER);
-                    params.addBodyParameter("order_type",getIntent().getStringExtra("order_type"));
-                    params.addBodyParameter("brand",getIntent().getStringExtra("pinpai"));
-                    params.addBodyParameter("model",getIntent().getStringExtra("xinghao"));
-                    params.addBodyParameter("category",getIntent().getStringExtra("leixing"));
-                    params.addBodyParameter("fault",getIntent().getStringExtra("guzhang"));
-                    params.addBodyParameter("fault_desc",getIntent().getStringExtra("miaoshu"));
-                    params.addBodyParameter("image1",new File(getIntent().getStringExtra("imgpath")));
-                    params.addBodyParameter("service_time",shijian);
-                    params.addBodyParameter("service_address",dizhi1);
-                    params.addBodyParameter("custom_phone",addbean.getPhone());
-                    params.addBodyParameter("custom_name",addbean.getName());
-                    params.addBodyParameter("custom_id",Y.USER.getUser_id()+"");
-                    params.addBodyParameter("address_id",addbean.getAddress_id()+"");
+                    params.addBodyParameter("order_type", getIntent().getStringExtra("order_type"));
+                    params.addBodyParameter("brand", getIntent().getStringExtra("pinpai"));
+                    params.addBodyParameter("model", getIntent().getStringExtra("xinghao"));
+                    params.addBodyParameter("category", getIntent().getStringExtra("leixing"));
+                    params.addBodyParameter("fault", getIntent().getStringExtra("guzhang"));
+                    params.addBodyParameter("fault_desc", getIntent().getStringExtra("miaoshu"));
+                    params.addBodyParameter("image1", new File(getIntent().getStringExtra("imgpath")));
+                    params.addBodyParameter("service_time", shijian);
+                    params.addBodyParameter("service_address", dizhi1);
+                    params.addBodyParameter("custom_phone", addbean.getPhone());
+                    params.addBodyParameter("custom_name", addbean.getName());
+                    params.addBodyParameter("custom_id", Y.USER.getUser_id() + "");
+                    params.addBodyParameter("address_id", addbean.getAddress_id() + "");
                     Y.postFile(params, new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
                             //关闭对话框
                             StyledDialog.dismissLoading();
-                            if (Y.getRespCode(result)){
-                                Snackbar.make(Activity_Call_Service.this.findViewById(android.R.id.content),"电脑下单成功",Snackbar.LENGTH_SHORT).setAction("确定返回首页", new View.OnClickListener() {
+                            if (Y.getRespCode(result)) {
+                                Snackbar.make(Activity_Call_Service.this.findViewById(android.R.id.content), "电脑下单成功", Snackbar.LENGTH_SHORT).setAction("确定返回首页", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        Intent intent2 = new Intent(Activity_Call_Service.this,MainActivity.class);
+                                        Intent intent2 = new Intent(Activity_Call_Service.this, MainActivity.class);
                                         startActivity(intent2);
                                     }
                                 }).setActionTextColor(Color.parseColor("#00cccc")).show();
-                            }else {
+                            } else {
                                 Y.t("电脑下单失败");
                             }
                         }
                     });
-            }else if ("3".equals(getIntent().getStringExtra("order_type"))){
+                } else if ("3".equals(getIntent().getStringExtra("order_type"))) {
                     //家电上传位置
                     //电脑上传位置
                     RequestParams params = new RequestParams(YURL.ADD_ORDER);
-                    params.addBodyParameter("order_type",getIntent().getStringExtra("order_type"));
-                    params.addBodyParameter("brand",getIntent().getStringExtra("pinpai"));
-                    params.addBodyParameter("model",getIntent().getStringExtra("xinghao"));
-                    params.addBodyParameter("category",getIntent().getStringExtra("leixing"));
-                    params.addBodyParameter("fault",getIntent().getStringExtra("guzhang"));
-                    params.addBodyParameter("fault_desc",getIntent().getStringExtra("miaoshu"));
-                    params.addBodyParameter("image1",new File(getIntent().getStringExtra("imgpath")));
-                    params.addBodyParameter("service_time",shijian);
-                    params.addBodyParameter("service_address",dizhi1);
-                    params.addBodyParameter("custom_phone",addbean.getPhone());
-                    params.addBodyParameter("custom_name",addbean.getName());
-                    params.addBodyParameter("custom_id",Y.USER.getUser_id()+"");
-                    params.addBodyParameter("address_id",addbean.getAddress_id()+"");
+                    params.addBodyParameter("order_type", getIntent().getStringExtra("order_type"));
+                    params.addBodyParameter("brand", getIntent().getStringExtra("pinpai"));
+                    params.addBodyParameter("model", getIntent().getStringExtra("xinghao"));
+                    params.addBodyParameter("category", getIntent().getStringExtra("leixing"));
+                    params.addBodyParameter("fault", getIntent().getStringExtra("guzhang"));
+                    params.addBodyParameter("fault_desc", getIntent().getStringExtra("miaoshu"));
+                    params.addBodyParameter("image1", new File(getIntent().getStringExtra("imgpath")));
+                    params.addBodyParameter("service_time", shijian);
+                    params.addBodyParameter("service_address", dizhi1);
+                    params.addBodyParameter("custom_phone", addbean.getPhone());
+                    params.addBodyParameter("custom_name", addbean.getName());
+                    params.addBodyParameter("custom_id", Y.USER.getUser_id() + "");
+                    params.addBodyParameter("address_id", addbean.getAddress_id() + "");
                     Y.postFile(params, new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
                             //关闭对话框
                             StyledDialog.dismissLoading();
-                            if (Y.getRespCode(result)){
-                                Snackbar.make(Activity_Call_Service.this.findViewById(android.R.id.content),"家电下单成功",Snackbar.LENGTH_SHORT).setAction("确定返回首页", new View.OnClickListener() {
+                            if (Y.getRespCode(result)) {
+                                Snackbar.make(Activity_Call_Service.this.findViewById(android.R.id.content), "家电下单成功", Snackbar.LENGTH_SHORT).setAction("确定返回首页", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        Intent intent = new Intent(Activity_Call_Service.this,MainActivity.class);
+                                        Intent intent = new Intent(Activity_Call_Service.this, MainActivity.class);
                                         startActivity(intent);
                                     }
                                 }).setActionTextColor(Color.parseColor("#00cccc")).show();
-                            }else {
+                            } else {
                                 Y.t("家电下单失败");
                             }
                         }

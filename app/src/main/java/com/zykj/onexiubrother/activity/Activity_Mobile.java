@@ -224,12 +224,16 @@ public class Activity_Mobile extends Activity {
                     Y.t("品牌不能为空");
                     return;
                 }
+                if (TextUtils.isEmpty(xinghao)) {
+                    Y.t("型号不能为空");
+                    return;
+                }
                 if (TextUtils.isEmpty(guzhang)) {
                     Y.t("故障不能为空");
                     return;
                 }
-                if (TextUtils.isEmpty(xinghao)) {
-                    Y.t("型号不能为空");
+                if (photoPath==""||photoPath==null) {
+                    Y.t("图片不能为空");
                     return;
                 }
                 Intent mobileOkIntent = new Intent(this, Activity_Call_Service.class);
